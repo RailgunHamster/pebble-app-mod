@@ -22,6 +22,8 @@
 #   RELAY_URL         https://<relay>/claw  (dictation at /stt, updates at /app)
 #   STT_TOKEN         relay token of the "stt" endpoint (built into the app)
 #   APP_UPLOAD_TOKEN  APP_UPLOAD_TOKEN of the relay, for uploading builds
+# (the first version's names CLAW_KEYSTORE_B64 / CLAW_STT_URL / CLAW_STT_TOKEN /
+# CLAW_APP_UPLOAD_TOKEN work too)
 name: Build APK
 
 on:
@@ -54,10 +56,13 @@ jobs:
 
       - name: Check secrets
         env:
-          KS: ${{ secrets.KEYSTORE_B64 }}
-          RELAY: ${{ secrets.RELAY_URL }}
-          TOKEN: ${{ secrets.STT_TOKEN }}
+          KS: ${{ secrets.KEYSTORE_B64 || secrets.CLAW_KEYSTORE_B64 }}
+          RELAY: ${{ secrets.RELAY_URL || secrets.CLAW_STT_URL }}
+          TOKEN: ${{ secrets.STT_TOKEN || secrets.CLAW_STT_TOKEN }}
         run: |
+          RELAY="${RELAY%/}"; RELAY="${RELAY%/stt}"
+          echo "::add-mask::$RELAY"
+          echo "RELAY=$RELAY" >> "$GITHUB_ENV"
           missing=""
           [ -n "$KS" ] || missing="$missing KEYSTORE_B64"
           [ -n "$RELAY" ] || missing="$missing RELAY_URL"
@@ -68,8 +73,7 @@ jobs:
         id: pick
         env:
           INPUT_TAG: ${{ inputs.tag }}
-          RELAY: ${{ secrets.RELAY_URL }}
-          TOKEN: ${{ secrets.STT_TOKEN }}
+          TOKEN: ${{ secrets.STT_TOKEN || secrets.CLAW_STT_TOKEN }}
         run: |
           tag="$INPUT_TAG"
           if [ -z "$tag" ]; then
@@ -98,6 +102,10 @@ jobs:
             echo "applying $(basename "$p")"
             git apply --3way --whitespace=nowarn "$p"
           done
+          # 64-bit ARM only (every current phone): about half the native code,
+          # so half the upload to tc
+          sed -i 's/abiFilters += setOf("armeabi-v7a", "arm64-v8a")/abiFilters += setOf("arm64-v8a")/' androidApp/build.gradle.kts
+          grep -n 'abiFilters' androidApp/build.gradle.kts
           git --no-pager diff HEAD --stat
 
       - name: Setup JDK
@@ -121,9 +129,8 @@ jobs:
         if: steps.pick.outputs.skip != '1'
         working-directory: app
         env:
-          KS: ${{ secrets.KEYSTORE_B64 }}
-          RELAY: ${{ secrets.RELAY_URL }}
-          ORG_GRADLE_PROJECT_kirinkiToken: ${{ secrets.STT_TOKEN }}
+          KS: ${{ secrets.KEYSTORE_B64 || secrets.CLAW_KEYSTORE_B64 }}
+          ORG_GRADLE_PROJECT_kirinkiToken: ${{ secrets.STT_TOKEN || secrets.CLAW_STT_TOKEN }}
           ORG_GRADLE_PROJECT_modBuild: ${{ github.run_number }}
         run: |
           export ORG_GRADLE_PROJECT_kirinkiUrl="${RELAY%/}/stt"
@@ -137,22 +144,56 @@ jobs:
           ./gradlew --no-configuration-cache :androidApp:assembleRelease
           apk=$(ls androidApp/build/outputs/apk/release/*.apk | head -n1)
           cp "$apk" "../pebble-mod-${{ steps.pick.outputs.tag }}.apk"
+          ls -la ../pebble-mod-*.apk
 
       - name: Upload to the relay (app updates)
         if: steps.pick.outputs.skip != '1'
         env:
-          UP: ${{ secrets.APP_UPLOAD_TOKEN }}
-          RELAY: ${{ secrets.RELAY_URL }}
+          UP: ${{ secrets.APP_UPLOAD_TOKEN || secrets.CLAW_APP_UPLOAD_TOKEN }}
         run: |
           if [ -z "$UP" ]; then
             echo "::warning::secret APP_UPLOAD_TOKEN missing: not uploaded, the app won't see this build"
             exit 0
           fi
-          curl --fail-with-body -sS --retry 3 --retry-all-errors --max-time 1800 \
-            -T "pebble-mod-${{ steps.pick.outputs.tag }}.apk" \
-            -H "Authorization: Bearer $UP" -H "Content-Type: application/vnd.android.package-archive" \
-            "${RELAY%/}/app/upload?version=${{ steps.pick.outputs.tag }}&build=${{ github.run_number }}"
-          echo
+          # GitHub (US) -> tc (China) is slow: 4 MB chunks, each retried, resumable
+          python3 - "pebble-mod-${{ steps.pick.outputs.tag }}.apk" "${RELAY%/}/app/upload" \
+                    "${{ steps.pick.outputs.tag }}" "${{ github.run_number }}" <<'PY'
+          import json, os, sys, time, urllib.error, urllib.request
+          path, url, version, build = sys.argv[1:5]
+          token = os.environ["UP"]
+          total = os.path.getsize(path)
+          CHUNK = 4 << 20
+          off, t0 = 0, time.time()
+          print(f"uploading {total / 1048576:.1f} MB to the relay")
+          with open(path, "rb") as f:
+              while off < total:
+                  f.seek(off)
+                  body = f.read(CHUNK)
+                  q = f"?version={version}&build={build}&offset={off}&total={total}"
+                  for attempt in range(1, 9):
+                      req = urllib.request.Request(url + q, data=body, method="PUT", headers={
+                          "Authorization": "Bearer " + token, "Content-Type": "application/octet-stream"})
+                      c0 = time.time()
+                      try:
+                          with urllib.request.urlopen(req, timeout=600) as r:
+                              got = json.load(r)["received"]
+                          break
+                      except urllib.error.HTTPError as e:
+                          detail = e.read().decode(errors="replace")
+                          if e.code == 409:             # the relay has a different amount: resume there
+                              got = json.loads(detail)["received"]
+                              break
+                          print(f"  chunk at {off}: HTTP {e.code} {detail[:200]} (try {attempt})")
+                      except Exception as e:  # noqa: BLE001
+                          print(f"  chunk at {off}: {e} (try {attempt})")
+                      time.sleep(min(60, 5 * attempt))
+                  else:
+                      sys.exit("upload failed")
+                  rate = len(body) / max(0.001, time.time() - c0) / 1024
+                  off = got
+                  print(f"  {off / 1048576:6.1f} / {total / 1048576:.1f} MB  ({rate:.0f} KB/s)", flush=True)
+          print(f"published on the relay in {time.time() - t0:.0f} s")
+          PY
 
       - name: GitHub release (private repository only)
         if: steps.pick.outputs.skip != '1'
