@@ -1,0 +1,173 @@
+# Builds my personal version of the Core Devices Pebble app
+# (coredevices/mobileapp, GPL-3.0): the newest upstream release tag with
+# every patches/*.patch applied in order.
+#
+# This repository holds only the patches and this workflow, so syncing with
+# upstream never conflicts here. A failed `git apply` means upstream changed
+# the lines a patch touches: refresh that patch.
+#
+# The APK has a token built in, so it is never published where anyone can
+# download it: it goes to my relay on tc (token required; tc keeps only the
+# newest build, the app's update check finds it there). Only a PRIVATE
+# repository also gets a GitHub release. The repository itself holds no
+# secrets and may be public.
+#
+# Runs on push to main, by hand (Actions > Build APK > Run workflow,
+# optional upstream tag), and daily: the daily run only builds when the relay
+# doesn't have the newest upstream release yet.
+#
+# Secrets (Settings > Secrets and variables > Actions):
+#   KEYSTORE_B64      base64 of the signing keystore (alias androiddebugkey,
+#                     passwords "android"); keep it: updates need the same key
+#   RELAY_URL         https://<relay>/claw  (dictation at /stt, updates at /app)
+#   STT_TOKEN         relay token of the "stt" endpoint (built into the app)
+#   APP_UPLOAD_TOKEN  APP_UPLOAD_TOKEN of the relay, for uploading builds
+name: Build APK
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "upstream release tag (empty = newest)"
+        required: false
+  schedule:
+    - cron: "17 20 * * *"   # 04:17 Beijing time
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build-apk
+  cancel-in-progress: false
+
+jobs:
+  apk:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - name: Checkout patches
+        uses: actions/checkout@v4
+        with:
+          path: mod
+
+      - name: Check secrets
+        env:
+          KS: ${{ secrets.KEYSTORE_B64 }}
+          RELAY: ${{ secrets.RELAY_URL }}
+          TOKEN: ${{ secrets.STT_TOKEN }}
+        run: |
+          missing=""
+          [ -n "$KS" ] || missing="$missing KEYSTORE_B64"
+          [ -n "$RELAY" ] || missing="$missing RELAY_URL"
+          [ -n "$TOKEN" ] || missing="$missing STT_TOKEN"
+          [ -z "$missing" ] || { echo "::error::missing secrets:$missing"; exit 1; }
+
+      - name: Pick upstream release
+        id: pick
+        env:
+          INPUT_TAG: ${{ inputs.tag }}
+          RELAY: ${{ secrets.RELAY_URL }}
+          TOKEN: ${{ secrets.STT_TOKEN }}
+        run: |
+          tag="$INPUT_TAG"
+          if [ -z "$tag" ]; then
+            tag=$(git ls-remote --tags --refs https://github.com/coredevices/mobileapp.git |
+                  sed 's#.*refs/tags/##' | grep -E '^[0-9]+(\.[0-9]+){1,3}$' | sort -V | tail -n1)
+          fi
+          [ -n "$tag" ] || { echo "no upstream tag found"; exit 1; }
+          echo "tag=$tag" >> "$GITHUB_OUTPUT"
+          echo "upstream release: $tag"
+          if [ "${{ github.event_name }}" = schedule ]; then
+            have=$(curl -fsS --max-time 30 -H "Authorization: Bearer $TOKEN" "${RELAY%/}/app/latest" |
+                   python3 -c 'import json, sys; print(json.load(sys.stdin).get("version", ""))' 2>/dev/null || true)
+            if [ "$have" = "$tag" ]; then
+              echo "$tag is already on the relay"
+              echo "skip=1" >> "$GITHUB_OUTPUT"
+            fi
+          fi
+
+      - name: Checkout upstream ${{ steps.pick.outputs.tag }} + patches
+        if: steps.pick.outputs.skip != '1'
+        run: |
+          git clone --filter=blob:none --branch "${{ steps.pick.outputs.tag }}" https://github.com/coredevices/mobileapp.git app
+          cd app
+          git submodule update --init --recursive
+          for p in ../mod/patches/*.patch; do
+            echo "applying $(basename "$p")"
+            git apply --3way --whitespace=nowarn "$p"
+          done
+          git --no-pager diff HEAD --stat
+
+      - name: Setup JDK
+        if: steps.pick.outputs.skip != '1'
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+
+      - name: Cache Gradle
+        if: steps.pick.outputs.skip != '1'
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: gradle-${{ hashFiles('app/gradle/**', 'app/*.gradle*', 'app/gradle.properties') }}
+          restore-keys: gradle-
+
+      - name: Build release APK
+        if: steps.pick.outputs.skip != '1'
+        working-directory: app
+        env:
+          KS: ${{ secrets.KEYSTORE_B64 }}
+          RELAY: ${{ secrets.RELAY_URL }}
+          ORG_GRADLE_PROJECT_kirinkiToken: ${{ secrets.STT_TOKEN }}
+          ORG_GRADLE_PROJECT_modBuild: ${{ github.run_number }}
+        run: |
+          export ORG_GRADLE_PROJECT_kirinkiUrl="${RELAY%/}/stt"
+          export ORG_GRADLE_PROJECT_modUpdateUrl="${RELAY%/}/app"
+          # local release build: signed with the "debug" config (our key in its
+          # place) and no Crashlytics mapping upload (the Firebase config is a dummy)
+          mkdir -p ~/.android
+          printf '%s' "$KS" | base64 -d > ~/.android/debug.keystore
+          echo "LOCAL_RELEASE_BUILD=true" >> local.properties
+          mv androidApp/src/google-services-dummy.json androidApp/src/google-services.json
+          ./gradlew --no-configuration-cache :androidApp:assembleRelease
+          apk=$(ls androidApp/build/outputs/apk/release/*.apk | head -n1)
+          cp "$apk" "../pebble-mod-${{ steps.pick.outputs.tag }}.apk"
+
+      - name: Upload to the relay (app updates)
+        if: steps.pick.outputs.skip != '1'
+        env:
+          UP: ${{ secrets.APP_UPLOAD_TOKEN }}
+          RELAY: ${{ secrets.RELAY_URL }}
+        run: |
+          if [ -z "$UP" ]; then
+            echo "::warning::secret APP_UPLOAD_TOKEN missing: not uploaded, the app won't see this build"
+            exit 0
+          fi
+          curl --fail-with-body -sS --retry 3 --retry-all-errors --max-time 1800 \
+            -T "pebble-mod-${{ steps.pick.outputs.tag }}.apk" \
+            -H "Authorization: Bearer $UP" -H "Content-Type: application/vnd.android.package-archive" \
+            "${RELAY%/}/app/upload?version=${{ steps.pick.outputs.tag }}&build=${{ github.run_number }}"
+          echo
+
+      - name: GitHub release (private repository only)
+        if: steps.pick.outputs.skip != '1'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if [ "$(gh repo view "$GITHUB_REPOSITORY" --json visibility -q .visibility)" != PRIVATE ]; then
+            echo "public repository: no GitHub release (the APK carries a token); it is on the relay"
+            exit 0
+          fi
+          tag="mod-${{ steps.pick.outputs.tag }}"
+          apk="pebble-mod-${{ steps.pick.outputs.tag }}.apk"
+          notes="Core Devices Pebble app ${{ steps.pick.outputs.tag }} + patches/. Build ${{ github.run_number }} from ${{ github.sha }}."
+          if gh release view "$tag" -R "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            gh release upload "$tag" "$apk" --clobber -R "$GITHUB_REPOSITORY"
+          else
+            gh release create "$tag" "$apk" -R "$GITHUB_REPOSITORY" --target "${{ github.sha }}" --title "$tag" --notes "$notes"
+          fi

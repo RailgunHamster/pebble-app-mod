@@ -1,0 +1,599 @@
+From 660a36616a3b539af4c2cc7ee1d87ae32942d131 Mon Sep 17 00:00:00 2001
+From: RailgunHamster <RailgunHamster@users.noreply.github.com>
+Date: Wed, 21 Oct 2026 13:03:29 +0000
+Subject: [PATCH 2/2] Settings backup and update check
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Long-press the app icon: 备份与更新. Export writes one zip of the app's
+settings and data, import replaces them and restarts the app (applied
+before anything opens the databases). The update check looks at
+modUpdateUrl every 12 h and notifies about a newer CI build (modBuild).
+---
+ androidApp/src/main/AndroidManifest.xml       |  16 +++
+ .../src/main/res/values/mod_strings.xml       |   7 +
+ androidApp/src/main/res/xml/mod_shortcuts.xml |  26 ++++
+ .../coredevices/coreapp/MainApplication.kt    |   5 +
+ .../coredevices/coreapp/mod/ModBackup.kt      | 134 ++++++++++++++++++
+ .../coreapp/mod/ModBackupActivity.kt          | 119 ++++++++++++++++
+ .../coreapp/mod/ModRestartActivity.kt         |  55 +++++++
+ .../coredevices/coreapp/mod/ModUpdate.kt      | 118 +++++++++++++++
+ util/build.gradle.kts                         |   3 +
+ 9 files changed, 483 insertions(+)
+ create mode 100644 androidApp/src/main/res/values/mod_strings.xml
+ create mode 100644 androidApp/src/main/res/xml/mod_shortcuts.xml
+ create mode 100644 composeApp/src/androidMain/kotlin/coredevices/coreapp/mod/ModBackup.kt
+ create mode 100644 composeApp/src/androidMain/kotlin/coredevices/coreapp/mod/ModBackupActivity.kt
+ create mode 100644 composeApp/src/androidMain/kotlin/coredevices/coreapp/mod/ModRestartActivity.kt
+ create mode 100644 composeApp/src/androidMain/kotlin/coredevices/coreapp/mod/ModUpdate.kt
+
+diff --git a/androidApp/src/main/AndroidManifest.xml b/androidApp/src/main/AndroidManifest.xml
+index 15dffad9..3318ecb8 100644
+--- a/androidApp/src/main/AndroidManifest.xml
++++ b/androidApp/src/main/AndroidManifest.xml
+@@ -33,6 +33,8 @@
+             android:name=".MainActivity"
+             android:launchMode="singleTask"
+             android:windowSoftInputMode="adjustResize">
++            <!-- personal build: long-press menu (backup / update) -->
++            <meta-data android:name="android.app.shortcuts" android:resource="@xml/mod_shortcuts" />
+             <intent-filter>
+                 <action android:name="android.intent.action.MAIN" />
+                 <category android:name="android.intent.category.LAUNCHER" />
+@@ -186,5 +188,19 @@
+                 <action android:name="coredevices.coreapp.SET_SETTING" />
+             </intent-filter>
+         </receiver>
++        <!-- personal build: settings backup / update check, and the restart helper -->
++        <activity
++            android:name="coredevices.coreapp.mod.ModBackupActivity"
++            android:exported="true"
++            android:label="@string/mod_backup_long"
++            android:theme="@android:style/Theme.Translucent.NoTitleBar"
++            android:excludeFromRecents="true"
++            android:taskAffinity="coredevices.coreapp.mod" />
++        <activity
++            android:name="coredevices.coreapp.mod.ModRestartActivity"
++            android:exported="false"
++            android:process=":modrestart"
++            android:theme="@android:style/Theme.Translucent.NoTitleBar"
++            android:excludeFromRecents="true" />
+     </application>
+ </manifest>
+\ No newline at end of file
+diff --git a/androidApp/src/main/res/values/mod_strings.xml b/androidApp/src/main/res/values/mod_strings.xml
+new file mode 100644
+index 00000000..74678de7
+--- /dev/null
++++ b/androidApp/src/main/res/values/mod_strings.xml
+@@ -0,0 +1,7 @@
++<?xml version="1.0" encoding="utf-8"?>
++<resources>
++    <string name="mod_backup_short">备份与更新</string>
++    <string name="mod_backup_long">导出 / 导入设置，检查更新</string>
++    <string name="mod_update_short">检查更新</string>
++    <string name="mod_update_long">检查 App 新版本</string>
++</resources>
+diff --git a/androidApp/src/main/res/xml/mod_shortcuts.xml b/androidApp/src/main/res/xml/mod_shortcuts.xml
+new file mode 100644
+index 00000000..31cf6dd7
+--- /dev/null
++++ b/androidApp/src/main/res/xml/mod_shortcuts.xml
+@@ -0,0 +1,26 @@
++<?xml version="1.0" encoding="utf-8"?>
++<!-- personal build: long-press the app icon -->
++<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
++    <shortcut
++        android:shortcutId="mod_backup"
++        android:enabled="true"
++        android:icon="@mipmap/ic_launcher"
++        android:shortcutShortLabel="@string/mod_backup_short"
++        android:shortcutLongLabel="@string/mod_backup_long">
++        <intent
++            android:action="android.intent.action.VIEW"
++            android:targetPackage="coredevices.coreapp"
++            android:targetClass="coredevices.coreapp.mod.ModBackupActivity" />
++    </shortcut>
++    <shortcut
++        android:shortcutId="mod_update"
++        android:enabled="true"
++        android:icon="@mipmap/ic_launcher"
++        android:shortcutShortLabel="@string/mod_update_short"
++        android:shortcutLongLabel="@string/mod_update_long">
++        <intent
++            android:action="coredevices.coreapp.mod.UPDATE"
++            android:targetPackage="coredevices.coreapp"
++            android:targetClass="coredevices.coreapp.mod.ModBackupActivity" />
++    </shortcut>
++</shortcuts>
+diff --git a/composeApp/src/androidMain/kotlin/coredevices/coreapp/MainApplication.kt b/composeApp/src/androidMain/kotlin/coredevices/coreapp/MainApplication.kt
+index 40c3727d..036c3ff6 100644
+--- a/composeApp/src/androidMain/kotlin/coredevices/coreapp/MainApplication.kt
++++ b/composeApp/src/androidMain/kotlin/coredevices/coreapp/MainApplication.kt
+@@ -67,6 +67,10 @@ class MainApplication : Application(), SingletonImageLoader.Factory, Configurati
+ 
+     override fun onCreate() {
+         super.onCreate()
++        // personal build: the restart helper's process runs nothing else; a staged settings
++        // import is applied before anything opens the databases
++        if (coredevices.coreapp.mod.ModRestartActivity.isRestartProcess()) return
++        coredevices.coreapp.mod.ModBackup.applyPendingImport(this)
+         if (AppContext(this).isDebugBuild()) {
+             Firebase.crashlytics.setCrashlyticsCollectionEnabled(false)
+         }
+@@ -106,6 +110,7 @@ class MainApplication : Application(), SingletonImageLoader.Factory, Configurati
+         scheduleBackgroundJob(AppContext(this), coreConfigHolder.config.value)
+         commonAppDelegate.init()
+         pebbleBackgroundManager.monitorToStartBackground()
++        coredevices.coreapp.mod.ModUpdate.checkInBackground(this)   // personal build
+     }
+ 
+     private fun dumpPreviousExitInfo() {
+diff --git a/composeApp/src/androidMain/kotlin/coredevices/coreapp/mod/ModBackup.kt b/composeApp/src/androidMain/kotlin/coredevices/coreapp/mod/ModBackup.kt
+new file mode 100644
+index 00000000..62bae186
+--- /dev/null
++++ b/composeApp/src/androidMain/kotlin/coredevices/coreapp/mod/ModBackup.kt
+@@ -0,0 +1,134 @@
++package coredevices.coreapp.mod
++
++import android.content.Context
++import android.os.Build
++import org.json.JSONObject
++import java.io.File
++import java.io.InputStream
++import java.io.OutputStream
++import java.util.zip.ZipEntry
++import java.util.zip.ZipFile
++import java.util.zip.ZipInputStream
++import java.util.zip.ZipOutputStream
++
++/**
++ * Backup of the app's settings and data (personal build): everything in the app's data
++ * directory that describes the setup (Room databases, shared preferences, watchapp
++ * settings, installed .pbw files, WebView storage), without caches, downloaded speech
++ * models and recordings.
++ *
++ * Import can't overwrite databases the running app has open, so it is staged
++ * ([stageImport]) and applied by [applyPendingImport] at the very start of the next
++ * process, before anything opens them; [ModRestartActivity] provides that restart.
++ */
++object ModBackup {
++    private const val META = "settings-backup.json"
++    private const val PENDING = "settings-import.zip"
++
++    private val skipTop = setOf("cache", "code_cache", "no_backup", "lib")
++    private val skipFiles = listOf("files/models", "files/recordings", "files/sideload.pbz", "files/$PENDING")
++
++    /** Paths (relative to the data dir, '/'-separated) that a backup neither saves nor replaces. */
++    fun excluded(relPath: String): Boolean {
++        val p = relPath.replace('\\', '/').trimEnd('/')
++        if (p.isEmpty()) return false
++        if (p.substringBefore('/') in skipTop) return true
++        if (skipFiles.any { p == it || p.startsWith("$it/") }) return true
++        val name = p.substringAfterLast('/')
++        // WorkManager's job queue and Google/Firebase internals belong to this install only
++        if (p.startsWith("databases/") && (name.startsWith("androidx.work") || name.startsWith("com.google"))) return true
++        if (p.startsWith("shared_prefs/") && (name.startsWith("com.google") || name.startsWith("mod_update"))) return true
++        if (p.startsWith("app_webview/") && p.split('/').any {
++                it.contains("cache", ignoreCase = true) || it == "Crashpad" || it == "blob_storage"
++            }) return true
++        return false
++    }
++
++    private fun dataDir(context: Context): File = context.dataDir.canonicalFile
++
++    /** Writes the backup zip to [out]; returns the number of files saved. */
++    fun export(context: Context, out: OutputStream): Int {
++        val root = dataDir(context)
++        var count = 0
++        ZipOutputStream(out.buffered()).use { zip ->
++            val meta = JSONObject()
++                .put("package", context.packageName)
++                .put("created", System.currentTimeMillis())
++                .put("device", "${Build.MANUFACTURER} ${Build.MODEL}")
++            zip.putNextEntry(ZipEntry(META))
++            zip.write(meta.toString(1).toByteArray())
++            zip.closeEntry()
++            root.walkTopDown()
++                .onEnter { dir -> dir == root || !excluded(dir.relativeTo(root).invariantSeparatorsPath) }
++                .filter { it.isFile && !excluded(it.relativeTo(root).invariantSeparatorsPath) }
++                .forEach { file ->
++                    try {
++                        file.inputStream().use { input ->
++                            zip.putNextEntry(ZipEntry(file.relativeTo(root).invariantSeparatorsPath))
++                            input.copyTo(zip)
++                            zip.closeEntry()
++                        }
++                        count++
++                    } catch (e: Exception) {
++                        // a file that vanished or can't be read: skip it
++                    }
++                }
++        }
++        return count
++    }
++
++    /** Copies a backup zip into place for the next start. Throws if it isn't one of ours. */
++    fun stageImport(context: Context, input: InputStream) {
++        val dest = File(context.filesDir, PENDING)
++        val tmp = File(context.filesDir, "$PENDING.part")
++        input.use { inp -> tmp.outputStream().use { inp.copyTo(it) } }
++        var meta: JSONObject? = null
++        ZipInputStream(tmp.inputStream().buffered()).use { zip ->
++            while (true) {
++                val e = zip.nextEntry ?: break
++                if (e.name == META) {
++                    meta = JSONObject(zip.readBytes().decodeToString())
++                    break
++                }
++            }
++        }
++        val pkg = meta?.optString("package")
++        if (pkg != context.packageName) {
++            tmp.delete()
++            throw IllegalArgumentException(if (meta == null) "不是本 App 导出的备份文件" else "备份来自另一个 App（$pkg）")
++        }
++        if (!tmp.renameTo(dest)) {
++            tmp.delete()
++            throw IllegalStateException("无法保存备份文件")
++        }
++    }
++
++    /** Applies a staged import. Call first thing in Application.onCreate. */
++    fun applyPendingImport(context: Context) {
++        val zipFile = File(context.filesDir, PENDING)
++        if (!zipFile.exists()) return
++        val root = dataDir(context)
++        val rootPath = root.path + File.separator
++        try {
++            ZipFile(zipFile).use { zip ->
++                // replace, don't merge: clear what a backup covers first
++                for (top in listOf("databases", "shared_prefs", "files", "app_webview")) {
++                    File(root, top).walkBottomUp()
++                        .filter { it.isFile && !excluded(it.relativeTo(root).invariantSeparatorsPath) }
++                        .forEach { it.delete() }
++                }
++                for (entry in zip.entries()) {
++                    if (entry.isDirectory || entry.name == META || excluded(entry.name)) continue
++                    val dest = File(root, entry.name).canonicalFile
++                    if (!dest.path.startsWith(rootPath)) continue   // no "../" escapes
++                    dest.parentFile?.mkdirs()
++                    zip.getInputStream(entry).use { input -> dest.outputStream().use { input.copyTo(it) } }
++                }
++            }
++        } catch (e: Exception) {
++            // a broken backup must not keep the app from starting
++        } finally {
++            zipFile.delete()
++        }
++    }
++}
+diff --git a/composeApp/src/androidMain/kotlin/coredevices/coreapp/mod/ModBackupActivity.kt b/composeApp/src/androidMain/kotlin/coredevices/coreapp/mod/ModBackupActivity.kt
+new file mode 100644
+index 00000000..52052983
+--- /dev/null
++++ b/composeApp/src/androidMain/kotlin/coredevices/coreapp/mod/ModBackupActivity.kt
+@@ -0,0 +1,119 @@
++package coredevices.coreapp.mod
++
++import android.app.AlertDialog
++import android.os.Bundle
++import android.widget.Toast
++import androidx.activity.ComponentActivity
++import androidx.activity.result.contract.ActivityResultContracts
++import java.text.SimpleDateFormat
++import java.util.Date
++import java.util.Locale
++
++/**
++ * 备份与更新 (personal build): export / import all settings, check for a new build.
++ * Opened from the app icon's long-press menu (res/xml/mod_shortcuts.xml).
++ */
++class ModBackupActivity : ComponentActivity() {
++    private val exportTo = registerForActivityResult(ActivityResultContracts.CreateDocument("application/zip")) { uri ->
++        if (uri == null) { finish(); return@registerForActivityResult }
++        work("正在导出…") {
++            val n = contentResolver.openOutputStream(uri)?.use { ModBackup.export(this, it) }
++                ?: throw IllegalStateException("无法写入所选位置")
++            "已导出 $n 个文件"
++        }
++    }
++
++    private val importFrom = registerForActivityResult(ActivityResultContracts.OpenDocument()) { uri ->
++        if (uri == null) { finish(); return@registerForActivityResult }
++        AlertDialog.Builder(this, android.R.style.Theme_DeviceDefault_Dialog_Alert)
++            .setTitle("导入设置")
++            .setMessage("会用备份替换当前的全部设置和数据，然后 App 自动重启。继续吗？")
++            .setPositiveButton("导入并重启") { _, _ ->
++                work("正在导入…", restart = true) {
++                    contentResolver.openInputStream(uri)?.let { ModBackup.stageImport(this, it) }
++                        ?: throw IllegalStateException("无法读取所选文件")
++                    "导入完成，正在重启"
++                }
++            }
++            .setNegativeButton("取消") { _, _ -> finish() }
++            .setOnCancelListener { finish() }
++            .show()
++    }
++
++    override fun onCreate(savedInstanceState: Bundle?) {
++        super.onCreate(savedInstanceState)
++        if (savedInstanceState != null) return
++        when (intent?.action) {
++            ACTION_EXPORT -> startExport()
++            ACTION_IMPORT -> importFrom.launch(arrayOf("application/zip", "application/octet-stream"))
++            ACTION_UPDATE -> checkUpdate()
++            else -> menu()
++        }
++    }
++
++    private fun menu() {
++        AlertDialog.Builder(this, android.R.style.Theme_DeviceDefault_Dialog_Alert)
++            .setTitle("备份与更新（构建 ${ModUpdate.ownBuild}）")
++            .setItems(arrayOf("导出设置…", "导入设置…", "检查更新")) { _, which ->
++                when (which) {
++                    0 -> startExport()
++                    1 -> importFrom.launch(arrayOf("application/zip", "application/octet-stream"))
++                    else -> checkUpdate()
++                }
++            }
++            .setOnCancelListener { finish() }
++            .show()
++    }
++
++    private fun startExport() {
++        val stamp = SimpleDateFormat("yyyyMMdd-HHmm", Locale.US).format(Date())
++        exportTo.launch("pebble-settings-$stamp.zip")
++    }
++
++    private fun checkUpdate() {
++        Toast.makeText(this, "正在检查更新…", Toast.LENGTH_SHORT).show()
++        ModUpdate.checkInBackground(this, force = true) { latest ->
++            runOnUiThread {
++                if (isFinishing || isDestroyed) return@runOnUiThread
++                val b = AlertDialog.Builder(this, android.R.style.Theme_DeviceDefault_Dialog_Alert)
++                    .setOnCancelListener { finish() }
++                when {
++                    !ModUpdate.configured -> b.setMessage("这个构建没有配置更新地址").setPositiveButton("好") { _, _ -> finish() }
++                    latest == null -> b.setMessage("连不上更新服务器，稍后再试").setPositiveButton("好") { _, _ -> finish() }
++                    latest.build > ModUpdate.ownBuild -> b.setTitle("有新版本 ${latest.version}（构建 ${latest.build}）")
++                        .setMessage("下载后点安装即可，设置不会丢失。")
++                        .setPositiveButton("下载") { _, _ -> ModUpdate.openDownload(this); finish() }
++                        .setNegativeButton("以后") { _, _ -> finish() }
++                    else -> b.setMessage("已是最新版本 ${latest.version}（构建 ${ModUpdate.ownBuild}）").setPositiveButton("好") { _, _ -> finish() }
++                }
++                b.show()
++            }
++        }
++    }
++
++    private fun work(label: String, restart: Boolean = false, job: () -> String) {
++        Toast.makeText(this, label, Toast.LENGTH_SHORT).show()
++        Thread {
++            val result = try { Result.success(job()) } catch (e: Exception) { Result.failure(e) }
++            runOnUiThread {
++                result.onSuccess { msg ->
++                    Toast.makeText(this, msg, Toast.LENGTH_LONG).show()
++                    if (restart) ModRestartActivity.restart(this) else finish()
++                }.onFailure { e ->
++                    AlertDialog.Builder(this, android.R.style.Theme_DeviceDefault_Dialog_Alert)
++                        .setTitle("失败")
++                        .setMessage(e.message ?: e.toString())
++                        .setPositiveButton("好") { _, _ -> finish() }
++                        .setOnCancelListener { finish() }
++                        .show()
++                }
++            }
++        }.start()
++    }
++
++    companion object {
++        const val ACTION_EXPORT = "coredevices.coreapp.mod.EXPORT"
++        const val ACTION_IMPORT = "coredevices.coreapp.mod.IMPORT"
++        const val ACTION_UPDATE = "coredevices.coreapp.mod.UPDATE"
++    }
++}
+diff --git a/composeApp/src/androidMain/kotlin/coredevices/coreapp/mod/ModRestartActivity.kt b/composeApp/src/androidMain/kotlin/coredevices/coreapp/mod/ModRestartActivity.kt
+new file mode 100644
+index 00000000..7bb746b3
+--- /dev/null
++++ b/composeApp/src/androidMain/kotlin/coredevices/coreapp/mod/ModRestartActivity.kt
+@@ -0,0 +1,55 @@
++package coredevices.coreapp.mod
++
++import android.app.Activity
++import android.content.Context
++import android.content.Intent
++import android.os.Bundle
++import android.os.Process
++
++/**
++ * Restarts the app (after a staged import). Runs in its own process (":modrestart" in
++ * the manifest): it kills the main process, then launches the app afresh, so
++ * [ModBackup.applyPendingImport] runs before anything opens the databases.
++ */
++class ModRestartActivity : Activity() {
++    override fun onCreate(savedInstanceState: Bundle?) {
++        super.onCreate(savedInstanceState)
++        val pid = intent.getIntExtra(EXTRA_PID, -1)
++        if (pid > 0) Process.killProcess(pid)
++        packageManager.getLaunchIntentForPackage(packageName)?.let {
++            it.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
++            startActivity(it)
++        }
++        finish()
++        Runtime.getRuntime().exit(0)
++    }
++
++    companion object {
++        private const val EXTRA_PID = "pid"
++        private const val PROCESS_SUFFIX = ":modrestart"   // android:process in the manifest
++
++        /** True in the restart helper's process: the Application must not start the app there. */
++        fun isRestartProcess(): Boolean {
++            val name = if (android.os.Build.VERSION.SDK_INT >= 28) {
++                android.app.Application.getProcessName()
++            } else {
++                try {
++                    java.io.File("/proc/self/cmdline").readText().trimEnd('\u0000')
++                } catch (e: Exception) {
++                    ""
++                }
++            }
++            return name.endsWith(PROCESS_SUFFIX)
++        }
++
++        fun restart(context: Context) {
++            context.startActivity(
++                Intent(context, ModRestartActivity::class.java)
++                    .putExtra(EXTRA_PID, Process.myPid())
++                    .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
++            )
++            if (context is Activity) context.finishAffinity()
++            Runtime.getRuntime().exit(0)
++        }
++    }
++}
+diff --git a/composeApp/src/androidMain/kotlin/coredevices/coreapp/mod/ModUpdate.kt b/composeApp/src/androidMain/kotlin/coredevices/coreapp/mod/ModUpdate.kt
+new file mode 100644
+index 00000000..35cbc27d
+--- /dev/null
++++ b/composeApp/src/androidMain/kotlin/coredevices/coreapp/mod/ModUpdate.kt
+@@ -0,0 +1,118 @@
++package coredevices.coreapp.mod
++
++import android.Manifest
++import android.app.Notification
++import android.app.NotificationChannel
++import android.app.NotificationManager
++import android.app.PendingIntent
++import android.content.Context
++import android.content.Intent
++import android.content.pm.PackageManager
++import android.net.Uri
++import android.os.Build
++import coredevices.util.CommonBuildKonfig
++import org.json.JSONObject
++import java.net.HttpURLConnection
++import java.net.URL
++import java.net.URLEncoder
++
++/**
++ * Update check for the personal build. CI uploads each build to the clawfeed relay on tc,
++ * which keeps only the newest one:
++ *   GET {MOD_UPDATE_URL}/latest   -> {"version": "1.15.0.1", "build": 12, "size": ...}
++ *   GET {MOD_UPDATE_URL}/apk?t=   -> the APK (the browser downloads it, Android installs it)
++ * authorized with the same token as dictation (KIRINKI_TOKEN). A build is newer when its
++ * CI build number is higher than ours (MOD_BUILD).
++ */
++object ModUpdate {
++    data class Latest(val version: String, val build: Int, val size: Long)
++
++    private const val PREFS = "mod_update"
++    private const val CHANNEL = "mod_update"
++    private const val NOTIFY_ID = 0xC1A0
++    private const val INTERVAL_MS = 12L * 3600 * 1000
++
++    val ownBuild: Int get() = CommonBuildKonfig.MOD_BUILD.toIntOrNull() ?: 0
++
++    val configured: Boolean
++        get() = !CommonBuildKonfig.MOD_UPDATE_URL.isNullOrBlank() && !CommonBuildKonfig.KIRINKI_TOKEN.isNullOrBlank()
++
++    fun downloadUri(): Uri? {
++        val base = CommonBuildKonfig.MOD_UPDATE_URL?.trimEnd('/') ?: return null
++        val token = CommonBuildKonfig.KIRINKI_TOKEN ?: return null
++        return Uri.parse("$base/apk?t=" + URLEncoder.encode(token, "UTF-8"))
++    }
++
++    /** Blocking; null when there's nothing published or the relay can't be reached. */
++    fun fetchLatest(): Latest? {
++        val base = CommonBuildKonfig.MOD_UPDATE_URL?.trimEnd('/') ?: return null
++        val token = CommonBuildKonfig.KIRINKI_TOKEN ?: return null
++        val conn = URL("$base/latest").openConnection() as HttpURLConnection
++        return try {
++            conn.connectTimeout = 10_000
++            conn.readTimeout = 15_000
++            conn.setRequestProperty("Authorization", "Bearer $token")
++            if (conn.responseCode != 200) return null
++            val j = JSONObject(conn.inputStream.bufferedReader().readText())
++            Latest(j.optString("version"), j.optInt("build"), j.optLong("size"))
++        } finally {
++            conn.disconnect()
++        }
++    }
++
++    /**
++     * Checks at most every 12 h (or now with [force]); a newer build posts a notification
++     * that opens the download. [onResult] runs on the checking thread.
++     */
++    fun checkInBackground(context: Context, force: Boolean = false, onResult: ((Latest?) -> Unit)? = null) {
++        if (!configured) {
++            onResult?.invoke(null)
++            return
++        }
++        val app = context.applicationContext
++        val prefs = app.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
++        val now = System.currentTimeMillis()
++        if (!force && now - prefs.getLong("checked", 0) < INTERVAL_MS) return
++        Thread {
++            val latest = try { fetchLatest() } catch (e: Exception) { null }
++            prefs.edit().putLong("checked", now).apply()
++            if (latest != null && latest.build > ownBuild && !force &&
++                prefs.getInt("notified", 0) != latest.build
++            ) {
++                notifyNewer(app, latest)
++                prefs.edit().putInt("notified", latest.build).apply()
++            }
++            onResult?.invoke(latest)
++        }.apply {
++            isDaemon = true
++            name = "mod-update"
++        }.start()
++    }
++
++    fun openDownload(context: Context) {
++        val uri = downloadUri() ?: return
++        context.startActivity(Intent(Intent.ACTION_VIEW, uri).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
++    }
++
++    private fun notifyNewer(context: Context, latest: Latest) {
++        if (Build.VERSION.SDK_INT >= 33 &&
++            context.checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED
++        ) return
++        val uri = downloadUri() ?: return
++        val nm = context.getSystemService(NotificationManager::class.java) ?: return
++        nm.createNotificationChannel(NotificationChannel(CHANNEL, "App 更新", NotificationManager.IMPORTANCE_DEFAULT))
++        val tap = PendingIntent.getActivity(
++            context, 0, Intent(Intent.ACTION_VIEW, uri),
++            PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT,
++        )
++        val mb = if (latest.size > 0) "（${latest.size / (1024 * 1024)} MB）" else ""
++        val n = Notification.Builder(context, CHANNEL)
++            .setSmallIcon(android.R.drawable.stat_sys_download_done)
++            .setContentTitle("Pebble App 有新版本 ${latest.version}")
++            .setContentText("点按下载安装$mb，设置不会丢失")
++            .setContentIntent(tap)
++            .setAutoCancel(true)
++            .build()
++        nm.notify(NOTIFY_ID, n)
++    }
++}
+diff --git a/util/build.gradle.kts b/util/build.gradle.kts
+index e963235a..c709cdd5 100644
+--- a/util/build.gradle.kts
++++ b/util/build.gradle.kts
+@@ -192,6 +192,9 @@ buildkonfig {
+         buildConfigField(FieldSpec.Type.STRING, "KIRINKI_URL", gradleStringPropOrNull("kirinkiUrl"), nullable = true)
+         // Self-hosted kirinki-compatible STT: a static bearer token instead of the Firebase ID token.
+         buildConfigField(FieldSpec.Type.STRING, "KIRINKI_TOKEN", gradleStringPropOrNull("kirinkiToken"), nullable = true)
++        // personal build: CI build number and the relay's update endpoint (ModUpdate)
++        buildConfigField(FieldSpec.Type.STRING, "MOD_BUILD", gradleStringPropOrNull("modBuild") ?: "0")
++        buildConfigField(FieldSpec.Type.STRING, "MOD_UPDATE_URL", gradleStringPropOrNull("modUpdateUrl"), nullable = true)
+         buildConfigField(FieldSpec.Type.STRING, "MEMFAULT_TOKEN", gradleStringPropOrNull("memfaultToken"), nullable = true)
+         buildConfigField(FieldSpec.Type.STRING, "GOOGLE_CLIENT_ID", gradleStringPropOrNull("googleClientId"), nullable = true)
+         buildConfigField(FieldSpec.Type.BOOLEAN, "GOOGLE_AUTH_ENABLED", gradleBooleanProp("googleAuthEnabled", default = true).toString())
+-- 
+2.43.0
+

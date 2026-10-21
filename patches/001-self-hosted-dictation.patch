@@ -1,0 +1,93 @@
+From 7dce46cb192dfe54a26df6d13af323e7e9e3fabd Mon Sep 17 00:00:00 2001
+From: RailgunHamster <RailgunHamster@users.noreply.github.com>
+Date: Wed, 21 Oct 2026 13:03:29 +0000
+Subject: [PATCH 1/2] Self-hosted dictation: kirinki with a static token, no
+ WisprFlow or Core account needed
+
+Watch dictation goes to a kirinki-compatible endpoint set at build time
+(kirinkiUrl / kirinkiToken), e.g. SenseVoice behind the clawfeed relay.
+"Cloud Only" no longer asks for a Core account when that is configured.
+---
+ .../kotlin/coredevices/pebble/ui/WatchSettingsScreen.kt      | 5 ++++-
+ util/build.gradle.kts                                        | 2 ++
+ .../util/transcription/HybridTranscriptionService.kt         | 5 +++++
+ .../util/transcription/KirinkiTranscriptionService.kt        | 4 +++-
+ 4 files changed, 14 insertions(+), 2 deletions(-)
+
+diff --git a/pebble/src/commonMain/kotlin/coredevices/pebble/ui/WatchSettingsScreen.kt b/pebble/src/commonMain/kotlin/coredevices/pebble/ui/WatchSettingsScreen.kt
+index ddbf94d8..ec45bb81 100644
+--- a/pebble/src/commonMain/kotlin/coredevices/pebble/ui/WatchSettingsScreen.kt
++++ b/pebble/src/commonMain/kotlin/coredevices/pebble/ui/WatchSettingsScreen.kt
+@@ -136,6 +136,7 @@ import coredevices.ui.ConfirmDialog
+ import coredevices.ui.CoreLinearProgressIndicator
+ import coredevices.ui.M3Dialog
+ import coredevices.ui.SignInDialog
++import coredevices.util.CommonBuildKonfig
+ import coredevices.util.CoreConfig
+ import coredevices.util.CoreConfigHolder
+ import coredevices.util.Permission
+@@ -1498,7 +1499,9 @@ fun rememberSettingsItemsState(navBarNav: NavBarNav?, snackbarDisplay: SnackbarD
+                             snackbarDisplay.showSnackbar("This device doesn't support system speech recognition")
+                         } else if (it != CactusSTTMode.RemoteOnly && !isPlatform && !cactusSupported) {
+                             snackbarDisplay.showSnackbar("This device doesn't support local speech recognition")
+-                        } else if (it != CactusSTTMode.LocalOnly && !isPlatform && !isRebble && coreUser == null) {
++                        } else if (it != CactusSTTMode.LocalOnly && !isPlatform && !isRebble && coreUser == null &&
++                            CommonBuildKonfig.KIRINKI_TOKEN == null // self-hosted STT needs no Core account
++                        ) {
+                             snackbarDisplay.showSnackbar("You need to be signed in to use cloud speech recognition")
+                             showSignInDialog = true
+                         } else if (needsLocal && !hasOfflineModels) {
+diff --git a/util/build.gradle.kts b/util/build.gradle.kts
+index 560ecf2c..e963235a 100644
+--- a/util/build.gradle.kts
++++ b/util/build.gradle.kts
+@@ -190,6 +190,8 @@ buildkonfig {
+         buildConfigField(FieldSpec.Type.STRING, "MIXPANEL_TOKEN", gradleStringPropOrNull("mixpanelToken"), nullable = true)
+         buildConfigField(FieldSpec.Type.STRING, "WISPR_AUTH_URL", gradleStringPropOrNull("wisprAuthUrl"), nullable = true)
+         buildConfigField(FieldSpec.Type.STRING, "KIRINKI_URL", gradleStringPropOrNull("kirinkiUrl"), nullable = true)
++        // Self-hosted kirinki-compatible STT: a static bearer token instead of the Firebase ID token.
++        buildConfigField(FieldSpec.Type.STRING, "KIRINKI_TOKEN", gradleStringPropOrNull("kirinkiToken"), nullable = true)
+         buildConfigField(FieldSpec.Type.STRING, "MEMFAULT_TOKEN", gradleStringPropOrNull("memfaultToken"), nullable = true)
+         buildConfigField(FieldSpec.Type.STRING, "GOOGLE_CLIENT_ID", gradleStringPropOrNull("googleClientId"), nullable = true)
+         buildConfigField(FieldSpec.Type.BOOLEAN, "GOOGLE_AUTH_ENABLED", gradleBooleanProp("googleAuthEnabled", default = true).toString())
+diff --git a/util/src/commonMain/kotlin/coredevices/util/transcription/HybridTranscriptionService.kt b/util/src/commonMain/kotlin/coredevices/util/transcription/HybridTranscriptionService.kt
+index b6bf8d83..ccbc427b 100644
+--- a/util/src/commonMain/kotlin/coredevices/util/transcription/HybridTranscriptionService.kt
++++ b/util/src/commonMain/kotlin/coredevices/util/transcription/HybridTranscriptionService.kt
+@@ -211,6 +211,11 @@ class HybridTranscriptionService(
+             throw e
+         }
+ 
++        // Self-hosted build: no WisprFlow configured, kirinki is the cloud service.
++        if (!wisprFlow.isAvailable() && kirinki.isAvailable()) {
++            return transcribeKirinki()
++        }
++
+         // Kirinki is only used as a backup when there's no local model to fall back on. When a local
+         // fallback is available we let the caller handle it by propagating the WisprFlow failure.
+         val canUseKirinki = !willFallbackLocal && kirinki.isAvailable()
+diff --git a/util/src/commonMain/kotlin/coredevices/util/transcription/KirinkiTranscriptionService.kt b/util/src/commonMain/kotlin/coredevices/util/transcription/KirinkiTranscriptionService.kt
+index 75498f58..2a75eaff 100644
+--- a/util/src/commonMain/kotlin/coredevices/util/transcription/KirinkiTranscriptionService.kt
++++ b/util/src/commonMain/kotlin/coredevices/util/transcription/KirinkiTranscriptionService.kt
+@@ -7,6 +7,7 @@ import coredevices.api.ApiAuthException
+ import coredevices.util.AudioEncoding
+ import coredevices.util.CommonBuildKonfig
+ import io.ktor.client.call.body
++import io.ktor.client.request.bearerAuth
+ import io.ktor.client.request.parameter
+ import io.ktor.client.request.post
+ import io.ktor.client.request.setBody
+@@ -108,7 +109,8 @@ class KirinkiTranscriptionService : ApiClient(CommonBuildKonfig.USER_AGENT_VERSI
+                 if (language is STTLanguage.Specific && language.languageCodes.isNotEmpty()) {
+                     parameter("language_code", toBcp47(language.languageCodes.first(), Locale.current.region))
+                 }
+-                firebaseAuth()
++                val staticToken = CommonBuildKonfig.KIRINKI_TOKEN
++                if (staticToken != null) bearerAuth(staticToken) else firebaseAuth()
+                 contentType(ContentType.Application.OctetStream)
+                 setBody(wav)
+             }
+-- 
+2.43.0
+
