@@ -1,0 +1,46 @@
+From a86db41dcc348edb46fc89995ec31afadfc3edb4 Mon Sep 17 00:00:00 2001
+From: RailgunHamster <RailgunHamster@users.noreply.github.com>
+Date: Thu, 22 Oct 2026 02:58:50 +0000
+Subject: [PATCH 3/3] On-device dictation: SenseVoice-Small via sherpa-onnx
+ (System (On-Device) mode)
+
+The Android PlatformSpeechRecognizer upstream left as a stub is replaced
+(overlay/, a whole file: it differs between upstream versions):
+SenseVoice-Small int8 (zh/en/ja/ko/yue) on the CPU, model (~230 MB)
+downloaded once from hf-mirror.com / huggingface.co through the existing
+download dialog. Failures fall back to the cloud recognizer as upstream
+does. Needs util/libs/sherpa-onnx.jar and the arm64 .so files from the
+sherpa-onnx release AAR (unpacked by CI).
+---
+ util/build.gradle.kts                         |   3 +
+ .../util/AndroidPermissionRequester.kt        |   3 +-
+ 3 files changed, 209 insertions(+), 12 deletions(-)
+
+diff --git a/util/build.gradle.kts b/util/build.gradle.kts
+index c709cdd5..5475bfed 100644
+--- a/util/build.gradle.kts
++++ b/util/build.gradle.kts
+@@ -142,6 +142,9 @@ kotlin {
+                 implementation(libs.play.update.ktx)
+                 implementation(libs.mixpanel.android)
+                 implementation(libs.androidx.work)
++                // personal build: sherpa-onnx for on-device SenseVoice (jar unpacked from the
++                // release AAR by CI; the native libraries go to androidApp/src/main/jniLibs)
++                implementation(files("libs/sherpa-onnx.jar"))
+             }
+         }
+ 
+diff --git a/util/src/androidMain/kotlin/coredevices/util/AndroidPermissionRequester.kt b/util/src/androidMain/kotlin/coredevices/util/AndroidPermissionRequester.kt
+index 7e52263b..6cedc503 100644
+--- a/util/src/androidMain/kotlin/coredevices/util/AndroidPermissionRequester.kt
++++ b/util/src/androidMain/kotlin/coredevices/util/AndroidPermissionRequester.kt
+@@ -204,7 +204,8 @@ private fun Permission.asAndroidPermissions(): List<String> = when (this) {
+     Permission.ReadPhoneState -> listOf(Manifest.permission.READ_PHONE_STATE)
+     Permission.ReadNotifications -> throw IllegalArgumentException("Shouldn't be calling this")
+     Permission.RecordAudio -> listOf(Manifest.permission.RECORD_AUDIO)
+-    Permission.SpeechRecognizer -> throw IllegalArgumentException("SpeechRecognizer not needed on Android")
++    // personal build: on-device SenseVoice needs no permission (the audio comes from the watch)
++    Permission.SpeechRecognizer -> emptyList()
+     Permission.ExternalStorage -> if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q && CommonBuildKonfig.QA) {
+         listOf(
+             Manifest.permission.WRITE_EXTERNAL_STORAGE,

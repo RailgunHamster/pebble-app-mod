@@ -1,6 +1,8 @@
 # Builds my personal version of the Core Devices Pebble app
 # (coredevices/mobileapp, GPL-3.0): the newest upstream release tag with
-# every patches/*.patch applied in order.
+# every patches/*.patch applied in order, then overlay/ copied over it
+# (whole files that replace upstream ones). sherpa-onnx (on-device speech
+# recognition) comes from its release AAR.
 #
 # This repository holds only the patches and this workflow, so syncing with
 # upstream never conflicts here. A failed `git apply` means upstream changed
@@ -102,10 +104,27 @@ jobs:
             echo "applying $(basename "$p")"
             git apply --3way --whitespace=nowarn "$p"
           done
+          if [ -d ../mod/overlay ]; then
+            cp -rv ../mod/overlay/. .
+            # newer upstream versions declare releaseUnusedModels; older ones don't
+            stt=util/src/androidMain/kotlin/coredevices/util/transcription/PlatformSpeechRecognizer.android.kt
+            if [ -f "$stt" ] && ! grep -q "fun releaseUnusedModels" util/src/commonMain/kotlin/coredevices/util/transcription/PlatformSpeechRecognizer.kt; then
+              sed -i '/BEGIN releaseUnusedModels/,/END releaseUnusedModels/d' "$stt"
+            fi
+          fi
           # 64-bit ARM only (every current phone): about half the native code,
           # so half the upload to tc
           sed -i 's/abiFilters += setOf("armeabi-v7a", "arm64-v8a")/abiFilters += setOf("arm64-v8a")/' androidApp/build.gradle.kts
           grep -n 'abiFilters' androidApp/build.gradle.kts
+          # sherpa-onnx: classes for util, arm64 native libraries for the app
+          SHERPA=1.12.20
+          curl -fsSL --retry 3 -o /tmp/sherpa.aar "https://github.com/k2-fsa/sherpa-onnx/releases/download/v$SHERPA/sherpa-onnx-$SHERPA.aar"
+          mkdir -p /tmp/sherpa util/libs androidApp/src/main/jniLibs/arm64-v8a
+          unzip -q -o /tmp/sherpa.aar -d /tmp/sherpa
+          cp /tmp/sherpa/classes.jar util/libs/sherpa-onnx.jar
+          cp /tmp/sherpa/jni/arm64-v8a/*.so androidApp/src/main/jniLibs/arm64-v8a/
+          printf '\n# personal build: sherpa-onnx (its JNI code looks classes and fields up by name)\n-keep class com.k2fsa.sherpa.onnx.** { *; }\n' >> androidApp/proguard-rules.pro
+          ls -la androidApp/src/main/jniLibs/arm64-v8a
           git --no-pager diff HEAD --stat
 
       - name: Setup JDK
