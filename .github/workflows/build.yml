@@ -112,6 +112,8 @@ jobs:
               sed -i '/BEGIN releaseUnusedModels/,/END releaseUnusedModels/d' "$stt"
             fi
           fi
+          python3 -m pip install -r ../mod/requirements-localization.txt
+          python3 ../mod/tools/localize.py . --catalog ../mod/localization/catalog.json
           # 64-bit ARM only (every current phone): about half the native code,
           # so half the upload to tc
           sed -i 's/abiFilters += setOf("armeabi-v7a", "arm64-v8a")/abiFilters += setOf("arm64-v8a")/' androidApp/build.gradle.kts
@@ -133,6 +135,18 @@ jobs:
         with:
           distribution: temurin
           java-version: 17
+
+      - name: Verify localization catalog and source rewriting
+        if: steps.pick.outputs.skip != '1'
+        run: python3 -m unittest discover -s mod/tests -v
+
+      - name: Save new strings for translation
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: localization-report
+          path: app/localization-new-strings.json
+          if-no-files-found: ignore
 
       - name: Cache Gradle
         if: steps.pick.outputs.skip != '1'

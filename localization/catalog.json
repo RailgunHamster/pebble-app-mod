@@ -1,0 +1,4200 @@
+{
+  "\n\nSupported languages:\n": [
+    "\n\n支持的语言：\n",
+    "\n\n対応言語：\n"
+  ],
+  "  Add Contact": [
+    "  添加联系人",
+    "  連絡先を追加"
+  ],
+  " \"Disable Companion Device Manager\" in Settings": [
+    "在设置中勾选“禁用配套设备管理器”",
+    "「コンパニオンデバイスマネージャーを無効化」をお試しください"
+  ],
+  " (%1$s)": [
+    "（%1$s）",
+    "（%1$s）"
+  ],
+  " + %1$s item(s)": [
+    "及另外 %1$s 项",
+    "ほか %1$s 件"
+  ],
+  "\"%1$s\"": [
+    "“%1$s”",
+    "「%1$s」"
+  ],
+  "#%1$s - %2$s": [
+    "#%1$s - %2$s",
+    "#%1$s - %2$s"
+  ],
+  "%1$s": [
+    "%1$s",
+    "%1$s"
+  ],
+  "%1$s %2$s": [
+    "%1$s %2$s",
+    "%1$s %2$s"
+  ],
+  "%1$s / %2$s  %3$s→%4$s": [
+    "%1$s / %2$s  %3$s→%4$s",
+    "%1$s / %2$s  %3$s→%4$s"
+  ],
+  "%1$s MB": [
+    "%1$s MB",
+    "%1$s MB"
+  ],
+  "%1$s before": [
+    "提前 %1$s",
+    "%1$s 前"
+  ],
+  "%1$s characters remaining": [
+    "还可输入 %1$s 个字符",
+    "残り %1$s 文字"
+  ],
+  "%1$s failed to load": [
+    "%1$s 加载失败",
+    "%1$s を読み込めませんでした"
+  ],
+  "%1$s failed to sync to watch": [
+    "%1$s 同步到手表失败",
+    "%1$s を時計に同期できませんでした"
+  ],
+  "%1$s has %2$s %3$s.": [
+    "%1$s 包含 %2$s 个%3$s。",
+    "%1$s には %2$s 件の%3$sがあります。"
+  ],
+  "%1$s login disabled within this build": [
+    "此版本已禁用 %1$s 登录",
+    "このビルドでは %1$s ログインが無効です"
+  ],
+  "%1$s on %2$s, %3$s": [
+    "%2$s 的 %1$s，%3$s",
+    "%2$s の %1$s、%3$s"
+  ],
+  "%1$s permission missing!": [
+    "缺少 %1$s 项权限！",
+    "%1$s 件の権限が不足しています！"
+  ],
+  "%1$s permissions missing!": [
+    "缺少 %1$s 项权限！",
+    "%1$s 件の権限が不足しています！"
+  ],
+  "%1$s recordings across all devices": [
+    "所有设备共 %1$s 条录音",
+    "全端末で %1$s 件の録音"
+  ],
+  "%1$s settings failed to open": [
+    "无法打开 %1$s 的设置",
+    "%1$s の設定を開けませんでした"
+  ],
+  "%1$s — %2$s KB": [
+    "%1$s — %2$s KB",
+    "%1$s — %2$s KB"
+  ],
+  "%1$s():\n%2$s": [
+    "%1$s()：\n%2$s",
+    "%1$s()：\n%2$s"
+  ],
+  "%1$s/day": [
+    "%1$s/天",
+    "%1$s／日"
+  ],
+  "%1$sh": [
+    "%1$s 小时",
+    "%1$s 時間"
+  ],
+  "%1$sh/night": [
+    "%1$s 小时/晚",
+    "%1$s 時間／晩"
+  ],
+  "'Fallback only' mode to improve results when online": [
+    "“仅在失败时回退”模式，提高联网时的识别效果",
+    "「フォールバック時のみ」モードをご検討ください"
+  ],
+  "(%1$s)": [
+    "(%1$s)",
+    "(%1$s)"
+  ],
+  "(text/plain), so you can route them to any app or action.": [
+    "（text/plain）发送给 Tasker，再由其转交其他应用或操作。",
+    "（text/plain）で Tasker に送り、任意のアプリやアクションに振り分けられます。"
+  ],
+  "1.  Add a profile, pick Event → Received Share.": [
+    "1. 添加配置文件，选择“事件 → 接收到分享”。",
+    "1. プロファイルを追加し、「イベント → 共有を受信」を選びます。"
+  ],
+  "2.  Attach a task — your text arrives in the %rs_text variable.": [
+    "2. 关联一个任务，文本将传入 %rs_text 变量。",
+    "2. タスクを設定します。テキストは %rs_text 変数に入ります。"
+  ],
+  "3.  Optional: limit it to this app with %rs_package_name = ": [
+    "3. 可选：用 %rs_package_name = ",
+    "3. 必要に応じて %rs_package_name = "
+  ],
+  "<Empty>": [
+    "<空>",
+    "<空>"
+  ],
+  "<No content>": [
+    "<无内容>",
+    "<内容なし>"
+  ],
+  "<No transcription available>": [
+    "<无可用转写>",
+    "<文字起こしなし>"
+  ],
+  "A folder inside your vault. Created if it doesn't exist.": [
+    "仓库内的文件夹，不存在时自动创建。",
+    "保管庫内のフォルダーです。存在しない場合は作成します。"
+  ],
+  "A sample watchface for preview purposes.": [
+    "用于预览的示例表盘。",
+    "プレビュー用のサンプル文字盤です。"
+  ],
+  "A separate file for each note": [
+    "每条笔记保存为独立文件",
+    "メモごとに別のファイル"
+  ],
+  "ADD DESTINATION": [
+    "添加目标位置",
+    "送信先を追加"
+  ],
+  "AM": [
+    "上午",
+    "午前"
+  ],
+  "About": [
+    "关于",
+    "このアプリについて"
+  ],
+  "About %1$s": [
+    "关于 %1$s",
+    "%1$s について"
+  ],
+  "Account": [
+    "账户",
+    "アカウント"
+  ],
+  "Accounts": [
+    "账户",
+    "アカウント"
+  ],
+  "Active": [
+    "使用中",
+    "使用中"
+  ],
+  "Activity Insights": [
+    "活动洞察",
+    "アクティビティの分析"
+  ],
+  "Add": [
+    "添加",
+    "追加"
+  ],
+  "Add %1$s": [
+    "添加 %1$s",
+    "%1$s を追加"
+  ],
+  "Add Account": [
+    "添加账户",
+    "アカウントを追加"
+  ],
+  "Add Appstore Source": [
+    "添加应用商店来源",
+    "アプリストアの取得元を追加"
+  ],
+  "Add Classic Watch": [
+    "添加经典款手表",
+    "従来の時計を追加"
+  ],
+  "Add Contact": [
+    "添加联系人",
+    "連絡先を追加"
+  ],
+  "Add Custom Pattern": [
+    "添加自定义模式",
+    "カスタムパターンを追加"
+  ],
+  "Add Group": [
+    "添加分组",
+    "グループを追加"
+  ],
+  "Add HTTP MCP Server": [
+    "添加 HTTP MCP 服务器",
+    "HTTP MCP サーバーを追加"
+  ],
+  "Add Image": [
+    "添加图片",
+    "画像を追加"
+  ],
+  "Add Images": [
+    "添加图片",
+    "画像を追加"
+  ],
+  "Add Index 01": [
+    "添加 Index 01",
+    "Index 01 を追加"
+  ],
+  "Add MCP Server": [
+    "添加 MCP 服务器",
+    "MCP サーバーを追加"
+  ],
+  "Add Sandbox Group": [
+    "添加沙盒分组",
+    "サンドボックスグループを追加"
+  ],
+  "Add To Watch": [
+    "添加到手表",
+    "時計に追加"
+  ],
+  "Add Watch": [
+    "添加手表",
+    "時計を追加"
+  ],
+  "Add Weather Location": [
+    "添加天气地点",
+    "天気の場所を追加"
+  ],
+  "Add a Pebble": [
+    "添加 Pebble",
+    "Pebble を追加"
+  ],
+  "Add bookmark": [
+    "添加书签",
+    "ブックマークを追加"
+  ],
+  "Add destination": [
+    "添加目标位置",
+    "送信先を追加"
+  ],
+  "Add files": [
+    "添加文件",
+    "ファイルを追加"
+  ],
+  "Add integration": [
+    "添加集成",
+    "連携を追加"
+  ],
+  "Add new item": [
+    "添加新项目",
+    "新しい項目を追加"
+  ],
+  "Add photos": [
+    "添加照片",
+    "写真を追加"
+  ],
+  "Add reply": [
+    "添加回复",
+    "返信を追加"
+  ],
+  "Add rule": [
+    "添加规则",
+    "ルールを追加"
+  ],
+  "Add them to another list before deleting this one.": [
+    "删除此列表前，将子项目添加到其他列表。",
+    "削除する前に、サブ項目を別のリストに移動します。"
+  ],
+  "Add to an existing note": [
+    "追加到已有笔记",
+    "既存のメモに追記"
+  ],
+  "Add to calendar": [
+    "添加到日历",
+    "カレンダーに追加"
+  ],
+  "Add to one main note": [
+    "追加到同一条主笔记",
+    "1 つのメインのメモに追記"
+  ],
+  "Add weather pins to timeline": [
+    "在时间线上添加天气条目",
+    "タイムラインに天気のピンを追加します"
+  ],
+  "Added to calendar": [
+    "已添加到日历",
+    "カレンダーに追加しました"
+  ],
+  "Added to each new note's frontmatter alongside #index.": [
+    "随 #index 一同添加到每条新笔记的 frontmatter 中。",
+    "新しいメモの frontmatter に #index と一緒に追加します。"
+  ],
+  "Added to list '%1$s'": [
+    "已添加到“%1$s”列表",
+    "リスト「%1$s」に追加しました"
+  ],
+  "Address": [
+    "地址",
+    "住所"
+  ],
+  "Advanced": [
+    "高级",
+    "詳細設定"
+  ],
+  "After a failed connection, wait for the watch to become available instead of retrying repeatedly": [
+    "连接失败后，等待手表可用，不反复重试",
+    "接続失敗後、繰り返し再試行せずに時計が接続可能になるのを待ちます"
+  ],
+  "After unpairing, reset the ring by pressing the button in an 'SOS' sequence as shown below.": [
+    "取消配对后，按下图示的 SOS 节奏操作按钮，以重置戒指。",
+    "ペアリング解除後、下の図の SOS パターンでボタンを押してリングをリセットしてください。"
+  ],
+  "Age": [
+    "年龄",
+    "年齢"
+  ],
+  "Agent: %1$s": [
+    "处理人员：%1$s",
+    "担当：%1$s"
+  ],
+  "Alarm set": [
+    "闹钟已设置",
+    "アラームを設定しました"
+  ],
+  "Alerts before calendar events": [
+    "日历事件开始前提醒",
+    "カレンダーの予定の前に通知します"
+  ],
+  "All": [
+    "全部",
+    "すべて"
+  ],
+  "All Apps": [
+    "全部应用",
+    "すべてのアプリ"
+  ],
+  "All new uploads are encrypted": [
+    "所有新上传内容均加密",
+    "新しいアップロードはすべて暗号化されます"
+  ],
+  "All notes": [
+    "全部笔记",
+    "すべてのメモ"
+  ],
+  "All permissions granted!": [
+    "所有权限均已授予！",
+    "すべての権限が許可されています！"
+  ],
+  "Allow Aplite/Basalt/Chalk watches to appear in BLE scan results. By default these only show via the Bluetooth Classic scan option.": [
+    "允许 Aplite、Basalt、Chalk 手表出现在 BLE 扫描结果中。默认仅在经典蓝牙扫描中显示。",
+    "Aplite／Basalt／Chalk の時計を BLE スキャンに表示します。既定では Bluetooth Classic のスキャンでのみ表示されます。"
+  ],
+  "Allow connecting to developer connection over LAN, this is not secure and should only be used on trusted networks": [
+    "允许通过局域网连接开发接口；此方式不安全，只应在可信网络中使用",
+    "LAN 経由で開発用インターフェースに接続します。安全ではないため、信頼できるネットワークでのみ使用してください"
+  ],
+  "Allow connection even when there are other Pebble apps installed on this phone. Warning: this will likely make the connection unreliable if you are using BLE! We don't recommend enabling this": [
+    "即使手机安装了其他 Pebble App 也允许连接。警告：使用 BLE 时很可能导致连接不稳定，不建议启用",
+    "他の Pebble アプリがインストールされていても接続します。警告：BLE 接続が不安定になる可能性が高いため、推奨しません"
+  ],
+  "Allow connection via the %1$s remote inspector to debug PKJS apps. Restart watchapp after changing.": [
+    "允许通过 %1$s 远程检查器连接并调试 PKJS 应用。更改后请重启手表应用。",
+    "%1$s リモートインスペクターで接続し、PKJS アプリをデバッグできます。変更後はウォッチアプリを再起動してください。"
+  ],
+  "Allow duplicate notifications": [
+    "允许重复通知",
+    "重複する通知を許可"
+  ],
+  "Allow the watch to measure heart rate": [
+    "允许手表测量心率",
+    "時計による心拍数の測定を許可します"
+  ],
+  "Allowed Contacts": [
+    "获准联系的联系人",
+    "許可した連絡先"
+  ],
+  "Alpha Test Instructions": [
+    "Alpha 测试说明",
+    "アルファテストの手順"
+  ],
+  "Always": [
+    "始终",
+    "常に"
+  ],
+  "Always send notifications": [
+    "始终发送通知",
+    "常に通知を送信"
+  ],
+  "An Index 01 is already paired to this phone. To pair a different Index 01, first unpair the existing one.": [
+    "此手机已配对一个 Index 01。若要配对另一个，请先取消现有配对。",
+    "このスマートフォンには Index 01 がペアリング済みです。別の Index 01 をペアリングするには、既存のペアリングを解除してください。"
+  ],
+  "Android recommends not forwarding notifications marked as local-only to external devices - check to override this": [
+    "Android 建议不要将标记为“仅限本机”的通知转发给外部设备，勾选可覆盖此限制",
+    "Android は端末限定の通知を外部デバイスに転送しないことを推奨しています。チェックすると転送します"
+  ],
+  "Another Watchface": [
+    "另一个表盘",
+    "別の文字盤"
+  ],
+  "Another sample watchface for preview purposes.": [
+    "另一个用于预览的示例表盘。",
+    "別のプレビュー用サンプル文字盤です。"
+  ],
+  "App": [
+    "应用",
+    "アプリ"
+  ],
+  "App Settings": [
+    "App 设置",
+    "アプリ設定"
+  ],
+  "App Store": [
+    "应用商店",
+    "アプリストア"
+  ],
+  "App Theme": [
+    "App 主题",
+    "アプリのテーマ"
+  ],
+  "App Update Available": [
+    "App 有可用更新",
+    "アプリの更新があります"
+  ],
+  "App Version": [
+    "App 版本",
+    "アプリのバージョン"
+  ],
+  "App Version: %1$s": [
+    "App 版本：%1$s",
+    "アプリのバージョン：%1$s"
+  ],
+  "App display language": [
+    "App 显示语言",
+    "アプリの表示言語"
+  ],
+  "App 更新": [
+    "App 更新",
+    "アプリの更新",
+    "App updates"
+  ],
+  "Append to a note you choose": [
+    "追加到你选择的笔记",
+    "選択したメモに追記します"
+  ],
+  "Approve": [
+    "授权",
+    "許可"
+  ],
+  "Approve Index to send messages to specific contacts": [
+    "允许 Index 向指定联系人发送消息",
+    "Index が特定の連絡先にメッセージを送ることを許可します"
+  ],
+  "Apps": [
+    "应用",
+    "アプリ"
+  ],
+  "Apr": [
+    "4 月",
+    "4 月"
+  ],
+  "April": [
+    "四月",
+    "4 月"
+  ],
+  "Are you sure you want to delete the vibration pattern \"%1$s\"?": [
+    "确定删除振动模式“%1$s”吗？",
+    "振動パターン「%1$s」を削除しますか？"
+  ],
+  "Are you sure you want to remove \"%1$s\"?": [
+    "确定移除“%1$s”吗？",
+    "「%1$s」を削除しますか？"
+  ],
+  "Are you sure you want to remove this app from your Pebble?": [
+    "确定从 Pebble 移除此应用吗？",
+    "このアプリを Pebble から削除しますか？"
+  ],
+  "Assistant Model": [
+    "助手模型",
+    "アシスタントのモデル"
+  ],
+  "Assistant message": [
+    "助手消息",
+    "アシスタントのメッセージ"
+  ],
+  "Assistant model set to Cloud Only. The offline model doesn't support MCP sandboxes": [
+    "助手模型已设为“仅云端”，离线模型不支持 MCP 沙盒",
+    "アシスタントを「クラウドのみ」に設定しました。オフラインモデルは MCP サンドボックスに対応していません"
+  ],
+  "Attach Files": [
+    "附加文件",
+    "ファイルを添付"
+  ],
+  "Attach More Logs": [
+    "补充日志",
+    "ログを追加"
+  ],
+  "Attach an image": [
+    "附加图片",
+    "画像を添付"
+  ],
+  "Attach media to message": [
+    "附加媒体到消息",
+    "メッセージにメディアを添付"
+  ],
+  "Attach up to %1$s files, 2 MB each (optional)": [
+    "最多附加 %1$s 个文件，每个不超过 2 MB（可选）",
+    "最大 %1$s 件、各 2 MB まで添付できます（任意）"
+  ],
+  "Audio is processed on your phone, falling back to cloud ": [
+    "音频在手机上处理；",
+    "音声はスマートフォンで処理されます。"
+  ],
+  "Aug": [
+    "8 月",
+    "8 月"
+  ],
+  "August": [
+    "八月",
+    "8 月"
+  ],
+  "Authorization (optional)": [
+    "授权信息（可选）",
+    "認証情報（任意）"
+  ],
+  "Authorization Header": [
+    "授权请求头",
+    "認証ヘッダー"
+  ],
+  "Auto-Resume Firmware Updates": [
+    "自动继续固件更新",
+    "ファームウェア更新を自動再開"
+  ],
+  "Auto-dismiss Notifications": [
+    "自动关闭通知",
+    "通知を自動的に閉じる"
+  ],
+  "Automatic": [
+    "自动",
+    "自動"
+  ],
+  "Automatically continue an interrupted firmware update when the watch reconnects": [
+    "手表重连时自动继续中断的固件更新",
+    "時計が再接続されたら、中断したファームウェア更新を自動的に続行します"
+  ],
+  "Automatically sync recordings to cloud": [
+    "自动将录音同步到云端",
+    "録音をクラウドに自動同期します"
+  ],
+  "Available on Android only": [
+    "仅适用于 Android",
+    "Android のみで利用できます"
+  ],
+  "Available on iOS only": [
+    "仅适用于 iOS",
+    "iOS のみで利用できます"
+  ],
+  "Average": [
+    "平均",
+    "平均"
+  ],
+  "Back": [
+    "返回",
+    "戻る"
+  ],
+  "Background Refresh Interval": [
+    "后台刷新间隔",
+    "バックグラウンド更新間隔"
+  ],
+  "Background Sampling": [
+    "后台采样",
+    "バックグラウンドでの測定"
+  ],
+  "Backup": [
+    "备份",
+    "バックアップ"
+  ],
+  "Backup enabled": [
+    "已启用备份",
+    "バックアップ有効"
+  ],
+  "Backups": [
+    "备份",
+    "バックアップ"
+  ],
+  "Battery": [
+    "电池",
+    "バッテリー"
+  ],
+  "Bearer token123...": [
+    "Bearer token123...",
+    "Bearer token123..."
+  ],
+  "Beeper Contacts": [
+    "Beeper 联系人",
+    "Beeper の連絡先"
+  ],
+  "Beeper permission is required to access your contacts.": [
+    "需要 Beeper 权限才能访问联系人。",
+    "連絡先にアクセスするには Beeper の権限が必要です。"
+  ],
+  "Begin recording reply": [
+    "开始录音回复",
+    "音声での返信を開始"
+  ],
+  "Black": [
+    "纯黑",
+    "ブラック"
+  ],
+  "Bluetooth state restoration": [
+    "蓝牙状态恢复",
+    "Bluetooth の状態復元"
+  ],
+  "Body": [
+    "正文",
+    "本文"
+  ],
+  "Both": [
+    "两者都有",
+    "両方"
+  ],
+  "Bread": [
+    "面包",
+    "パン"
+  ],
+  "Bug Report": [
+    "问题报告",
+    "不具合報告"
+  ],
+  "Built-in": [
+    "内置",
+    "内蔵"
+  ],
+  "Button Actions": [
+    "按钮操作",
+    "ボタンの操作"
+  ],
+  "Button Press": [
+    "按钮按下",
+    "ボタンを押した時"
+  ],
+  "Button Release": [
+    "按钮松开",
+    "ボタンを離した時"
+  ],
+  "Calendar": [
+    "日历",
+    "カレンダー"
+  ],
+  "Calendar Reminders": [
+    "日历提醒",
+    "カレンダーのリマインダー"
+  ],
+  "Calendar permission is approved, but no calendars were found.\n\n Is sharing enabled in the Google Calendar app? See: Settings -> General -> Share Google Calendar data with other apps": [
+    "已授予日历权限，但未找到日历。\n\n请检查 Google 日历 App 是否开启共享：设置 → 常规 → 与其他应用共享 Google 日历数据",
+    "カレンダーの権限は許可されていますが、カレンダーが見つかりません。\n\nGoogle カレンダーで共有が有効か確認してください：設定 → 全般 → Google カレンダーのデータを他のアプリと共有"
+  ],
+  "Calendar permission missing": [
+    "缺少日历权限",
+    "カレンダーの権限がありません"
+  ],
+  "Calendars": [
+    "日历",
+    "カレンダー"
+  ],
+  "Can't find your Index 01? Press the button on the ring to wake it up.": [
+    "找不到 Index 01？按下戒指按钮将其唤醒。",
+    "Index 01 が見つかりませんか？リングのボタンを押してスリープを解除してください。"
+  ],
+  "Cancel": [
+    "取消",
+    "キャンセル"
+  ],
+  "Cancel update": [
+    "取消更新",
+    "更新をキャンセル"
+  ],
+  "Capturing screenshot...": [
+    "正在截图…",
+    "撮影中…"
+  ],
+  "Case sensitive": [
+    "区分大小写",
+    "大文字と小文字を区別"
+  ],
+  "Change": [
+    "更改",
+    "変更"
+  ],
+  "Changelog": [
+    "更新日志",
+    "更新履歴"
+  ],
+  "Channels": [
+    "通知渠道",
+    "通知チャンネル"
+  ],
+  "Check Core Devices service for Core watch firmware updates instead of Memfault (falls back to Memfault on failure)": [
+    "从 Core Devices 服务检查 Core 手表固件更新，失败时回退到 Memfault",
+    "Core の時計の更新を Memfault の代わりに Core Devices で確認します。失敗時は Memfault を使用します"
+  ],
+  "Checking for PebbleOS updates..": [
+    "正在检查 PebbleOS 更新…",
+    "PebbleOS の更新を確認中…"
+  ],
+  "Choose Language": [
+    "选择语言",
+    "言語を選択"
+  ],
+  "Choose Vibration Pattern": [
+    "选择振动模式",
+    "振動パターンを選択"
+  ],
+  "Choose the page to place your notes' Reminders list in.": [
+    "选择用于放置笔记提醒列表的页面。",
+    "メモのリマインダーリストを置くページを選んでください。"
+  ],
+  "Choose which sandbox groups include this built-in MCP. It can't be removed from the default group.": [
+    "选择包含此内置 MCP 的沙盒分组；无法从默认分组中移除。",
+    "この内蔵 MCP を含めるサンドボックスグループを選んでください。既定のグループからは削除できません。"
+  ],
+  "Classic Watch": [
+    "经典款手表",
+    "従来の時計"
+  ],
+  "Clear": [
+    "清除",
+    "クリア"
+  ],
+  "Clear attachments": [
+    "清空附件",
+    "添付ファイルをすべて削除"
+  ],
+  "Clear filters for more results": [
+    "清除筛选条件以查看更多结果",
+    "フィルターを解除すると、さらに結果が表示されます"
+  ],
+  "Clear search": [
+    "清空搜索",
+    "検索をクリア"
+  ],
+  "Click ring to sync": [
+    "按下戒指按钮以同步",
+    "リングを押して同期"
+  ],
+  "Close": [
+    "关闭",
+    "閉じる"
+  ],
+  "Cloud Backup": [
+    "云端备份",
+    "クラウドバックアップ"
+  ],
+  "Cloud Only": [
+    "仅云端",
+    "クラウドのみ"
+  ],
+  "Cloud Recognition Provider": [
+    "云端识别服务",
+    "クラウド音声認識サービス"
+  ],
+  "Collapse": [
+    "收起",
+    "折りたたむ"
+  ],
+  "Color": [
+    "颜色",
+    "色"
+  ],
+  "Configure %1$s": [
+    "配置 %1$s",
+    "%1$s を設定"
+  ],
+  "Configure Appstore Sources": [
+    "配置应用商店来源",
+    "アプリストアの取得元を設定"
+  ],
+  "Configure Feeds": [
+    "配置订阅源",
+    "フィードを設定"
+  ],
+  "Configure MCP sandbox and built-in functionality": [
+    "配置 MCP 沙盒和内置功能",
+    "MCP サンドボックスと内蔵機能を設定します"
+  ],
+  "Configure more in Settings": [
+    "更多选项见设置",
+    "その他の項目は設定で変更できます"
+  ],
+  "Configure weather locations": [
+    "配置天气地点",
+    "天気を表示する場所を設定します"
+  ],
+  "Configure which calendars to display": [
+    "配置要显示的日历",
+    "表示するカレンダーを設定します"
+  ],
+  "Configure your watch": [
+    "配置手表",
+    "時計を設定"
+  ],
+  "Configured, tap to modify": [
+    "已配置，点按可修改",
+    "設定済み。タップして変更"
+  ],
+  "Configuring %1$s": [
+    "正在配置 %1$s",
+    "%1$s を設定中"
+  ],
+  "Connect": [
+    "连接",
+    "接続"
+  ],
+  "Connect a Pebble!": [
+    "连接 Pebble！",
+    "Pebble を接続しましょう！"
+  ],
+  "Connect your phone's calendar so Index can add events when you ask. ": [
+    "连接手机日历，以便 Index 按你的要求添加事件。",
+    "スマートフォンのカレンダーを連携し、Index から予定を追加できるようにします。"
+  ],
+  "Connected": [
+    "已连接",
+    "接続済み"
+  ],
+  "Connecting": [
+    "正在连接",
+    "接続中"
+  ],
+  "Connectivity": [
+    "连接",
+    "接続"
+  ],
+  "Contact the developer": [
+    "联系开发者",
+    "開発者に連絡"
+  ],
+  "Contacts Index is allowed to message. Try saying \"Message Alice - What's up?\"": [
+    "Index 可以发送消息的联系人。试着说“给小明发消息：最近怎么样？”",
+    "Index がメッセージを送信できる連絡先です。「アリスにメッセージ：元気？」と話してみてください"
+  ],
+  "Continue": [
+    "继续",
+    "続ける"
+  ],
+  "Continue to setup": [
+    "继续设置",
+    "設定を続ける"
+  ],
+  "Continuously track heart rate during detected walks and runs. This can have an impact on battery life.": [
+    "检测到步行或跑步时持续记录心率，可能影响续航。",
+    "歩行やランニングの検出中は心拍数を連続測定します。バッテリー持続時間に影響する場合があります。"
+  ],
+  "Copied to clipboard": [
+    "已复制到剪贴板",
+    "クリップボードにコピーしました"
+  ],
+  "Copy Account Token": [
+    "复制账户令牌",
+    "アカウントトークンをコピー"
+  ],
+  "Copy Key": [
+    "复制密钥",
+    "キーをコピー"
+  ],
+  "Copy PKJS account token": [
+    "复制 PKJS 账户令牌",
+    "PKJS アカウントトークンをコピー"
+  ],
+  "Copy Text": [
+    "复制文本",
+    "テキストをコピー"
+  ],
+  "Could not play recording — audio unavailable": [
+    "无法播放录音：音频不可用",
+    "録音を再生できません。音声を利用できません"
+  ],
+  "Could not render QR code.\nUse Copy Key instead.": [
+    "无法生成二维码，\n请改用“复制密钥”。",
+    "QR コードを表示できませんでした。\n「キーをコピー」を使用してください。"
+  ],
+  "Couldn't delete: %1$s": [
+    "无法删除：%1$s",
+    "削除できませんでした：%1$s"
+  ],
+  "Couldn't load your Battery usage. Check your connection and try again.": [
+    "无法加载电池用量，请检查网络连接后重试。",
+    "バッテリー使用状況を読み込めませんでした。接続を確認して再試行してください。"
+  ],
+  "Couldn't open login page": [
+    "无法打开登录页面",
+    "ログインページを開けませんでした"
+  ],
+  "Couldn't reach server: %1$s": [
+    "无法连接服务器：%1$s",
+    "サーバーに接続できませんでした：%1$s"
+  ],
+  "Couldn't search for locations. Check your connection and try again.": [
+    "无法搜索地点，请检查网络连接后重试。",
+    "場所を検索できませんでした。接続を確認して再試行してください。"
+  ],
+  "Create a test notification, with actions": [
+    "创建带操作按钮的测试通知",
+    "アクション付きのテスト通知を作成します"
+  ],
+  "Created %1$s": [
+    "创建于 %1$s",
+    "作成：%1$s"
+  ],
+  "Creates Pebble Index.md in your vault if it doesn't exist yet.": [
+    "若不存在，会在仓库中创建 Pebble Index.md。",
+    "保管庫に Pebble Index.md がなければ作成します。"
+  ],
+  "Current Location": [
+    "当前位置",
+    "現在地"
+  ],
+  "Currently installed: %1$s": [
+    "当前已安装：%1$s",
+    "現在インストール済み：%1$s"
+  ],
+  "Custom Group": [
+    "自定义分组",
+    "カスタムグループ"
+  ],
+  "Custom replies appear in the \"Canned messages\" menu when replying to notifications on the watch.": [
+    "在手表上回复通知时，自定义回复会显示在“预设消息”菜单中。",
+    "カスタム返信は、時計で通知に返信する際の「定型文」メニューに表示されます。"
+  ],
+  "DISCARDED": [
+    "已丢弃",
+    "破棄済み"
+  ],
+  "DMs only": [
+    "仅限私信",
+    "ダイレクトメッセージのみ"
+  ],
+  "Danger Zone": [
+    "危险操作",
+    "危険な操作"
+  ],
+  "Dark": [
+    "深色",
+    "ダーク"
+  ],
+  "Date": [
+    "日期",
+    "日付"
+  ],
+  "Day": [
+    "日",
+    "日"
+  ],
+  "Debug": [
+    "调试",
+    "デバッグ"
+  ],
+  "Debug Firmware Update": [
+    "固件更新调试",
+    "ファームウェア更新のデバッグ"
+  ],
+  "Dec": [
+    "12 月",
+    "12 月"
+  ],
+  "December": [
+    "十二月",
+    "12 月"
+  ],
+  "December 11, 9:00pm": [
+    "12 月 11 日 21:00",
+    "12 月 11 日 21:00"
+  ],
+  "Declined Events": [
+    "已拒绝的事件",
+    "辞退した予定"
+  ],
+  "Decrease": [
+    "减少",
+    "減らす"
+  ],
+  "Default": [
+    "默认",
+    "既定"
+  ],
+  "Default Group": [
+    "默认分组",
+    "既定のグループ"
+  ],
+  "Default: %1$s": [
+    "默认：%1$s",
+    "既定：%1$s"
+  ],
+  "Defaults": [
+    "默认设置",
+    "既定の設定"
+  ],
+  "Delete": [
+    "删除",
+    "削除"
+  ],
+  "Delete \"%1$s\"? MCP servers themselves are kept and can be re-added to other groups.": [
+    "删除“%1$s”？MCP 服务器本身将保留，之后可重新添加到其他分组。",
+    "「%1$s」を削除しますか？MCP サーバー自体は保持され、別のグループに再追加できます。"
+  ],
+  "Delete %1$s": [
+    "删除%1$s",
+    "%1$sを削除"
+  ],
+  "Delete Backup": [
+    "删除备份",
+    "バックアップを削除"
+  ],
+  "Delete Group": [
+    "删除分组",
+    "グループを削除"
+  ],
+  "Delete Local Feed": [
+    "删除本地动态",
+    "ローカルフィードを削除"
+  ],
+  "Delete Pattern": [
+    "删除振动模式",
+    "振動パターンを削除"
+  ],
+  "Delete Sandbox Group": [
+    "删除沙盒分组",
+    "サンドボックスグループを削除"
+  ],
+  "Delete all subitems": [
+    "删除全部子项目",
+    "すべてのサブ項目を削除"
+  ],
+  "Delete cloud backup": [
+    "删除云端备份",
+    "クラウドバックアップを削除"
+  ],
+  "Delete list": [
+    "删除列表",
+    "リストを削除"
+  ],
+  "Delete list?": [
+    "删除列表？",
+    "リストを削除しますか？"
+  ],
+  "Delete local feed": [
+    "删除本地动态",
+    "ローカルフィードを削除"
+  ],
+  "Delete recording": [
+    "删除录音",
+    "録音を削除"
+  ],
+  "Delete recording and %1$s": [
+    "删除录音和%1$s",
+    "録音と%1$sを削除"
+  ],
+  "Delete recording only": [
+    "仅删除录音",
+    "録音のみ削除"
+  ],
+  "Delete recording?": [
+    "删除录音？",
+    "録音を削除しますか？"
+  ],
+  "Delete rule": [
+    "删除规则",
+    "ルールを削除"
+  ],
+  "Deleted recording": [
+    "已删除录音",
+    "録音を削除しました"
+  ],
+  "Detailed Pebble Protocol over GATT logging (please don't enable this unless we ask you to)": [
+    "记录 Pebble GATT 协议的详细日志，除非我们要求，否则请勿启用",
+    "GATT 上の Pebble プロトコルを詳しく記録します。依頼された場合のみ有効にしてください"
+  ],
+  "Detailed connectivity state machine logging (please don't enable this unless we ask you to)": [
+    "记录连接状态机的详细日志，除非我们要求，否则请勿启用",
+    "接続の状態遷移を詳しく記録します。依頼された場合のみ有効にしてください"
+  ],
+  "Developer: %1$s": [
+    "开发者：%1$s",
+    "開発者：%1$s"
+  ],
+  "Devices": [
+    "设备",
+    "デバイス"
+  ],
+  "Diagnostics": [
+    "诊断",
+    "診断"
+  ],
+  "Dialog Title": [
+    "对话框标题",
+    "ダイアログのタイトル"
+  ],
+  "Disable Companion Device Manager": [
+    "禁用配套设备管理器",
+    "コンパニオンデバイスマネージャーを無効化"
+  ],
+  "Disable Encryption": [
+    "禁用加密",
+    "暗号化を無効化"
+  ],
+  "Disable FW update notifications": [
+    "禁用固件更新通知",
+    "ファームウェア更新の通知を無効化"
+  ],
+  "Disable this only if BLE scans are not finding your Core watch or Pebble 2": [
+    "仅在 BLE 扫描找不到 Core 手表或 Pebble 2 时禁用",
+    "BLE スキャンで Core の時計や Pebble 2 が見つからない場合のみ無効にしてください"
+  ],
+  "Disabled": [
+    "已禁用",
+    "無効"
+  ],
+  "Discard": [
+    "放弃更改",
+    "変更を破棄"
+  ],
+  "Disconnect": [
+    "断开连接",
+    "接続を解除"
+  ],
+  "Disconnected": [
+    "未连接",
+    "未接続"
+  ],
+  "Disconnecting": [
+    "正在断开",
+    "切断中"
+  ],
+  "Dismiss": [
+    "关闭",
+    "閉じる"
+  ],
+  "Dismiss keyboard": [
+    "收起键盘",
+    "キーボードを閉じる"
+  ],
+  "Dismiss recording action notifications after 5 minutes": [
+    "5 分钟后关闭录音操作通知",
+    "録音アクションの通知を 5 分後に閉じます"
+  ],
+  "Display": [
+    "显示",
+    "画面"
+  ],
+  "Display declined calendar events": [
+    "显示已拒绝的日历事件",
+    "辞退したカレンダーの予定を表示します"
+  ],
+  "Do immediate background sync": [
+    "立即执行后台同步",
+    "バックグラウンド同期を今すぐ実行"
+  ],
+  "Doing...": [
+    "正在执行…",
+    "実行中…"
+  ],
+  "Don't show a badge on Settings when permissions are missing": [
+    "缺少权限时，不在设置上显示角标",
+    "権限が不足していても、設定にバッジを表示しません"
+  ],
+  "Don't use Android's Companion Device Manager to connect. Only use this option if the app crashes every time you press 'connect' and you cannot get past this step. This will disable certain features (including Notification Channels), and certain permissions will need to be granted manually.": [
+    "不使用 Android 配套设备管理器连接。仅在每次点击“连接”都会崩溃、无法继续时使用。此选项会禁用部分功能（包括通知渠道），且需要手动授予某些权限。",
+    "Android のコンパニオンデバイスマネージャーを使わずに接続します。「接続」を押すたびにアプリが終了して進めない場合のみ使用してください。一部の機能（通知チャンネルを含む）が無効になり、一部の権限を手動で許可する必要があります。"
+  ],
+  "Done": [
+    "完成",
+    "完了"
+  ],
+  "Done icon": [
+    "完成图标",
+    "完了アイコン"
+  ],
+  "Double": [
+    "双击",
+    "2 回押し"
+  ],
+  "Double click": [
+    "双击",
+    "2 回押し"
+  ],
+  "Double click & hold will be the same as a normal click.": [
+    "双击并按住的操作与普通单击相同。",
+    "2 回押して長押しすると、通常の 1 回押しと同じ操作になります。"
+  ],
+  "Double click and hold": [
+    "双击并按住",
+    "2 回押して長押し"
+  ],
+  "Double click: Play/Pause · Triple click: Next track": [
+    "双击：播放/暂停 · 三击：下一首",
+    "2 回押し：再生／一時停止 · 3 回押し：次の曲"
+  ],
+  "Double click: Play/Pause. Triple click: Next track.": [
+    "双击：播放/暂停。三击：下一首。",
+    "2 回押し：再生／一時停止。3 回押し：次の曲。"
+  ],
+  "Download": [
+    "下载",
+    "ダウンロード"
+  ],
+  "Download Full Backup": [
+    "下载完整备份",
+    "完全なバックアップをダウンロード"
+  ],
+  "Download Required": [
+    "需要下载",
+    "ダウンロードが必要です"
+  ],
+  "Download all recordings and data as a zip file": [
+    "将所有录音和数据下载为 ZIP 文件",
+    "すべての録音とデータを ZIP ファイルでダウンロードします"
+  ],
+  "Download lite model: %1$sMB": [
+    "下载精简模型：%1$s MB",
+    "軽量モデルをダウンロード：%1$s MB"
+  ],
+  "Download offline model: %1$sMB": [
+    "下载离线模型：%1$s MB",
+    "オフラインモデルをダウンロード：%1$s MB"
+  ],
+  "Downloading Models": [
+    "正在下载模型",
+    "モデルをダウンロード中"
+  ],
+  "Downloading in the background...": [
+    "正在后台下载…",
+    "バックグラウンドでダウンロード中…"
+  ],
+  "Downloading speech model…": [
+    "正在下载语音模型…",
+    "音声モデルをダウンロード中…"
+  ],
+  "Downloading the updated model. This may take a few minutes.": [
+    "正在下载更新后的模型，可能需要几分钟。",
+    "更新されたモデルをダウンロードしています。数分かかる場合があります。"
+  ],
+  "Due": [
+    "截止时间",
+    "期限"
+  ],
+  "Early alert": [
+    "提前提醒",
+    "事前通知"
+  ],
+  "Edit HTTP MCP Server": [
+    "编辑 HTTP MCP 服务器",
+    "HTTP MCP サーバーを編集"
+  ],
+  "Edit rule": [
+    "编辑规则",
+    "ルールを編集"
+  ],
+  "Email me": [
+    "发邮件给我",
+    "自分にメール"
+  ],
+  "Emulate Timeline Webservice": [
+    "模拟时间线 Web 服务",
+    "タイムライン Web サービスをエミュレート"
+  ],
+  "Enable All": [
+    "全部启用",
+    "すべて有効"
+  ],
+  "Enable Bluetooth to connect a Pebble": [
+    "开启蓝牙以连接 Pebble",
+    "Pebble を接続するには Bluetooth を有効にしてください"
+  ],
+  "Enable Calendar": [
+    "启用日历",
+    "カレンダーを有効化"
+  ],
+  "Enable Debug Details": [
+    "启用调试详情",
+    "デバッグの詳細を有効化"
+  ],
+  "Enable Encryption": [
+    "启用加密",
+    "暗号化を有効化"
+  ],
+  "Enable Health Tracking": [
+    "启用健康追踪",
+    "ヘルスケアの記録を有効化"
+  ],
+  "Enable Index Feed": [
+    "启用 Index 动态",
+    "Index フィードを有効化"
+  ],
+  "Enable Weather": [
+    "启用天气",
+    "天気を有効化"
+  ],
+  "Enable bluetooth to connect to your watch.": [
+    "开启蓝牙以连接手表。",
+    "時計に接続するには Bluetooth を有効にしてください。"
+  ],
+  "Enable showsUserInterface actions": [
+    "启用 showsUserInterface 操作",
+    "showsUserInterface アクションを有効化"
+  ],
+  "Encrypt Backups": [
+    "加密备份",
+    "バックアップを暗号化"
+  ],
+  "Encrypt Index data so only you can read it": [
+    "加密 Index 数据，仅限你本人读取",
+    "Index のデータを暗号化して、自分だけが読めるようにします"
+  ],
+  "Encrypt all recordings before uploading to cloud": [
+    "上传云端前加密所有录音",
+    "すべての録音をクラウドにアップロードする前に暗号化します"
+  ],
+  "Encryption": [
+    "加密",
+    "暗号化"
+  ],
+  "Encryption Key Backup": [
+    "加密密钥备份",
+    "暗号化キーのバックアップ"
+  ],
+  "Encryption key": [
+    "加密密钥",
+    "暗号化キー"
+  ],
+  "Encryption key not backed up": [
+    "加密密钥尚未备份",
+    "暗号化キーがバックアップされていません"
+  ],
+  "English": [
+    "English",
+    "English"
+  ],
+  "Enter Encryption Key": [
+    "输入加密密钥",
+    "暗号化キーを入力"
+  ],
+  "Enter Key Manually": [
+    "手动输入密钥",
+    "キーを手動入力"
+  ],
+  "Enter city or address": [
+    "输入城市或地址",
+    "都市名または住所を入力"
+  ],
+  "Error": [
+    "错误",
+    "エラー"
+  ],
+  "Error loading recording": [
+    "加载录音出错",
+    "録音の読み込み中にエラーが発生しました"
+  ],
+  "Error occurred. Please try again later.": [
+    "发生错误，请稍后重试。",
+    "エラーが発生しました。しばらくしてから再試行してください。"
+  ],
+  "Error signing in:\n%1$s": [
+    "登录出错：\n%1$s",
+    "ログイン時のエラー：\n%1$s"
+  ],
+  "Error signing in: %1$s": [
+    "登录出错：%1$s",
+    "ログイン時のエラー：%1$s"
+  ],
+  "Error starting download. Please try again later.": [
+    "无法开始下载，请稍后重试。",
+    "ダウンロードを開始できませんでした。しばらくしてから再試行してください。"
+  ],
+  "Error:\n%1$s: %2$s": [
+    "错误：\n%1$s：%2$s",
+    "エラー：\n%1$s：%2$s"
+  ],
+  "Error: %1$s": [
+    "错误：%1$s",
+    "エラー：%1$s"
+  ],
+  "Everything is appended to Pebble Index.md": [
+    "所有内容均追加到 Pebble Index.md",
+    "すべての内容を Pebble Index.md に追記します"
+  ],
+  "Exit onboarding": [
+    "退出初始设置",
+    "初期設定を終了"
+  ],
+  "Expand": [
+    "展开",
+    "展開"
+  ],
+  "Export recording": [
+    "导出录音",
+    "録音を書き出す"
+  ],
+  "Extra debug info on devices tab": [
+    "在设备标签页显示额外调试信息",
+    "デバイスタブに追加のデバッグ情報を表示します"
+  ],
+  "Extra tag (optional)": [
+    "附加标签（可选）",
+    "追加タグ（任意）"
+  ],
+  "FAQ": [
+    "常见问题",
+    "よくある質問"
+  ],
+  "Faces": [
+    "表盘",
+    "文字盤"
+  ],
+  "Failed to add app": [
+    "添加应用失败",
+    "アプリを追加できませんでした"
+  ],
+  "Failed to download model": [
+    "模型下载失败",
+    "モデルをダウンロードできませんでした"
+  ],
+  "Failed to heart app": [
+    "喜欢应用失败",
+    "お気に入りに追加できませんでした"
+  ],
+  "Failed to remove heart": [
+    "取消喜欢失败",
+    "お気に入りから削除できませんでした"
+  ],
+  "Fallback Only": [
+    "仅在失败时回退",
+    "フォールバック時のみ"
+  ],
+  "Featured Apps": [
+    "精选应用",
+    "おすすめのアプリ"
+  ],
+  "Feb": [
+    "2 月",
+    "2 月"
+  ],
+  "February": [
+    "二月",
+    "2 月"
+  ],
+  "Feed": [
+    "动态",
+    "フィード"
+  ],
+  "Female": [
+    "女",
+    "女性"
+  ],
+  "Fetch weather for the current location, for the Weather App (requires location permission)": [
+    "获取当前位置的天气，供天气应用使用（需要位置权限）",
+    "天気アプリ用に現在地の天気を取得します（位置情報の権限が必要）"
+  ],
+  "Fetching and uploading new logs": [
+    "正在获取并上传新日志",
+    "新しいログを取得・アップロード中"
+  ],
+  "Fetching server info...": [
+    "正在获取服务器信息…",
+    "サーバー情報を取得中…"
+  ],
+  "Filter": [
+    "筛选",
+    "フィルター"
+  ],
+  "Filter BLE watch scans by UUID": [
+    "按 UUID 筛选 BLE 手表扫描结果",
+    "UUID で BLE の時計のスキャンを絞り込む"
+  ],
+  "Finish": [
+    "结束",
+    "終了"
+  ],
+  "Finish setup": [
+    "完成设置",
+    "設定を完了"
+  ],
+  "Finished": [
+    "已完成",
+    "完了"
+  ],
+  "Fixed Location": [
+    "固定地点",
+    "指定した場所"
+  ],
+  "Follow system": [
+    "跟随系统",
+    "システムに従う"
+  ],
+  "Force JSCore GC": [
+    "强制 JSCore 垃圾回收",
+    "JSCore の GC を強制実行"
+  ],
+  "Foreground Service": [
+    "前台服务",
+    "フォアグラウンドサービス"
+  ],
+  "Format text": [
+    "设置文本格式",
+    "テキストの書式を設定"
+  ],
+  "Friday": [
+    "星期五",
+    "金曜日"
+  ],
+  "From my apps": [
+    "我的应用",
+    "自分のアプリから"
+  ],
+  "From the store": [
+    "商店应用",
+    "ストアから"
+  ],
+  "Gender": [
+    "性别",
+    "性別"
+  ],
+  "General": [
+    "常规",
+    "一般"
+  ],
+  "Generate Encryption Key": [
+    "生成加密密钥",
+    "暗号化キーを生成"
+  ],
+  "Generate Key": [
+    "生成密钥",
+    "キーを生成"
+  ],
+  "Generate an encryption key so only you can read your backups. ": [
+    "生成加密密钥，使备份只有你可以读取。",
+    "暗号化キーを生成し、バックアップを自分だけが読めるようにします。"
+  ],
+  "Generating your key and saving it to your password manager…": [
+    "正在生成密钥并保存到密码管理器…",
+    "キーを生成してパスワードマネージャーに保存中…"
+  ],
+  "Get Help": [
+    "获取帮助",
+    "ヘルプ"
+  ],
+  "Get Set Up": [
+    "开始设置",
+    "設定を開始"
+  ],
+  "Get Started": [
+    "开始使用",
+    "使い始める"
+  ],
+  "Get Started!": [
+    "开始使用！",
+    "使い始める！"
+  ],
+  "Get started": [
+    "开始使用",
+    "使い始める"
+  ],
+  "Get web search results on a double click & hold.": [
+    "双击并按住可获取网页搜索结果。",
+    "2 回押して長押しすると、ウェブ検索の結果を取得します。"
+  ],
+  "Getting Started & Troubleshooting": [
+    "入门与故障排查",
+    "使い方とトラブルシューティング"
+  ],
+  "Getting Started Guide": [
+    "入门指南",
+    "スタートガイド"
+  ],
+  "Go Back": [
+    "返回",
+    "戻る"
+  ],
+  "Google Tasks": [
+    "Google Tasks",
+    "Google ToDo リスト"
+  ],
+  "Grant Permission": [
+    "授予权限",
+    "権限を許可"
+  ],
+  "Groceries": [
+    "杂货",
+    "食料品"
+  ],
+  "Groups": [
+    "分组",
+    "グループ"
+  ],
+  "HR During Activities": [
+    "活动期间测量心率",
+    "運動中の心拍数"
+  ],
+  "HTTP": [
+    "HTTP",
+    "HTTP"
+  ],
+  "HTTP servers can't be added to Index Agent groups as they would be ignored": [
+    "HTTP 服务器会被 Index Agent 忽略，因此无法添加到这类分组",
+    "Index Agent は HTTP サーバーを使用しないため、該当グループには追加できません"
+  ],
+  "Health": [
+    "健康",
+    "ヘルスケア"
+  ],
+  "Health Debug Stats": [
+    "健康调试统计",
+    "ヘルスケアのデバッグ統計"
+  ],
+  "Health Settings": [
+    "健康设置",
+    "ヘルスケア設定"
+  ],
+  "Health statistics and averages": [
+    "健康统计与平均值",
+    "ヘルスケアの統計と平均値"
+  ],
+  "Heart Rate Monitor": [
+    "心率监测",
+    "心拍数の測定"
+  ],
+  "Hearts": [
+    "喜欢",
+    "お気に入り"
+  ],
+  "Height": [
+    "身高",
+    "身長"
+  ],
+  "Hello, this is a chat bubble!": [
+    "你好，这是一条聊天气泡！",
+    "こんにちは、これはチャットの吹き出しです！"
+  ],
+  "Hello, this is a response bubble!": [
+    "你好，这是一条回复气泡！",
+    "こんにちは、これは返信の吹き出しです！"
+  ],
+  "Hex": [
+    "十六进制",
+    "16 進数"
+  ],
+  "Hide Trace Timeline": [
+    "隐藏处理时间线",
+    "トレースタイムラインを非表示"
+  ],
+  "Hide missing permission warnings": [
+    "隐藏缺少权限的警告",
+    "権限不足の警告を非表示"
+  ],
+  "Hold to record": [
+    "按住录音",
+    "長押しして録音"
+  ],
+  "How long notifications are stored for. This enabled better deduplicating, and powers the notification history view": [
+    "通知的保存时间，用于更好地去重和显示通知历史",
+    "通知を保存する期間です。重複の検出と通知履歴の表示に使用します"
+  ],
+  "How often the watch checks your heart rate when you're not in a workout. This can have an impact on battery life.": [
+    "非运动状态下手表检测心率的频率，可能影响续航。",
+    "ワークアウト中以外に心拍数を測定する頻度です。バッテリー持続時間に影響する場合があります。"
+  ],
+  "How often to check for updates, update apps from store, etc": [
+    "检查更新、从商店更新应用等操作的频率",
+    "更新の確認やストアのアプリ更新などを行う頻度"
+  ],
+  "How should each note be saved?": [
+    "每条笔记应如何保存？",
+    "メモの保存方法"
+  ],
+  "How to submit a great bug report": [
+    "如何提交有帮助的问题报告",
+    "役に立つ不具合報告の書き方"
+  ],
+  "I confirm, my key is saved elsewhere": [
+    "我确认已将密钥另存他处",
+    "キーを別の場所に保存したことを確認しました"
+  ],
+  "I have a:": [
+    "我有：",
+    "お持ちのデバイス："
+  ],
+  "ID: %1$s": [
+    "ID：%1$s",
+    "ID：%1$s"
+  ],
+  "Icon": [
+    "图标",
+    "アイコン"
+  ],
+  "Idle": [
+    "空闲",
+    "待機中"
+  ],
+  "If old apps are using a broken weather API, attempt to use the Pebble Weather Service instead (will only work for some apps which use OpenWeather API)": [
+    "旧应用调用的天气 API 失效时，尝试改用 Pebble 天气服务；仅适用于部分使用 OpenWeather API 的应用",
+    "古いアプリの天気 API が動作しない場合、Pebble 天気サービスを試します。OpenWeather API を使う一部のアプリのみ対応します"
+  ],
+  "If the app crashes every time you press Connect, try checking": [
+    "如果每次点击“连接”都导致 App 崩溃，请尝试",
+    "「接続」を押すたびにアプリが終了する場合は、設定の"
+  ],
+  "If there is a vibration pattern defined by the app which created a notification, use it on the watch (unless overridden)": [
+    "若发送通知的应用定义了振动模式，手表也使用该模式，另有覆盖设置时除外",
+    "通知元のアプリで振動パターンが定義されている場合、個別に変更していなければ時計でも使用します"
+  ],
+  "If you have any other Pebble apps installed on your phone, please uninstall them - ": [
+    "如果手机上装有其他 Pebble App，请先卸载，",
+    "スマートフォンに他の Pebble アプリがある場合は、アンインストールしてください。"
+  ],
+  "Ignore Missing PRF": [
+    "忽略缺失的 PRF",
+    "PRF の欠落を無視"
+  ],
+  "Ignore missing PRF when connecting to development watches": [
+    "连接开发用手表时，忽略 PRF 缺失",
+    "開発用の時計への接続時に PRF の欠落を無視します"
+  ],
+  "Ignore notifications for users who sideload their own firmware": [
+    "供自行侧载固件的用户忽略更新通知",
+    "自分でファームウェアを導入する場合に、更新の通知を抑制します"
+  ],
+  "Ignore other Pebble apps": [
+    "忽略其他 Pebble App",
+    "他の Pebble アプリを無視"
+  ],
+  "Imperial": [
+    "英制",
+    "ヤード・ポンド法"
+  ],
+  "Imperial Units": [
+    "英制单位",
+    "ヤード・ポンド法"
+  ],
+  "Import": [
+    "导入",
+    "インポート"
+  ],
+  "Import Backup": [
+    "导入备份",
+    "バックアップをインポート"
+  ],
+  "Import Key from QR Code": [
+    "从二维码导入密钥",
+    "QR コードからキーをインポート"
+  ],
+  "Import QR code from photos": [
+    "从照片导入二维码",
+    "写真から QR コードをインポート"
+  ],
+  "In My Collection": [
+    "我的收藏",
+    "マイコレクション"
+  ],
+  "In progress: %1$s%": [
+    "进度：%1$s%",
+    "進行状況：%1$s%"
+  ],
+  "Inbox/Index notes": [
+    "Inbox/Index notes",
+    "Inbox/Index notes"
+  ],
+  "Include notification actions which are marked as opening a user interface on the phone": [
+    "包含标记为会在手机上打开界面的通知操作",
+    "スマートフォンで画面を開くと指定された通知アクションも含めます"
+  ],
+  "Include recent recordings": [
+    "附带近期录音",
+    "最近の録音を添付"
+  ],
+  "Include recording": [
+    "附带录音",
+    "録音を添付"
+  ],
+  "Include unredacted personal information (notification content, calendar events, app names, etc) in logs": [
+    "在日志中包含未脱敏的个人信息，如通知内容、日历事件、应用名称等",
+    "通知内容、カレンダーの予定、アプリ名などの個人情報を伏せずにログに含めます"
+  ],
+  "Increase": [
+    "增加",
+    "増やす"
+  ],
+  "Index": [
+    "Index",
+    "Index"
+  ],
+  "Index 01": [
+    "Index 01",
+    "Index 01"
+  ],
+  "Index 01 already paired": [
+    "Index 01 已配对",
+    "Index 01 はペアリング済みです"
+  ],
+  "Index 01 needs an account for backup and agent processing. ": [
+    "Index 01 的备份和智能处理功能需要账户。",
+    "Index 01 のバックアップとエージェント処理にはアカウントが必要です。"
+  ],
+  "Index Permissions": [
+    "Index 权限",
+    "Index の権限"
+  ],
+  "Index Recording": [
+    "Index 录音",
+    "Index の録音"
+  ],
+  "Index bug": [
+    "Index 问题",
+    "Index の不具合"
+  ],
+  "Index can add events to your phone's calendar when you explicitly ask for a calendar event.": [
+    "当你明确要求创建日历事件时，Index 可以将其添加到手机日历。",
+    "カレンダーの予定を明示的に依頼したときに、Index がスマートフォンのカレンダーに追加できます。"
+  ],
+  "Index feed": [
+    "Index 动态",
+    "Index フィード"
+  ],
+  "Index requires additional permissions to function.\n": [
+    "Index 需要额外权限才能运行。\n",
+    "Index の動作には追加の権限が必要です。\n"
+  ],
+  "Install": [
+    "安装",
+    "インストール"
+  ],
+  "Install %1$s on every connected watch? Only install ": [
+    "在所有已连接的手表上安装 %1$s？请仅安装",
+    "接続中のすべての時計に %1$s をインストールしますか？"
+  ],
+  "Install a language pack": [
+    "安装语言包",
+    "言語パックをインストール"
+  ],
+  "Install firmware": [
+    "安装固件",
+    "ファームウェアをインストール"
+  ],
+  "Installing %1$s": [
+    "正在安装 %1$s",
+    "%1$s をインストール中"
+  ],
+  "Intercept calls to Timeline webservice, instead inserting pins locally, immediately": [
+    "拦截时间线 Web 服务调用，直接在本地插入条目",
+    "タイムライン Web サービスへの呼び出しを受け取り、その場でローカルにピンを追加します"
+  ],
+  "It's a new kind of gadget! A quick read goes a long way.": [
+    "这是一种全新的设备，花点时间阅读指南会很有帮助。",
+    "新しい種類のデバイスです。ガイドを少し読むと、使いやすくなります。"
+  ],
+  "Items in backup": [
+    "备份中的项目",
+    "バックアップ内の項目"
+  ],
+  "Jan": [
+    "1 月",
+    "1 月"
+  ],
+  "January": [
+    "一月",
+    "1 月"
+  ],
+  "Jul": [
+    "7 月",
+    "7 月"
+  ],
+  "July": [
+    "七月",
+    "7 月"
+  ],
+  "Jun": [
+    "6 月",
+    "6 月"
+  ],
+  "June": [
+    "六月",
+    "6 月"
+  ],
+  "LISTS": [
+    "列表",
+    "リスト"
+  ],
+  "LLM Result: %1$s": [
+    "大模型结果：%1$s",
+    "LLM の結果：%1$s"
+  ],
+  "Last Night's Sleep": [
+    "昨晚睡眠",
+    "昨夜の睡眠"
+  ],
+  "Last recording was <1.5s": [
+    "上一次录音短于 1.5 秒",
+    "前回の録音は 1.5 秒未満でした"
+  ],
+  "Last synced %1$s": [
+    "上次同步：%1$s",
+    "最終同期：%1$s"
+  ],
+  "Later": [
+    "稍后",
+    "後で"
+  ],
+  "Let iOS relaunch the app to restore the watch connection. Takes effect on next app launch": [
+    "iOS 可重新启动 App 以恢复手表连接，下次启动 App 后生效",
+    "iOS がアプリを再起動して時計との接続を復元できるようにします。次回のアプリ起動から有効です"
+  ],
+  "Let the watch host the data connection when it supports it. Turn off to use the older phone-hosted mode. Reconnect for this to take effect": [
+    "手表支持时，由手表承载数据连接。关闭可使用旧的手机端承载模式，重新连接后生效",
+    "対応する時計側でデータ接続をホストします。無効にすると従来のスマートフォン側でのホストに戻ります。再接続後に適用されます"
+  ],
+  "Light": [
+    "浅色",
+    "ライト"
+  ],
+  "List": [
+    "列表",
+    "リスト"
+  ],
+  "Lists": [
+    "列表",
+    "リスト"
+  ],
+  "Loading %1$s": [
+    "正在加载 %1$s",
+    "%1$s を読み込み中"
+  ],
+  "Loading Locker": [
+    "正在加载应用库",
+    "アプリ一覧を読み込み中"
+  ],
+  "Loading health statistics...": [
+    "正在加载健康统计…",
+    "ヘルスケア統計を読み込み中…"
+  ],
+  "Loading...": [
+    "正在加载…",
+    "読み込み中…"
+  ],
+  "Locations": [
+    "地点",
+    "場所"
+  ],
+  "Logged in as %1$s": [
+    "当前登录：%1$s",
+    "%1$s としてログイン中"
+  ],
+  "Looking for your key in your password manager…": [
+    "正在密码管理器中查找密钥…",
+    "パスワードマネージャーでキーを検索中…"
+  ],
+  "Loop From PRF": [
+    "从 PRF 循环测试",
+    "PRF から繰り返す"
+  ],
+  "Loop Test": [
+    "循环测试",
+    "繰り返しテスト"
+  ],
+  "Loops completed: %1$s": [
+    "已完成 %1$s 轮",
+    "完了した回数：%1$s"
+  ],
+  "MCP & Tool Settings": [
+    "MCP 与工具设置",
+    "MCP とツールの設定"
+  ],
+  "MCP Sandbox": [
+    "MCP 沙盒",
+    "MCP サンドボックス"
+  ],
+  "MCP Servers": [
+    "MCP 服务器",
+    "MCP サーバー"
+  ],
+  "MCP Settings": [
+    "MCP 设置",
+    "MCP 設定"
+  ],
+  "Made for %1$s": [
+    "适用于 %1$s",
+    "%1$s 向け"
+  ],
+  "Mail to me": [
+    "发邮件给我",
+    "自分にメール"
+  ],
+  "Male": [
+    "男",
+    "男性"
+  ],
+  "Manage Offline Models": [
+    "管理离线模型",
+    "オフラインモデルを管理"
+  ],
+  "Mar": [
+    "3 月",
+    "3 月"
+  ],
+  "March": [
+    "三月",
+    "3 月"
+  ],
+  "Match field": [
+    "匹配字段",
+    "一致させる項目"
+  ],
+  "Match type": [
+    "匹配方式",
+    "一致の種類"
+  ],
+  "Matching notifications will be blocked:": [
+    "符合条件的通知将被屏蔽：",
+    "一致する通知はブロックされます："
+  ],
+  "May": [
+    "五月",
+    "5 月"
+  ],
+  "Meet Index 01": [
+    "认识 Index 01",
+    "Index 01 のご紹介"
+  ],
+  "Meet Jims": [
+    "见吉姆",
+    "ジムに会う"
+  ],
+  "Message": [
+    "消息",
+    "メッセージ"
+  ],
+  "Message sent. The developer will receive an email and may reply to you directly.": [
+    "消息已发送。开发者将收到邮件，并可直接回复你。",
+    "メッセージを送信しました。開発者にメールで届き、直接返信できます。"
+  ],
+  "Metric": [
+    "公制",
+    "メートル法"
+  ],
+  "Microphone permission is required": [
+    "需要麦克风权限",
+    "マイクの権限が必要です"
+  ],
+  "Missing info": [
+    "缺少信息",
+    "情報不足"
+  ],
+  "Mixed (UK)": [
+    "混合制（英国）",
+    "混合（英国）"
+  ],
+  "Model Type": [
+    "模型类型",
+    "モデルの種類"
+  ],
+  "Monday": [
+    "星期一",
+    "月曜日"
+  ],
+  "Month": [
+    "月",
+    "月"
+  ],
+  "More options": [
+    "更多选项",
+    "その他の項目"
+  ],
+  "Move To Top": [
+    "移到顶部",
+    "先頭に移動"
+  ],
+  "Move subitems": [
+    "移动子项目",
+    "サブ項目を移動"
+  ],
+  "Music": [
+    "音乐",
+    "音楽"
+  ],
+  "Music Control Mode": [
+    "音乐控制模式",
+    "音楽の操作モード"
+  ],
+  "Music Play/Pause": [
+    "音乐播放/暂停",
+    "音楽の再生／一時停止"
+  ],
+  "Music Play/Pause (Only on Android)": [
+    "音乐播放/暂停（仅限 Android）",
+    "音楽の再生／一時停止（Android のみ）"
+  ],
+  "Music play/pause": [
+    "音乐播放/暂停",
+    "音楽の再生／一時停止"
+  ],
+  "Mute All": [
+    "全部静音",
+    "すべてミュート"
+  ],
+  "Mute phone call effects": [
+    "静音手机来电效果",
+    "スマートフォンの着信音・振動を抑制"
+  ],
+  "Mute phone notification effects": [
+    "静音手机通知效果",
+    "スマートフォンの通知音・振動を抑制"
+  ],
+  "Mutes the phone's own call vibration/sound while the watch is connected": [
+    "手表连接期间，关闭手机自身的来电振动和声音",
+    "時計の接続中は、スマートフォンの着信音と振動を抑制します"
+  ],
+  "Mutes the phone's own notification vibration/sound while the watch is connected": [
+    "手表连接期间，关闭手机自身的通知振动和声音",
+    "時計の接続中は、スマートフォンの通知音と振動を抑制します"
+  ],
+  "My Bug Reports": [
+    "我的问题报告",
+    "自分の不具合報告"
+  ],
+  "NOTES": [
+    "笔记",
+    "メモ"
+  ],
+  "Name": [
+    "名称",
+    "名前"
+  ],
+  "Need more help? View detailed instructions": [
+    "需要更多帮助？查看详细说明",
+    "さらにヘルプが必要ですか？詳しい手順を表示"
+  ],
+  "Never": [
+    "从不",
+    "しない"
+  ],
+  "New Bug Report": [
+    "新建问题报告",
+    "新しい不具合報告"
+  ],
+  "New app default": [
+    "新应用的默认设置",
+    "新しいアプリの既定設定"
+  ],
+  "New list": [
+    "新建列表",
+    "新しいリスト"
+  ],
+  "New to Index 01?": [
+    "初次使用 Index 01？",
+    "Index 01 は初めてですか？"
+  ],
+  "Next": [
+    "下一步",
+    "次へ"
+  ],
+  "Next: time": [
+    "下一步：时间",
+    "次へ：日時"
+  ],
+  "Nickname": [
+    "昵称",
+    "ニックネーム"
+  ],
+  "Nickname: %1$s": [
+    "昵称：%1$s",
+    "ニックネーム：%1$s"
+  ],
+  "No Ring Paired": [
+    "未配对戒指",
+    "リング未ペアリング"
+  ],
+  "No action taken": [
+    "未执行操作",
+    "操作は行われませんでした"
+  ],
+  "No bug reports found": [
+    "暂无问题报告",
+    "不具合報告はありません"
+  ],
+  "No connected watch": [
+    "没有连接的手表",
+    "接続中の時計はありません"
+  ],
+  "No contacts added yet.": [
+    "尚未添加联系人。",
+    "連絡先はまだ追加されていません。"
+  ],
+  "No lists yet.": [
+    "暂无列表。",
+    "リストはまだありません。"
+  ],
+  "No matches for \"%1$s\"": [
+    "没有与“%1$s”匹配的结果",
+    "「%1$s」に一致する結果はありません"
+  ],
+  "No matches.": [
+    "没有匹配结果。",
+    "一致するものはありません。"
+  ],
+  "No matching lists.": [
+    "没有匹配的列表。",
+    "一致するリストはありません。"
+  ],
+  "No matching questions.": [
+    "没有匹配的问题。",
+    "一致する質問はありません。"
+  ],
+  "No notification rules": [
+    "暂无通知规则",
+    "通知ルールはありません"
+  ],
+  "No pages found. Give Index access to a page in Notion, then try again.": [
+    "未找到页面。请在 Notion 中授权 Index 访问某个页面后重试。",
+    "ページが見つかりません。Notion で Index にページへのアクセスを許可してから再試行してください。"
+  ],
+  "No questions yet. Ask your Index.": [
+    "暂无问题，试着问问 Index。",
+    "まだ質問はありません。Index に聞いてみましょう。"
+  ],
+  "No recording file to export": [
+    "没有可导出的录音文件",
+    "書き出す録音ファイルがありません"
+  ],
+  "No recordings yet.": [
+    "暂无录音。",
+    "録音はまだありません。"
+  ],
+  "No reminders or alarms": [
+    "暂无提醒或闹钟",
+    "リマインダーやアラームはありません"
+  ],
+  "No trace data found for this recording": [
+    "未找到此录音的跟踪数据",
+    "この録音のトレースデータはありません"
+  ],
+  "No transcription": [
+    "暂无转写",
+    "文字起こしはありません"
+  ],
+  "No 🎶 yet": [
+    "暂无 🎶",
+    "まだ 🎶 はありません"
+  ],
+  "None": [
+    "无",
+    "なし"
+  ],
+  "Not Linked": [
+    "未关联",
+    "未連携"
+  ],
+  "Not available on this platform": [
+    "此平台不支持",
+    "このプラットフォームでは利用できません"
+  ],
+  "Not compatible with this watch": [
+    "与此手表不兼容",
+    "この時計には対応していません"
+  ],
+  "Not connected": [
+    "未连接",
+    "未接続"
+  ],
+  "Not found": [
+    "未找到",
+    "見つかりません"
+  ],
+  "Not natively compatible with this watch, but can be scaled": [
+    "未原生适配此手表，但可以缩放显示",
+    "この時計にネイティブ対応していませんが、拡大・縮小して表示できます"
+  ],
+  "Not synced by Android - toggle checkbox to ask Android to sync": [
+    "Android 尚未同步，勾选可请求同步",
+    "Android で未同期です。チェックすると同期を要求します"
+  ],
+  "Not working? Report a bug": [
+    "遇到问题？提交报告",
+    "動作しませんか？不具合を報告"
+  ],
+  "Not yet seen device": [
+    "尚未发现设备",
+    "まだデバイスを検出していません"
+  ],
+  "Note to append to": [
+    "要追加到的笔记",
+    "追記するメモ"
+  ],
+  "Note: Offline speech recognition is lower accuracy, consider using": [
+    "注意：离线语音识别准确度较低，建议使用",
+    "注意：オフライン音声認識は精度が低いため、オンライン時の精度を上げるには"
+  ],
+  "Note: Selecting a language may improve accuracy for that language but not all languages on this list are guaranteed to be supported.": [
+    "选择语言可能提高该语言的识别准确度，但不保证支持列表中的所有语言。",
+    "言語を選ぶと、その言語の精度が上がる場合があります。ただし、一覧のすべての言語への対応を保証するものではありません。"
+  ],
+  "Noted": [
+    "已记录",
+    "メモしました"
+  ],
+  "Noted to '%1$s' list": [
+    "已记录到“%1$s”列表",
+    "リスト「%1$s」にメモしました"
+  ],
+  "Notes": [
+    "笔记",
+    "メモ"
+  ],
+  "Notes & reminders": [
+    "笔记与提醒",
+    "メモとリマインダー"
+  ],
+  "Notes to self": [
+    "给自己的笔记",
+    "自分用のメモ"
+  ],
+  "Notes…": [
+    "笔记…",
+    "メモ…"
+  ],
+  "Nothing here yet.": [
+    "这里还没有内容。",
+    "まだ何もありません。"
+  ],
+  "Notification": [
+    "通知",
+    "通知"
+  ],
+  "Notification Shortcut": [
+    "通知快捷操作",
+    "通知のショートカット"
+  ],
+  "Notification filter rules": [
+    "通知过滤规则",
+    "通知のフィルタールール"
+  ],
+  "Notification logging, to diagnose processing/deduplication issues (does not include any content/app name/personal information unless separately enabled below)": [
+    "记录通知处理和去重过程；除非下方另行开启，否则不包含通知内容、应用名或个人信息",
+    "通知処理や重複検出を調査するために記録します。以下で別途有効にしない限り、通知内容、アプリ名、個人情報は含まれません"
+  ],
+  "Notifications": [
+    "通知",
+    "通知"
+  ],
+  "Notifications won't be sent to watch if phone is in Do Not Disturb mode (unless configured for that app/person in phone settings)": [
+    "手机处于勿扰模式时，不向手表发送通知，手机设置中为特定应用或联系人放行的除外",
+    "スマートフォンがおやすみモードのときは時計に通知を送りません。スマートフォンの設定で許可したアプリや連絡先は除きます"
+  ],
+  "Notified only": [
+    "仅显示有通知的应用",
+    "通知のあるアプリのみ"
+  ],
+  "Notify on this phone when a watch finishes charging": [
+    "手表充满电时，在此手机上通知",
+    "時計の充電が完了したら、このスマートフォンに通知します"
+  ],
+  "Notion": [
+    "Notion",
+    "Notion"
+  ],
+  "Notion Link Failed": [
+    "Notion 关联失败",
+    "Notion を連携できませんでした"
+  ],
+  "Notion Linked": [
+    "Notion 已关联",
+    "Notion を連携しました"
+  ],
+  "Notion Page": [
+    "Notion 页面",
+    "Notion のページ"
+  ],
+  "Nov": [
+    "11 月",
+    "11 月"
+  ],
+  "November": [
+    "十一月",
+    "11 月"
+  ],
+  "OK": [
+    "确定",
+    "OK"
+  ],
+  "Obsidian": [
+    "Obsidian",
+    "Obsidian"
+  ],
+  "Oct": [
+    "10 月",
+    "10 月"
+  ],
+  "October": [
+    "十月",
+    "10 月"
+  ],
+  "Offline Only": [
+    "仅离线",
+    "オフラインのみ"
+  ],
+  "Offline Speech Recognition": [
+    "离线语音识别",
+    "オフライン音声認識"
+  ],
+  "Okay": [
+    "确定",
+    "OK"
+  ],
+  "On Monday, March 24, 2025, Nashville is expected to experience sunny ": [
+    "2025 年 3 月 24 日星期一，纳什维尔预计天气晴朗，",
+    "2025 年 3 月 24 日（月）のナッシュビルは晴れの予報で、"
+  ],
+  "On-device speech recognition": [
+    "设备端语音识别",
+    "端末内の音声認識"
+  ],
+  "Once your Pebble is connected, we'll get it set up": [
+    "Pebble 连接后即可开始设置",
+    "Pebble が接続されると、設定を開始します"
+  ],
+  "One or more other PebbleOS companions apps are installed. Please ": [
+    "检测到其他 PebbleOS 配套 App。",
+    "他の PebbleOS コンパニオンアプリがインストールされています。"
+  ],
+  "One time": [
+    "仅一次",
+    "1 回のみ"
+  ],
+  "Only for Core Devices watches. This allows us to measure metrics e.g. battery life, and debug watch crashes (otherwise we do not know whether they are regressions in reliability or performance)": [
+    "仅限 Core Devices 手表。用于统计续航等指标和排查手表崩溃，否则无法了解可靠性或性能是否退化",
+    "Core Devices の時計専用です。バッテリー持続時間などの測定やクラッシュの調査に使用し、信頼性や性能の低下を把握します"
+  ],
+  "Only for debugging - disables syncing settings with watch when disabled": [
+    "仅用于调试；禁用后不再与手表同步设置",
+    "デバッグ専用です。無効にすると時計と設定を同期しません"
+  ],
+  "Only you can read your backups": [
+    "只有你可以读取备份",
+    "バックアップを読めるのは自分だけです"
+  ],
+  "Open Google Fit": [
+    "打开 Google Fit",
+    "Google Fit を開く"
+  ],
+  "Open bug report": [
+    "问题报告",
+    "不具合報告を開く"
+  ],
+  "Open on map": [
+    "在地图中打开",
+    "地図で開く"
+  ],
+  "Open settings": [
+    "打开设置",
+    "設定を開く"
+  ],
+  "Order": [
+    "顺序",
+    "順序"
+  ],
+  "Other": [
+    "其他",
+    "その他"
+  ],
+  "Overwrite": [
+    "覆盖",
+    "上書き"
+  ],
+  "Overwrite Encryption Key?": [
+    "覆盖加密密钥？",
+    "暗号化キーを上書きしますか？"
+  ],
+  "PKJS Debugger": [
+    "PKJS 调试器",
+    "PKJS デバッガー"
+  ],
+  "PM": [
+    "下午",
+    "午後"
+  ],
+  "Paired to Index 01": [
+    "已配对 Index 01",
+    "Index 01 とペアリング済み"
+  ],
+  "Pairing failure": [
+    "配对失败",
+    "ペアリングに失敗しました"
+  ],
+  "Passive reconnection mode": [
+    "被动重连模式",
+    "パッシブ再接続モード"
+  ],
+  "Path inside your vault, subfolders allowed. Created if it doesn't exist.": [
+    "仓库内的路径，允许子文件夹；不存在时自动创建。",
+    "保管庫内のパスです。サブフォルダーも指定できます。存在しない場合は作成します。"
+  ],
+  "Pattern": [
+    "匹配表达式",
+    "パターン"
+  ],
+  "Pattern Name": [
+    "模式名称",
+    "パターン名"
+  ],
+  "Pause": [
+    "暂停",
+    "一時停止"
+  ],
+  "Pebble App 有新版本 %1$s": [
+    "Pebble App 有新版本 %1$s",
+    "Pebble アプリの新しいバージョン %1$s があります",
+    "Pebble app update: %1$s"
+  ],
+  "Pebble Index 0A1": [
+    "Pebble Index 0A1",
+    "Pebble Index 0A1"
+  ],
+  "Permanently delete all cloud data": [
+    "永久删除所有云端数据",
+    "すべてのクラウドデータを完全に削除します"
+  ],
+  "Permissions": [
+    "权限",
+    "権限"
+  ],
+  "Phone": [
+    "手机",
+    "スマートフォン"
+  ],
+  "Phone Calendar connected.": [
+    "手机日历已连接。",
+    "スマートフォンのカレンダーを連携しました。"
+  ],
+  "Pick vault folder": [
+    "选择仓库文件夹",
+    "保管庫フォルダーを選択"
+  ],
+  "Pick your Obsidian vault folder. Notes will be written there as Markdown files.": [
+    "选择 Obsidian 仓库文件夹，笔记将以 Markdown 文件写入。",
+    "Obsidian の保管庫フォルダーを選択してください。メモを Markdown ファイルとして保存します。"
+  ],
+  "Pick your key's QR code from your photos": [
+    "从照片中选择密钥二维码",
+    "写真からキーの QR コードを選びます"
+  ],
+  "Picking…": [
+    "正在选择…",
+    "選択中…"
+  ],
+  "Play": [
+    "播放",
+    "再生"
+  ],
+  "Please avoid downloading over a metered connection.": [
+    "请尽量避免使用按流量计费的网络下载。",
+    "従量制の接続でのダウンロードは避けてください。"
+  ],
+  "Please describe the bug": [
+    "请描述问题",
+    "不具合の内容を入力してください"
+  ],
+  "Please grant the following permissions:": [
+    "请授予以下权限：",
+    "以下の権限を許可してください："
+  ],
+  "Please note that logs + device info will be sent with this report": [
+    "报告将附带日志和设备信息",
+    "この報告にはログと端末情報が含まれます"
+  ],
+  "Please report a bug if anything went wrong!": [
+    "遇到异常时，请提交问题报告！",
+    "問題が発生したら、不具合を報告してください！"
+  ],
+  "Please update the Pebble App!": [
+    "请更新 Pebble App！",
+    "Pebble アプリを更新してください！"
+  ],
+  "Please wait for the download to complete before trying.": [
+    "请等待下载完成后再试。",
+    "ダウンロードが完了してからお試しください。"
+  ],
+  "Populate fake health data": [
+    "填充模拟健康数据",
+    "テスト用ヘルスケアデータを作成"
+  ],
+  "Post test notification": [
+    "发送测试通知",
+    "テスト通知を送信"
+  ],
+  "Preset messages for notification replies on the watch (canned messages)": [
+    "在手表上回复通知时使用的预设消息",
+    "時計で通知に返信するときの定型文"
+  ],
+  "Presets": [
+    "预设",
+    "プリセット"
+  ],
+  "Press the button on your Index 01 so this device can find it...": [
+    "请按下 Index 01 的按钮，以便此设备发现它…",
+    "この端末で検出できるように、Index 01 のボタンを押してください…"
+  ],
+  "Press the button on your Index 01 to wake it.": [
+    "按下 Index 01 的按钮将其唤醒。",
+    "Index 01 のボタンを押してスリープを解除してください。"
+  ],
+  "Processing": [
+    "正在处理",
+    "処理中"
+  ],
+  "Prompts (%1$s/%2$s selected)": [
+    "提示词（已选择 %1$s/%2$s）",
+    "プロンプト（%1$s／%2$s 件を選択）"
+  ],
+  "QR code saved in your photos.": [
+    "照片中保存的二维码。",
+    "写真に保存した QR コードをインポートしてください。"
+  ],
+  "Quick Launch": [
+    "快捷启动",
+    "クイック起動"
+  ],
+  "Quick replies": [
+    "快捷回复",
+    "クイック返信"
+  ],
+  "Quiet Time": [
+    "安静时段",
+    "静音時間"
+  ],
+  "RECORDED · %1$s": [
+    "录制于 · %1$s",
+    "録音 · %1$s"
+  ],
+  "REMINDERS": [
+    "提醒",
+    "リマインダー"
+  ],
+  "RX->Feed Latency: %1$s ms": [
+    "接收到动态显示的延迟：%1$s 毫秒",
+    "受信からフィード表示まで：%1$s ms"
+  ],
+  "Re-publish GATT services after BT restore": [
+    "蓝牙恢复后重新发布 GATT 服务",
+    "Bluetooth の復元後に GATT サービスを再公開"
+  ],
+  "Read key from Google Password Manager or iCloud Keychain": [
+    "从 Google 密码管理器或 iCloud 钥匙串读取密钥",
+    "Google パスワードマネージャーまたは iCloud キーチェーンからキーを読み取ります"
+  ],
+  "Rebble speech recognition requires a Rebble subscription": [
+    "Rebble 语音识别需要订阅 Rebble",
+    "Rebble の音声認識には Rebble のサブスクリプションが必要です"
+  ],
+  "Receive notifications with insights about your activity": [
+    "接收有关活动情况的分析通知",
+    "アクティビティの分析結果を通知で受け取ります"
+  ],
+  "Receive notifications with insights about your sleep": [
+    "接收有关睡眠情况的分析通知",
+    "睡眠の分析結果を通知で受け取ります"
+  ],
+  "Receiving recording...": [
+    "正在接收录音…",
+    "録音を受信中…"
+  ],
+  "Recommended for your device": [
+    "为你的设备推荐",
+    "お使いの端末におすすめ"
+  ],
+  "Recording": [
+    "录音中",
+    "録音中"
+  ],
+  "Recording too short! Try holding the button a bit longer.": [
+    "录音太短，请稍微多按住一会儿。",
+    "録音が短すぎます。もう少し長くボタンを押してください。"
+  ],
+  "Recordings stay on this device only": [
+    "录音仅保存在此设备上",
+    "録音はこの端末にのみ保存されます"
+  ],
+  "Recordings sync to the cloud": [
+    "录音同步到云端",
+    "録音をクラウドに同期します"
+  ],
+  "Refresh": [
+    "刷新",
+    "更新"
+  ],
+  "Refresh Collections": [
+    "刷新合集",
+    "コレクションを更新"
+  ],
+  "Refresh Weather": [
+    "刷新天气",
+    "天気を更新"
+  ],
+  "Refresh health data": [
+    "刷新健康数据",
+    "ヘルスケアデータを更新"
+  ],
+  "Regex": [
+    "正则表达式",
+    "正規表現"
+  ],
+  "Release->RX Latency: %1$s ms": [
+    "松开按钮到接收的延迟：%1$s 毫秒",
+    "ボタンを離してから受信まで：%1$s ms"
+  ],
+  "Remember to unpair any other phones from your watch before connecting (Settings/Bluetooth)": [
+    "连接前，请先在手表的“设置/蓝牙”中取消与其他手机的配对",
+    "接続前に、時計の「設定／Bluetooth」で他のスマートフォンとのペアリングを解除してください"
+  ],
+  "Reminder Vibration Pattern": [
+    "提醒振动模式",
+    "リマインダーの振動パターン"
+  ],
+  "Reminder added": [
+    "已添加提醒",
+    "リマインダーを追加しました"
+  ],
+  "Reminder created": [
+    "已创建提醒",
+    "リマインダーを作成しました"
+  ],
+  "Reminders": [
+    "提醒",
+    "リマインダー"
+  ],
+  "Reminders & alarms": [
+    "提醒与闹钟",
+    "リマインダーとアラーム"
+  ],
+  "Remove": [
+    "移除",
+    "削除"
+  ],
+  "Remove %1$s file(s)": [
+    "移除 %1$s 个文件",
+    "%1$s 件のファイルを削除"
+  ],
+  "Remove %1$s?": [
+    "移除 %1$s？",
+    "%1$s を削除しますか？"
+  ],
+  "Remove Location": [
+    "移除地点",
+    "場所を削除"
+  ],
+  "Remove all recordings from this device (cloud unaffected)": [
+    "移除此设备上的所有录音，不影响云端",
+    "この端末のすべての録音を削除します（クラウドには影響しません）"
+  ],
+  "Remove bookmark": [
+    "移除书签",
+    "ブックマークを削除"
+  ],
+  "Remove every subitem in this list.": [
+    "移除此列表中的所有子项目。",
+    "このリストのすべてのサブ項目を削除します。"
+  ],
+  "Remove in Android settings": [
+    "在 Android 设置中移除",
+    "Android の設定で削除"
+  ],
+  "Removed %1$s": [
+    "已移除 %1$s",
+    "%1$s を削除しました"
+  ],
+  "Removing %1$s": [
+    "正在移除 %1$s",
+    "%1$s を削除中"
+  ],
+  "Rename list": [
+    "重命名列表",
+    "リストの名前を変更"
+  ],
+  "Reorder": [
+    "排序",
+    "並べ替え"
+  ],
+  "Repeat": [
+    "重复",
+    "繰り返し"
+  ],
+  "Reply %1$s": [
+    "回复 %1$s",
+    "返信 %1$s"
+  ],
+  "Reply: %1$s": [
+    "回复：%1$s",
+    "返信：%1$s"
+  ],
+  "Report Sent!": [
+    "报告已发送！",
+    "報告を送信しました！"
+  ],
+  "Report: %1$s": [
+    "报告：%1$s",
+    "報告：%1$s"
+  ],
+  "Reset": [
+    "重置",
+    "リセット"
+  ],
+  "Reset To Defaults": [
+    "重置为默认设置",
+    "既定の設定に戻す"
+  ],
+  "Reset To Defaults?": [
+    "重置为默认设置？",
+    "既定の設定に戻しますか？"
+  ],
+  "Reset all settings to defaults": [
+    "将所有设置重置为默认值",
+    "すべての設定を既定値に戻します"
+  ],
+  "Reset all watch settings to defaults": [
+    "将手表的所有设置重置为默认值",
+    "時計のすべての設定を既定値に戻します"
+  ],
+  "Respect Phone Do Not Disturb": [
+    "遵循手机勿扰模式",
+    "スマートフォンのおやすみモードに従う"
+  ],
+  "Restart Pre-emptive Transfer": [
+    "重新启动预传输",
+    "先行転送を再開"
+  ],
+  "Restore": [
+    "恢复",
+    "復元"
+  ],
+  "Restore Key from Password Manager": [
+    "从密码管理器恢复密钥",
+    "パスワードマネージャーからキーを復元"
+  ],
+  "Restore System app positions": [
+    "恢复系统应用的位置",
+    "システムアプリの位置を復元"
+  ],
+  "Restore recordings from a backup zip file": [
+    "从备份 ZIP 文件恢复录音",
+    "バックアップ ZIP ファイルから録音を復元します"
+  ],
+  "Restore system apps to their usual position at the top of the menu": [
+    "将系统应用恢复到菜单顶部的常规位置",
+    "システムアプリをメニュー上部の通常の位置に戻します"
+  ],
+  "Retry": [
+    "重试",
+    "再試行"
+  ],
+  "Retry transcription": [
+    "重试转写",
+    "文字起こしを再試行"
+  ],
+  "Retrying...": [
+    "正在重试…",
+    "再試行中…"
+  ],
+  "Reversed PPoG": [
+    "反向 PPoG",
+    "逆方向 PPoG"
+  ],
+  "Ring Firmware Version": [
+    "戒指固件版本",
+    "リングのファームウェアバージョン"
+  ],
+  "Ring Recording %1$s (Index %2$s, end: %3$s)": [
+    "戒指录音 %1$s（Index %2$s，结束：%3$s）",
+    "リングの録音 %1$s（Index %2$s、終了：%3$s）"
+  ],
+  "Ring Sync Inspector": [
+    "戒指同步检查器",
+    "リング同期インスペクター"
+  ],
+  "Run a chosen MCP sandbox group's model and tools on a double click & hold.": [
+    "双击并按住可运行选定 MCP 沙盒分组的模型和工具。",
+    "2 回押して長押しすると、選択した MCP サンドボックスグループのモデルとツールを実行します。"
+  ],
+  "SOURCE": [
+    "来源",
+    "元データ"
+  ],
+  "SSE": [
+    "SSE",
+    "SSE"
+  ],
+  "Sample Watchface": [
+    "示例表盘",
+    "サンプル文字盤"
+  ],
+  "Saturday": [
+    "星期六",
+    "土曜日"
+  ],
+  "Save": [
+    "保存",
+    "保存"
+  ],
+  "Save this key securely. You will need it to decrypt your backups.": [
+    "请妥善保存此密钥，解密备份时需要使用。",
+    "このキーを安全に保管してください。バックアップの復号に必要です。"
+  ],
+  "Saved as its own timestamped file": [
+    "保存为各自带时间戳的文件",
+    "タイムスタンプ付きの個別ファイルとして保存します"
+  ],
+  "Scan": [
+    "扫描",
+    "スキャン"
+  ],
+  "Scanning for devices...": [
+    "正在扫描设备…",
+    "デバイスをスキャン中…"
+  ],
+  "Screenshot": [
+    "截图",
+    "スクリーンショット"
+  ],
+  "Search": [
+    "搜索",
+    "検索"
+  ],
+  "Search Icons": [
+    "搜索图标",
+    "アイコンを検索"
+  ],
+  "Search Location": [
+    "搜索地点",
+    "場所を検索"
+  ],
+  "Search for a specific address": [
+    "搜索指定地址",
+    "特定の住所を検索します"
+  ],
+  "Search languages": [
+    "搜索语言",
+    "言語を検索"
+  ],
+  "Search…": [
+    "搜索…",
+    "検索…"
+  ],
+  "Secondary Mode": [
+    "辅助模式",
+    "サブモード"
+  ],
+  "Secondary action": [
+    "辅助操作",
+    "サブ操作"
+  ],
+  "See all": [
+    "查看全部",
+    "すべて表示"
+  ],
+  "Select": [
+    "选择",
+    "選択"
+  ],
+  "Select color": [
+    "选择颜色",
+    "色を選択"
+  ],
+  "Select icon": [
+    "选择图标",
+    "アイコンを選択"
+  ],
+  "Select language": [
+    "选择语言",
+    "言語を選択"
+  ],
+  "Select vibration pattern": [
+    "选择振动模式",
+    "振動パターンを選択"
+  ],
+  "Selected": [
+    "已选择",
+    "選択中"
+  ],
+  "Send": [
+    "发送",
+    "送信"
+  ],
+  "Send Report": [
+    "发送报告",
+    "報告を送信"
+  ],
+  "Send a message about %1$s. The developer will receive it via email and can reply to you. Your email address is not shared with them.": [
+    "发送有关 %1$s 的消息。开发者将通过邮件收到消息，并可回复你。你的邮箱地址不会提供给开发者。",
+    "%1$s についてメッセージを送信します。開発者にはメールで届き、返信できます。あなたのメールアドレスは開発者に公開されません。"
+  ],
+  "Send app analytics": [
+    "发送 App 分析数据",
+    "アプリの分析データを送信"
+  ],
+  "Send app crashes": [
+    "发送 App 崩溃报告",
+    "アプリのクラッシュ情報を送信"
+  ],
+  "Send local-only notifications to watch": [
+    "向手表转发“仅限本机”的通知",
+    "端末限定の通知を時計に送信"
+  ],
+  "Send message": [
+    "发送消息",
+    "メッセージを送信"
+  ],
+  "Send notifications to the watch even when the phone screen is on": [
+    "即使手机屏幕亮着，也向手表发送通知",
+    "スマートフォンの画面がオンでも時計に通知を送信します"
+  ],
+  "Send watch analytics": [
+    "发送手表分析数据",
+    "時計の分析データを送信"
+  ],
+  "Sends your notes and reminders to Tasker as a shared intent ": [
+    "将笔记和提醒通过共享 Intent",
+    "メモやリマインダーを共有インテント"
+  ],
+  "Sep": [
+    "9 月",
+    "9 月"
+  ],
+  "September": [
+    "九月",
+    "9 月"
+  ],
+  "Server: %1$s": [
+    "服务器：%1$s",
+    "サーバー：%1$s"
+  ],
+  "Service control": [
+    "服务控制",
+    "サービスの制御"
+  ],
+  "Set as timer": [
+    "设为计时器",
+    "タイマーに設定"
+  ],
+  "Set up backup encryption": [
+    "设置备份加密",
+    "バックアップの暗号化を設定"
+  ],
+  "Settings": [
+    "设置",
+    "設定"
+  ],
+  "Share": [
+    "分享",
+    "共有"
+  ],
+  "Shopping List": [
+    "购物清单",
+    "買い物リスト"
+  ],
+  "Short (3 times) LONG (1 second, 3 times) short (3 times)": [
+    "短按 3 次，长按 1 秒 3 次，再短按 3 次",
+    "短押し 3 回、長押し 1 秒を 3 回、短押し 3 回"
+  ],
+  "Show Health Tab": [
+    "显示健康标签页",
+    "ヘルスケアタブを表示"
+  ],
+  "Show Health instead of Notifications in the bottom bar": [
+    "在底栏中用健康替代通知",
+    "下部のバーで、通知の代わりにヘルスケアを表示します"
+  ],
+  "Show Incompatible": [
+    "显示不兼容的应用",
+    "非対応アプリを表示"
+  ],
+  "Show Ring Onboarding": [
+    "显示戒指初始设置",
+    "リングの初期設定を表示"
+  ],
+  "Show Trace Timeline": [
+    "显示处理时间线",
+    "トレースタイムラインを表示"
+  ],
+  "Show Watch Onboarding": [
+    "显示手表初始设置",
+    "時計の初期設定を表示"
+  ],
+  "Show calendar pins on timeline": [
+    "在时间线上显示日历条目",
+    "タイムラインにカレンダーのピンを表示します"
+  ],
+  "Show debug options": [
+    "显示调试选项",
+    "デバッグ項目を表示"
+  ],
+  "Show foreground service notification to keep app alive in background": [
+    "显示前台服务通知，使 App 能持续在后台运行",
+    "フォアグラウンドサービスの通知を表示し、アプリをバックグラウンドで動作させます"
+  ],
+  "Show legacy watches in BLE scan": [
+    "在 BLE 扫描中显示旧款手表",
+    "BLE スキャンで旧型の時計を表示"
+  ],
+  "Show more...": [
+    "显示更多…",
+    "さらに表示…"
+  ],
+  "Show notifications in phone logs": [
+    "在手机日志中记录通知",
+    "スマートフォンのログに通知を記録"
+  ],
+  "Show sensitive content in phone logs": [
+    "在手机日志中记录敏感内容",
+    "スマートフォンのログに機密情報を記録"
+  ],
+  "Show some extra debug options around the app - not useful for most users (contains some options which might break your watch)": [
+    "显示额外的调试选项，大多数用户无需使用，部分选项可能导致手表异常",
+    "追加のデバッグ項目を表示します。通常は不要です。時計が動作しなくなる可能性がある項目も含まれます"
+  ],
+  "Show system apps": [
+    "显示系统应用",
+    "システムアプリを表示"
+  ],
+  "Show watch connection debug info": [
+    "显示手表连接调试信息",
+    "時計の接続デバッグ情報を表示"
+  ],
+  "Sideload App": [
+    "侧载应用",
+    "アプリをサイドロード"
+  ],
+  "Sideload FW": [
+    "侧载固件",
+    "ファームウェアをサイドロード"
+  ],
+  "Sideload firmware?": [
+    "侧载固件？",
+    "ファームウェアをサイドロードしますか？"
+  ],
+  "Sign In": [
+    "登录",
+    "ログイン"
+  ],
+  "Sign In - Pebble Account": [
+    "登录 Pebble 账户",
+    "Pebble アカウントにログイン"
+  ],
+  "Sign Out - Pebble Account": [
+    "退出 Pebble 账户",
+    "Pebble アカウントからログアウト"
+  ],
+  "Sign Out - Rebble": [
+    "退出 Rebble",
+    "Rebble からログアウト"
+  ],
+  "Sign in": [
+    "登录",
+    "ログイン"
+  ],
+  "Sign in anyway": [
+    "仍然登录",
+    "ログインする"
+  ],
+  "Sign in to back up your recordings.": [
+    "登录以备份录音。",
+    "録音をバックアップするにはログインしてください。"
+  ],
+  "Sign in to backup your Pebble account to backup apps, settings, etc": [
+    "登录 Pebble 账户以备份应用、设置等数据",
+    "Pebble アカウントにログインすると、アプリや設定などをバックアップできます"
+  ],
+  "Sign in to continue": [
+    "登录以继续",
+    "ログインして続行"
+  ],
+  "Sign in to existing account?": [
+    "登录已有账户？",
+    "既存のアカウントにログインしますか？"
+  ],
+  "Sign in to finish setting up your ring.": [
+    "登录以完成戒指设置。",
+    "ログインしてリングの設定を完了してください。"
+  ],
+  "Sign in to send notes to Notion.": [
+    "登录以向 Notion 发送笔记。",
+    "ログインして Notion にメモを送信します。"
+  ],
+  "Sign in with Apple": [
+    "使用 Apple 登录",
+    "Apple でログイン"
+  ],
+  "Sign in with GitHub": [
+    "使用 GitHub 登录",
+    "GitHub でログイン"
+  ],
+  "Sign in with Google": [
+    "使用 Google 登录",
+    "Google でログイン"
+  ],
+  "Sign in with Google to sync reminders to Google Tasks.": [
+    "使用 Google 登录，将提醒同步到 Google Tasks。",
+    "Google でログインして、リマインダーを Google ToDo リストに同期します。"
+  ],
+  "Sign out": [
+    "退出登录",
+    "ログアウト"
+  ],
+  "Sign out of your Pebble account (%1$s)": [
+    "退出 Pebble 账户（%1$s）",
+    "Pebble アカウント（%1$s）からログアウトします"
+  ],
+  "Sign out of your Rebble account": [
+    "退出 Rebble 账户",
+    "Rebble アカウントからログアウトします"
+  ],
+  "Signed in as %1$s": [
+    "已登录为 %1$s",
+    "%1$s としてログイン中"
+  ],
+  "Single": [
+    "单击",
+    "1 回押し"
+  ],
+  "Single click": [
+    "单击",
+    "1 回押し"
+  ],
+  "Single click: Play/Pause · Double click: Next track": [
+    "单击：播放/暂停 · 双击：下一首",
+    "1 回押し：再生／一時停止 · 2 回押し：次の曲"
+  ],
+  "Single click: Play/Pause. Double click: Next track.": [
+    "单击：播放/暂停。双击：下一首。",
+    "1 回押し：再生／一時停止。2 回押し：次の曲。"
+  ],
+  "Skip": [
+    "跳过",
+    "スキップ"
+  ],
+  "Skip Setup": [
+    "跳过设置",
+    "設定をスキップ"
+  ],
+  "Sleep Insights": [
+    "睡眠洞察",
+    "睡眠の分析"
+  ],
+  "Sort Options": [
+    "排序选项",
+    "並べ替えの設定"
+  ],
+  "Source 1": [
+    "来源 1",
+    "取得元 1"
+  ],
+  "Source 2": [
+    "来源 2",
+    "取得元 2"
+  ],
+  "Source URL": [
+    "来源 URL",
+    "取得元の URL"
+  ],
+  "Speech Recognition": [
+    "语音识别",
+    "音声認識"
+  ],
+  "Speech recognition": [
+    "语音识别",
+    "音声認識"
+  ],
+  "Spoken Language": [
+    "语音语言",
+    "認識する言語"
+  ],
+  "Star": [
+    "星标",
+    "お気に入り"
+  ],
+  "Star a contact to always receive notifications from them, even if e.g. the app is muted": [
+    "将联系人标为星标后，即使应用已静音，也会始终收到该联系人的通知",
+    "連絡先をお気に入りにすると、アプリをミュートしていても、その人からの通知を受信します"
+  ],
+  "Starting": [
+    "正在开始",
+    "開始中"
+  ],
+  "Status: %1$s": [
+    "状态：%1$s",
+    "状態：%1$s"
+  ],
+  "Store disabled notifications": [
+    "保存已禁用的通知",
+    "無効化した通知を保存"
+  ],
+  "Store notifications for": [
+    "通知保存时长",
+    "通知の保存期間"
+  ],
+  "Store notifications from disabled apps/channels, to allow viewing them in history": [
+    "保存已禁用应用或渠道的通知，以便在历史记录中查看",
+    "無効化したアプリやチャンネルの通知を保存し、履歴で確認できるようにします"
+  ],
+  "Streamable": [
+    "流式传输",
+    "ストリーミング"
+  ],
+  "Subfolder": [
+    "子文件夹",
+    "サブフォルダー"
+  ],
+  "Successfully signed in.": [
+    "登录成功。",
+    "ログインしました。"
+  ],
+  "Sunday": [
+    "星期日",
+    "日曜日"
+  ],
+  "Supported languages": [
+    "支持的语言",
+    "対応言語"
+  ],
+  "Sync Now": [
+    "立即同步",
+    "今すぐ同期"
+  ],
+  "Sync Pebble health data to phone": [
+    "将 Pebble 健康数据同步到手机",
+    "Pebble のヘルスケアデータをスマートフォンに同期"
+  ],
+  "Sync firmware updates, locker, etc manually now (happens regularly automatically)": [
+    "立即手动同步固件更新、应用库等；平时也会定期自动执行",
+    "ファームウェア更新やアプリ一覧などを手動で同期します。通常は定期的に自動実行されます"
+  ],
+  "Sync to Apple Health": [
+    "同步到 Apple 健康",
+    "Apple ヘルスケアに同期"
+  ],
+  "Sync to Health Connect": [
+    "同步到 Health Connect",
+    "ヘルスコネクトに同期"
+  ],
+  "Sync, manage, or delete cloud backup": [
+    "同步、管理或删除云端备份",
+    "クラウドバックアップの同期・管理・削除"
+  ],
+  "Syncing": [
+    "正在同步",
+    "同期中"
+  ],
+  "Syncing...": [
+    "正在同步…",
+    "同期中…"
+  ],
+  "System": [
+    "跟随系统",
+    "システム"
+  ],
+  "System (On-Device)": [
+    "系统（设备端）",
+    "システム（端末内）"
+  ],
+  "T+?": [
+    "T+?",
+    "T+?"
+  ],
+  "TYPICAL %1$s": [
+    "通常%1$s",
+    "通常の%1$s"
+  ],
+  "Take Watch Screenshot": [
+    "截取手表屏幕",
+    "時計のスクリーンショットを撮影"
+  ],
+  "Take out the trash": [
+    "倒垃圾",
+    "ごみを出す"
+  ],
+  "Tap custom pattern": [
+    "点按输入自定义模式",
+    "タップしてカスタムパターンを入力"
+  ],
+  "Tap to see what's working and what's still in development": [
+    "点按查看已可用和仍在开发中的功能",
+    "タップして、利用可能な機能と開発中の機能を確認"
+  ],
+  "Tasker": [
+    "Tasker",
+    "Tasker"
+  ],
+  "Tasker connected. Choose it for notes or reminders in Index settings.": [
+    "Tasker 已连接。在 Index 设置中将它选为笔记或提醒的目标位置。",
+    "Tasker を連携しました。Index の設定で、メモやリマインダーの送信先に選んでください。"
+  ],
+  "Test": [
+    "测试",
+    "テスト"
+  ],
+  "Text": [
+    "文本",
+    "テキスト"
+  ],
+  "The download didn't finish. Check your connection and try again.": [
+    "下载未完成，请检查网络连接后重试。",
+    "ダウンロードが完了しませんでした。接続を確認して再試行してください。"
+  ],
+  "The local model runs on-device and is experimental — less accurate than cloud.": [
+    "本地模型在设备端运行，仍处于实验阶段，准确度低于云端。",
+    "ローカルモデルは端末内で動作する実験的な機能です。クラウドより精度が低くなります。"
+  ],
+  "The offline agent does not support MCP sandboxes. Set the default MCP ": [
+    "离线智能体不支持 MCP 沙盒。请将默认 MCP",
+    "オフラインエージェントは MCP サンドボックスに非対応です。使用するには、既定の MCP"
+  ],
+  "There was an issue transcribing this recording": [
+    "此录音的转写遇到问题",
+    "この録音の文字起こしで問題が発生しました"
+  ],
+  "There was an issue with the AI processing": [
+    "AI 处理遇到问题",
+    "AI 処理で問題が発生しました"
+  ],
+  "Thinking": [
+    "思考中",
+    "処理中"
+  ],
+  "Thinking...": [
+    "正在思考…",
+    "処理中…"
+  ],
+  "Third Watchface": [
+    "第三个表盘",
+    "3 つ目の文字盤"
+  ],
+  "This account already exists. Signing in will switch to it, and any ": [
+    "此账户已存在。登录后将切换到该账户，",
+    "このアカウントはすでに存在します。ログインするとそのアカウントに切り替わり、"
+  ],
+  "This allows us to fix crashes in the mobile app - otherwise we don't know how often they are happening, or how to fix them": [
+    "帮助我们修复手机 App 的崩溃，否则我们无法了解发生频率或修复方式",
+    "モバイルアプリのクラッシュ修正に役立ちます。無効にすると発生頻度や修正方法を把握できません"
+  ],
+  "This allows us to track metrics e.g. connectivity, so that we can track different types of error and improve reliability": [
+    "帮助统计连接情况等指标，追踪不同错误并提高可靠性",
+    "接続状況などを測定し、さまざまなエラーを追跡して信頼性を改善します"
+  ],
+  "This app's settings page may not work any more": [
+    "此应用的设置页面可能已不可用",
+    "このアプリの設定ページは利用できなくなっている可能性があります"
+  ],
+  "This device doesn't support local speech recognition": [
+    "此设备不支持本地语音识别",
+    "この端末はローカル音声認識に対応していません"
+  ],
+  "This device doesn't support system speech recognition": [
+    "此设备不支持系统语音识别",
+    "この端末はシステムの音声認識に対応していません"
+  ],
+  "This feature requires downloading additional machine learning models. ": [
+    "此功能需要下载额外的机器学习模型。",
+    "この機能には、追加の機械学習モデルのダウンロードが必要です。"
+  ],
+  "This grants the app calendar access.": [
+    "这将授予 App 日历访问权限。",
+    "アプリにカレンダーへのアクセスを許可します。"
+  ],
+  "This is a:": [
+    "问题类型：",
+    "種類："
+  ],
+  "This is the content of the dialog. It can be multiple lines long and contain various information.": [
+    "这是对话框内容，可以包含多行文字和各种信息。",
+    "ダイアログの内容です。複数行のテキストやさまざまな情報を表示できます。"
+  ],
+  "This item is gone.": [
+    "此项目已不存在。",
+    "この項目は削除されています。"
+  ],
+  "This might take a few minutes on a slow connection...": [
+    "网速较慢时可能需要几分钟…",
+    "低速な接続では数分かかる場合があります…"
+  ],
+  "This recording created %1$s %2$s in your feed.": [
+    "此录音在动态中创建了 %1$s 个%2$s。",
+    "この録音からフィードに %1$s 件の%2$sが作成されました。"
+  ],
+  "This will delete all recordings from the local feed on this device. Cloud backup is not affected. You can restore from cloud with Sync or from a backup zip with Import.": [
+    "将删除此设备本地动态中的所有录音，不影响云端备份。之后可通过同步从云端恢复，或导入备份 ZIP 恢复。",
+    "この端末のローカルフィードから、すべての録音を削除します。クラウドバックアップには影響しません。同期でクラウドから復元するか、バックアップ ZIP をインポートして復元できます。"
+  ],
+  "This will permanently delete all your cloud backup data. This cannot be undone.": [
+    "所有云端备份数据将被永久删除，此操作无法撤销。",
+    "クラウドバックアップのすべてのデータを完全に削除します。この操作は取り消せません。"
+  ],
+  "This will permanently delete the recording.": [
+    "此录音将被永久删除。",
+    "この録音は完全に削除されます。"
+  ],
+  "This will wipe all existing health data and replace it with 30 days of fake data. This cannot be undone.": [
+    "现有健康数据将被全部删除，并替换为 30 天的模拟数据。此操作无法撤销。",
+    "既存のヘルスケアデータをすべて消去し、30 日分のテストデータに置き換えます。この操作は取り消せません。"
+  ],
+  "Thursday": [
+    "星期四",
+    "木曜日"
+  ],
+  "Time": [
+    "时间",
+    "時刻"
+  ],
+  "Timeline": [
+    "时间线",
+    "タイムライン"
+  ],
+  "Timer started": [
+    "计时器已启动",
+    "タイマーを開始しました"
+  ],
+  "Timestamp": [
+    "时间戳",
+    "タイムスタンプ"
+  ],
+  "Timestamp: %1$s": [
+    "时间戳：%1$s",
+    "タイムスタンプ：%1$s"
+  ],
+  "Title": [
+    "标题",
+    "タイトル"
+  ],
+  "To receive them, in Tasker:": [
+    "在 Tasker 中这样接收：",
+    "Tasker で受け取るには："
+  ],
+  "To unpair, find the Index 01 in your Bluetooth settings and choose to forget/unpair it.": [
+    "在蓝牙设置中找到 Index 01，选择忽略或取消配对。",
+    "Bluetooth 設定で Index 01 を見つけ、登録解除またはペアリング解除を選んでください。"
+  ],
+  "To unpair, first remove it from this app using the 3-dot menu, then go to Settings > Bluetooth, find the Index 01 in the list of devices, tap the info icon and choose \"Forget This Device\".": [
+    "先在本 App 的三点菜单中移除设备，再前往“设置 > 蓝牙”，找到 Index 01，点按信息图标并选择“忽略此设备”。",
+    "まずアプリの 3 点メニューから削除し、「設定 > Bluetooth」で Index 01 を見つけ、情報アイコンから「このデバイスの登録を解除」を選んでください。"
+  ],
+  "Today": [
+    "今天",
+    "今日"
+  ],
+  "Today's Steps": [
+    "今日步数",
+    "今日の歩数"
+  ],
+  "Tomorrow": [
+    "明天",
+    "明日"
+  ],
+  "Tool": [
+    "工具",
+    "ツール"
+  ],
+  "Tool executed": [
+    "工具已执行",
+    "ツールを実行しました"
+  ],
+  "Trace Timeline": [
+    "处理时间线",
+    "トレースタイムライン"
+  ],
+  "Transcription error": [
+    "转写错误",
+    "文字起こしのエラー"
+  ],
+  "Transcription: %1$s": [
+    "转写：%1$s",
+    "文字起こし：%1$s"
+  ],
+  "Transfer Failed": [
+    "传输失败",
+    "転送に失敗しました"
+  ],
+  "Transfer failed": [
+    "传输失败",
+    "転送に失敗しました"
+  ],
+  "Transferring...": [
+    "正在传输…",
+    "転送中…"
+  ],
+  "Try it out": [
+    "试试看",
+    "試してみる"
+  ],
+  "Try it out! Hold the button and speak into the ring, then release.": [
+    "试试看！按住戒指按钮说话，然后松开。",
+    "試してみましょう！リングのボタンを押したまま話し、話し終えたら離してください。"
+  ],
+  "Tuesday": [
+    "星期二",
+    "火曜日"
+  ],
+  "Turn on Cloud Backup to set up encryption": [
+    "开启云端备份后可设置加密",
+    "暗号化を設定するには、クラウドバックアップを有効にしてください"
+  ],
+  "Type": [
+    "类型",
+    "種類"
+  ],
+  "Type \"delete\" to confirm:": [
+    "输入“delete”以确认：",
+    "確認のため「delete」と入力してください："
+  ],
+  "Type or hold to record…": [
+    "输入文字或按住录音…",
+    "入力するか、長押しして録音…"
+  ],
+  "Type or paste the encryption key from another device.": [
+    "输入或粘贴来自其他设备的加密密钥。",
+    "別の端末の暗号化キーを入力するか貼り付けてください。"
+  ],
+  "Type or paste your encryption key as text": [
+    "以文本形式输入或粘贴加密密钥",
+    "暗号化キーをテキストで入力または貼り付けます"
+  ],
+  "Type to search for locations...": [
+    "输入以搜索地点…",
+    "入力して場所を検索…"
+  ],
+  "Typical sleep by weekday": [
+    "每周各日的通常睡眠",
+    "曜日ごとの通常の睡眠"
+  ],
+  "Typical steps by weekday": [
+    "每周各日的通常步数",
+    "曜日ごとの通常の歩数"
+  ],
+  "URL": [
+    "URL",
+    "URL"
+  ],
+  "Units": [
+    "单位",
+    "単位"
+  ],
+  "Unknown version": [
+    "未知版本",
+    "不明なバージョン"
+  ],
+  "Unpair": [
+    "取消配对",
+    "ペアリングを解除"
+  ],
+  "Unsaved changes": [
+    "有未保存的更改",
+    "未保存の変更があります"
+  ],
+  "Upcoming": [
+    "即将到来",
+    "今後の予定"
+  ],
+  "Update": [
+    "更新",
+    "更新"
+  ],
+  "Update complete": [
+    "更新完成",
+    "更新完了"
+  ],
+  "Update failed": [
+    "更新失败",
+    "更新に失敗しました"
+  ],
+  "Updating voice model": [
+    "正在更新语音模型",
+    "音声モデルを更新中"
+  ],
+  "Updating your watch to the latest version of PebbleOS...": [
+    "正在将手表更新到最新版 PebbleOS…",
+    "時計を最新の PebbleOS に更新中…"
+  ],
+  "Upload More Logs": [
+    "上传更多日志",
+    "ログを追加アップロード"
+  ],
+  "Use Core OTA service": [
+    "使用 Core OTA 服务",
+    "Core OTA サービスを使用"
+  ],
+  "Use LAN developer connection": [
+    "使用局域网开发连接",
+    "LAN 経由の開発用接続を使用"
+  ],
+  "Use Pebble Weather Service when apps are broken": [
+    "应用天气功能失效时使用 Pebble 天气服务",
+    "アプリの天気機能が壊れている場合に Pebble 天気サービスを使用"
+  ],
+  "Use miles/feet/inches/lb instead of metric units": [
+    "使用英里、英尺、英寸、磅代替公制单位",
+    "メートル法の代わりにマイル／フィート／インチ／ポンドを使用します"
+  ],
+  "Use reversed PPoG": [
+    "使用反向 PPoG",
+    "逆方向 PPoG を使用"
+  ],
+  "Use vibration patterns from OS": [
+    "使用系统提供的振动模式",
+    "OS の振動パターンを使用"
+  ],
+  "Used for accurate calorie and distance estimates": [
+    "用于准确估算热量和距离",
+    "消費カロリーと距離を正確に推定するために使用します"
+  ],
+  "Used for accurate calorie estimates": [
+    "用于准确估算热量",
+    "消費カロリーを正確に推定するために使用します"
+  ],
+  "Used for heart-rate zone calculations": [
+    "用于计算心率区间",
+    "心拍ゾーンの計算に使用します"
+  ],
+  "Uses Apple's built-in speech recognition — no download needed. ": [
+    "使用 Apple 内置的语音识别，无需下载。",
+    "Apple 標準の音声認識を使用します。ダウンロードは不要です。"
+  ],
+  "Uses your device's location": [
+    "使用设备位置",
+    "端末の位置情報を使用します"
+  ],
+  "VAULT FOLDER": [
+    "仓库文件夹",
+    "保管庫フォルダー"
+  ],
+  "Verbose PPoG logging": [
+    "详细 PPoG 日志",
+    "詳細な PPoG ログ"
+  ],
+  "Verbose connection logging": [
+    "详细连接日志",
+    "詳細な接続ログ"
+  ],
+  "Version: %1$s": [
+    "版本：%1$s",
+    "バージョン：%1$s"
+  ],
+  "Vibration Pattern": [
+    "振动模式",
+    "振動パターン"
+  ],
+  "View My Bug Reports": [
+    "查看我的问题报告",
+    "自分の不具合報告を表示"
+  ],
+  "View debug stats": [
+    "查看调试统计",
+    "デバッグ統計を表示"
+  ],
+  "View your synced health data in Google Fit": [
+    "在 Google Fit 中查看已同步的健康数据",
+    "同期したヘルスケアデータを Google Fit で表示します"
+  ],
+  "Voice model update": [
+    "语音模型更新",
+    "音声モデルの更新"
+  ],
+  "Waiting for reboot": [
+    "正在等待重启",
+    "再起動を待っています"
+  ],
+  "Waiting for your Pebble to connect..": [
+    "正在等待 Pebble 连接…",
+    "Pebble の接続を待っています…"
+  ],
+  "Waiting for your Pebble to restart..": [
+    "正在等待 Pebble 重启…",
+    "Pebble の再起動を待っています…"
+  ],
+  "Waiting to sync %1$s to watch...": [
+    "正在等待将 %1$s 同步到手表…",
+    "%1$s の時計への同期を待っています…"
+  ],
+  "Warning: this will wipe all existing health data!": [
+    "警告：将清空所有现有健康数据！",
+    "警告：既存のヘルスケアデータがすべて消去されます！"
+  ],
+  "Watch": [
+    "手表",
+    "時計"
+  ],
+  "Watch bug": [
+    "手表问题",
+    "時計の不具合"
+  ],
+  "Watch fully charged": [
+    "手表充电完成",
+    "時計の充電完了"
+  ],
+  "Watch screenshot": [
+    "手表截图",
+    "時計のスクリーンショット"
+  ],
+  "Watch settings sync": [
+    "同步手表设置",
+    "時計の設定を同期"
+  ],
+  "Watch type for unknown devices": [
+    "未知设备的手表类型",
+    "不明なデバイスに適用する時計の種類"
+  ],
+  "Watchapp Collections": [
+    "手表应用合集",
+    "ウォッチアプリのコレクション"
+  ],
+  "Watchface Collections": [
+    "表盘合集",
+    "文字盤のコレクション"
+  ],
+  "We've improved on-device voice recognition. Update the model to keep transcribing offline.": [
+    "设备端语音识别已改进。请更新模型，以便继续离线转写。",
+    "端末内の音声認識が改善されました。オフラインで文字起こしを続けるには、モデルを更新してください。"
+  ],
+  "Weather": [
+    "天气",
+    "天気"
+  ],
+  "Weather Pins": [
+    "天气条目",
+    "天気のピン"
+  ],
+  "Weather Refresh Interval": [
+    "天气刷新间隔",
+    "天気の更新間隔"
+  ],
+  "Webhook": [
+    "Webhook",
+    "Webhook"
+  ],
+  "Wednesday": [
+    "星期三",
+    "水曜日"
+  ],
+  "Week": [
+    "周",
+    "週"
+  ],
+  "Weight": [
+    "体重",
+    "体重"
+  ],
+  "What's new in the app": [
+    "App 更新内容",
+    "アプリの新機能"
+  ],
+  "What’s new in PebbleOS": [
+    "PebbleOS 更新内容",
+    "PebbleOS の新機能"
+  ],
+  "What’s new in the app": [
+    "App 更新内容",
+    "アプリの新機能"
+  ],
+  "Wipe & Populate": [
+    "清空并填充",
+    "消去して作成"
+  ],
+  "Wispr Flow": [
+    "Wispr Flow",
+    "Wispr Flow"
+  ],
+  "Write steps, heart rate, sleep, and workouts to your phone's health platform": [
+    "将步数、心率、睡眠和运动记录写入手机健康平台",
+    "歩数、心拍数、睡眠、ワークアウトをスマートフォンのヘルスケア基盤に書き込みます"
+  ],
+  "Yesterday": [
+    "昨天",
+    "昨日"
+  ],
+  "Yet another sample watchface for preview purposes.": [
+    "又一个用于预览的示例表盘。",
+    "もう 1 つのプレビュー用サンプル文字盤です。"
+  ],
+  "You asked": [
+    "你的提问",
+    "あなたの質問"
+  ],
+  "You can change these later in settings": [
+    "以后可以在设置中更改",
+    "これらは後から設定で変更できます"
+  ],
+  "You can follow up on an existing bug report by adding more logs or information:": [
+    "你可以为已有的问题报告补充日志或信息：",
+    "既存の不具合報告にログや情報を追加できます："
+  ],
+  "You have unsaved changes to your quick replies.": [
+    "快捷回复中有未保存的更改。",
+    "クイック返信に未保存の変更があります。"
+  ],
+  "You must be signed into your Pebble account to view your Battery usage.": [
+    "登录 Pebble 账户后才能查看电池用量。",
+    "バッテリー使用状況を表示するには、Pebble アカウントにログインしてください。"
+  ],
+  "You must sign in to submit a bug report": [
+    "登录后才能提交问题报告",
+    "不具合を報告するにはログインしてください"
+  ],
+  "You need 'Send watch analytics' enabled to view your Battery usage.": [
+    "启用“发送手表分析数据”后才能查看电池用量。",
+    "バッテリー使用状況を表示するには、「時計の分析データを送信」を有効にしてください。"
+  ],
+  "You need to be signed in to use cloud speech recognition": [
+    "使用云端语音识别需要登录",
+    "クラウド音声認識を使用するにはログインしてください"
+  ],
+  "You need to sign in to contact the developer.": [
+    "登录后才能联系开发者。",
+    "開発者に連絡するにはログインしてください。"
+  ],
+  "You'll save a copy so you can restore on another device.": [
+    "请保存一份副本，以便在其他设备上恢复。",
+    "別の端末で復元できるように、キーのコピーを保存します。"
+  ],
+  "You'll see the light flash red green blue repeatedly when successful.": [
+    "成功后，指示灯会反复闪烁红、绿、蓝三色。",
+    "成功すると、ランプが赤・緑・青に繰り返し点滅します。"
+  ],
+  "You're all done!": [
+    "全部完成了！",
+    "すべて完了です！"
+  ],
+  "You're holding an entirely new type of device. Index 01 isn't like ": [
+    "你手中是一种全新的设备。Index 01",
+    "お手元の Index 01 は、まったく新しい種類のデバイスです。"
+  ],
+  "Your device may struggle with larger models, a reduced accuracy model will be used.": [
+    "你的设备可能难以运行大模型，将使用准确度稍低的模型。",
+    "この端末では大きなモデルの実行が難しいため、精度を抑えたモデルを使用します。"
+  ],
+  "Your key was generated on another device and isn't in this ": [
+    "密钥由其他设备生成，当前密码管理器中没有。",
+    "キーは別の端末で生成されており、このパスワードマネージャーにはありません。"
+  ],
+  "anything you've used before. Please spend a few minutes learning how ": [
+    "与你以往使用的设备都不同。请花几分钟了解",
+    "これまでのデバイスとの違いや使い方を知り、"
+  ],
+  "apps or settings saved as a guest on this device won't carry over.": [
+    "此设备上作为访客保存的应用和设置不会迁移过去。",
+    "この端末でゲストとして保存したアプリや設定は引き継がれません。"
+  ],
+  "banner": [
+    "横幅",
+    "バナー"
+  ],
+  "be light and variable, making it a pleasant day to be outdoors.": [
+    "风力较小、风向不定，适合户外活动。",
+    "風は弱く、屋外で過ごしやすい一日になるでしょう。"
+  ],
+  "child-row-fade": [
+    "child-row-fade",
+    "child-row-fade"
+  ],
+  "connection to the watch will not work while they are installed.": [
+    "否则将无法连接手表。",
+    "インストールされたままだと、時計に接続できません。"
+  ],
+  "coredevices.coreapp.": [
+    "coredevices.coreapp 限定为此 App。",
+    "coredevices.coreapp でこのアプリに限定します。"
+  ],
+  "delete": [
+    "delete",
+    "delete"
+  ],
+  "description": [
+    "说明",
+    "説明"
+  ],
+  "firmware from sources you trust.": [
+    "可信来源的固件。",
+    "信頼できる提供元のファームウェアのみインストールしてください。"
+  ],
+  "fleeting": [
+    "fleeting",
+    "fleeting"
+  ],
+  "iOS Reminders": [
+    "iOS 提醒事项",
+    "iOS リマインダー"
+  ],
+  "it works, and how to get the most out of it.": [
+    "它的使用方式，充分发挥它的作用。",
+    "活用するために、数分間ご覧ください。"
+  ],
+  "password manager. Paste your backup key, or import the ": [
+    "请粘贴备份密钥，或导入",
+    "バックアップしたキーを貼り付けるか、"
+  ],
+  "sandbox group's model to \"Index Agent\" to use it.": [
+    "沙盒分组的模型设为“Index Agent”。",
+    "サンドボックスグループのモデルを「Index Agent」に設定してください。"
+  ],
+  "sync-hint-alpha": [
+    "sync-hint-alpha",
+    "sync-hint-alpha"
+  ],
+  "sync-hint-pulse": [
+    "sync-hint-pulse",
+    "sync-hint-pulse"
+  ],
+  "transcription fails.": [
+    "将改用云端转写。",
+    "クラウドで文字起こしを行います。"
+  ],
+  "transcription if the language isn't supported or on-device ": [
+    "若不支持该语言或设备端识别失败，",
+    "言語が非対応の場合や端末内での音声認識に失敗した場合は、"
+  ],
+  "uninstall them (%1$s) to avoid connectivity problems.": [
+    "请卸载它们（%1$s），以免出现连接问题。",
+    "接続の問題を防ぐため、これら（%1$s）をアンインストールしてください。"
+  ],
+  "weather with a high of 63°F (17°C) and a low of 44°F (6°C). Winds will ": [
+    "最高温度 63°F（17°C），最低温度 44°F（6°C）。",
+    "最高気温は 17°C（63°F）、最低気温は 6°C（44°F）です。"
+  ],
+  "下载": [
+    "下载",
+    "ダウンロード",
+    "Download"
+  ],
+  "下载后点安装即可，设置不会丢失。": [
+    "下载后点安装即可，设置不会丢失。",
+    "ダウンロード後にインストールしてください。設定は保持されます。",
+    "Download and install it. Your settings will be preserved."
+  ],
+  "不是本 App 导出的备份文件": [
+    "不是本 App 导出的备份文件",
+    "このアプリから書き出されたバックアップではありません",
+    "This backup was not exported by this app"
+  ],
+  "以后": [
+    "以后",
+    "後で",
+    "Later"
+  ],
+  "会用备份替换当前的全部设置和数据，然后 App 自动重启。继续吗？": [
+    "会用备份替换当前的全部设置和数据，然后 App 自动重启。继续吗？",
+    "現在のすべての設定とデータをバックアップで置き換え、アプリを再起動します。続けますか？",
+    "Replace all current settings and data with the backup, then restart the app?"
+  ],
+  "取消": [
+    "取消",
+    "キャンセル",
+    "Cancel"
+  ],
+  "备份与更新（构建 %1$s）": [
+    "备份与更新（构建 %1$s）",
+    "バックアップと更新（ビルド %1$s）",
+    "Backup and updates (build %1$s)"
+  ],
+  "备份来自另一个 App（%1$s）": [
+    "备份来自另一个 App（%1$s）",
+    "バックアップは別のアプリ（%1$s）のものです",
+    "Backup belongs to another app (%1$s)"
+  ],
+  "失败": [
+    "失败",
+    "失敗",
+    "Failed"
+  ],
+  "好": [
+    "好",
+    "OK",
+    "OK"
+  ],
+  "导入完成，正在重启": [
+    "导入完成，正在重启",
+    "インポートが完了しました。再起動中です",
+    "Import complete. Restarting"
+  ],
+  "导入并重启": [
+    "导入并重启",
+    "インポートして再起動",
+    "Import and restart"
+  ],
+  "导入设置": [
+    "导入设置",
+    "設定をインポート",
+    "Import settings"
+  ],
+  "导入设置…": [
+    "导入设置…",
+    "設定をインポート…",
+    "Import settings…"
+  ],
+  "导出设置…": [
+    "导出设置…",
+    "設定を書き出す…",
+    "Export settings…"
+  ],
+  "已导出 %1$s 个文件": [
+    "已导出 %1$s 个文件",
+    "%1$s 件のファイルを書き出しました",
+    "Exported %1$s files"
+  ],
+  "已是最新版本 %1$s（构建 %2$s）": [
+    "已是最新版本 %1$s（构建 %2$s）",
+    "最新バージョン %1$s（ビルド %2$s）です",
+    "Already up to date: %1$s (build %2$s)"
+  ],
+  "无法保存备份文件": [
+    "无法保存备份文件",
+    "バックアップファイルを保存できません",
+    "Could not save backup file"
+  ],
+  "无法写入所选位置": [
+    "无法写入所选位置",
+    "選択した場所に書き込めません",
+    "Could not write to the selected location"
+  ],
+  "无法读取所选文件": [
+    "无法读取所选文件",
+    "選択したファイルを読み取れません",
+    "Could not read the selected file"
+  ],
+  "日本語": [
+    "日本語",
+    "日本語"
+  ],
+  "有新版本 %1$s（构建 %2$s）": [
+    "有新版本 %1$s（构建 %2$s）",
+    "新しいバージョン %1$s（ビルド %2$s）があります",
+    "Version %1$s is available (build %2$s)"
+  ],
+  "检查更新": [
+    "检查更新",
+    "更新を確認",
+    "Check for updates"
+  ],
+  "正在导入…": [
+    "正在导入…",
+    "インポート中…",
+    "Importing…"
+  ],
+  "正在导出…": [
+    "正在导出…",
+    "書き出し中…",
+    "Exporting…"
+  ],
+  "正在检查更新…": [
+    "正在检查更新…",
+    "更新を確認中…",
+    "Checking for updates…"
+  ],
+  "点按下载安装%1$s，设置不会丢失": [
+    "点按下载安装%1$s，设置不会丢失",
+    "タップしてダウンロード・インストール%1$s。設定は保持されます",
+    "Tap to download and install%1$s. Your settings will be preserved"
+  ],
+  "简体中文": [
+    "简体中文",
+    "简体中文"
+  ],
+  "这个构建没有配置更新地址": [
+    "这个构建没有配置更新地址",
+    "このビルドには更新先の URL が設定されていません",
+    "No update URL is configured in this build"
+  ],
+  "连不上更新服务器，稍后再试": [
+    "连不上更新服务器，稍后再试",
+    "更新サーバーに接続できません。後でもう一度お試しください",
+    "Could not reach the update server. Try again later"
+  ]
+}

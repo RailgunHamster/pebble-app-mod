@@ -21,3 +21,13 @@ The repository holds no secrets. Tokens, the relay address and the signing key a
 - **Updates:** tap the notification and install over the old one. Settings stay.
 
 No Firebase config is included, so features that need a Core Devices account (sign-in, cloud sync) don't work in this build.
+# 中文、日文与显示语言
+
+设置 → 手机 → 常规 → App 显示语言，可选择跟随系统、简体中文、日本語、English；选择会保存，切换后立即刷新界面。Android 和 iOS 共用翻译与设置，平台语言环境各自实现。
+
+`localization/catalog.json` 是翻译来源，按原文匹配，保留格式参数。`tools/localize.py` 在构建时用 Kotlin 语法树处理已确认的界面文字，生成标准 Compose `values-zh`、`values-ja` 资源及运行时文本表。界面代码的整页副本不放进 overlay；上游挪动代码时无需重新定位行号。语言入口保留为独立的 `004` 补丁。
+
+上游新增文案默认回退英文，并记录到 Actions 的 `localization-report`，便于补译。生成的资源可单独整理成上游翻译提交。脚本不会翻译用户输入、录音转写或协议标识。
+
+本地检查：`python -m pip install -r requirements-localization.txt`，然后 `python -m unittest discover -s tests -v`。构建继续沿用现有私有 relay 分发流程，APK 不放公开附件。
+

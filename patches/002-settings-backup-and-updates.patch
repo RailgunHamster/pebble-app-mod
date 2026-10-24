@@ -1,36 +1,5 @@
-From e93addf9b75dd13ecba6ca394298585e7b3a0094 Mon Sep 17 00:00:00 2001
-From: RailgunHamster <RailgunHamster@users.noreply.github.com>
-Date: Thu, 22 Oct 2026 02:58:50 +0000
-Subject: [PATCH 2/3] Settings backup and update check
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
-Long-press the app icon: 备份与更新. Export writes one zip of the app's
-settings and data (no caches, crash reports, speech models or lock files),
-import replaces them and restarts the app (applied before anything opens
-the databases). The update check looks at modUpdateUrl every 12 h and
-notifies about a newer CI build (modBuild).
----
- androidApp/src/main/AndroidManifest.xml       |  16 ++
- .../src/main/res/values/mod_strings.xml       |   7 +
- androidApp/src/main/res/xml/mod_shortcuts.xml |  26 ++++
- .../coredevices/coreapp/MainApplication.kt    |   5 +
- .../coredevices/coreapp/mod/ModBackup.kt      | 140 ++++++++++++++++++
- .../coreapp/mod/ModBackupActivity.kt          | 119 +++++++++++++++
- .../coreapp/mod/ModRestartActivity.kt         |  55 +++++++
- .../coredevices/coreapp/mod/ModUpdate.kt      | 118 +++++++++++++++
- util/build.gradle.kts                         |   3 +
- 9 files changed, 489 insertions(+)
- create mode 100644 androidApp/src/main/res/values/mod_strings.xml
- create mode 100644 androidApp/src/main/res/xml/mod_shortcuts.xml
- create mode 100644 composeApp/src/androidMain/kotlin/coredevices/coreapp/mod/ModBackup.kt
- create mode 100644 composeApp/src/androidMain/kotlin/coredevices/coreapp/mod/ModBackupActivity.kt
- create mode 100644 composeApp/src/androidMain/kotlin/coredevices/coreapp/mod/ModRestartActivity.kt
- create mode 100644 composeApp/src/androidMain/kotlin/coredevices/coreapp/mod/ModUpdate.kt
-
 diff --git a/androidApp/src/main/AndroidManifest.xml b/androidApp/src/main/AndroidManifest.xml
-index 15dffad9..3318ecb8 100644
+index 481e1ce..f3d53c9 100644
 --- a/androidApp/src/main/AndroidManifest.xml
 +++ b/androidApp/src/main/AndroidManifest.xml
 @@ -33,6 +33,8 @@
@@ -42,10 +11,10 @@ index 15dffad9..3318ecb8 100644
              <intent-filter>
                  <action android:name="android.intent.action.MAIN" />
                  <category android:name="android.intent.category.LAUNCHER" />
-@@ -186,5 +188,19 @@
-                 <action android:name="coredevices.coreapp.SET_SETTING" />
+@@ -141,5 +143,19 @@
+                 <action android:name="androidx.health.ACTION_SHOW_PERMISSIONS_RATIONALE" />
              </intent-filter>
-         </receiver>
+         </activity-alias>
 +        <!-- personal build: settings backup / update check, and the restart helper -->
 +        <activity
 +            android:name="coredevices.coreapp.mod.ModBackupActivity"
@@ -65,7 +34,7 @@ index 15dffad9..3318ecb8 100644
 \ No newline at end of file
 diff --git a/androidApp/src/main/res/values/mod_strings.xml b/androidApp/src/main/res/values/mod_strings.xml
 new file mode 100644
-index 00000000..74678de7
+index 0000000..74678de
 --- /dev/null
 +++ b/androidApp/src/main/res/values/mod_strings.xml
 @@ -0,0 +1,7 @@
@@ -78,7 +47,7 @@ index 00000000..74678de7
 +</resources>
 diff --git a/androidApp/src/main/res/xml/mod_shortcuts.xml b/androidApp/src/main/res/xml/mod_shortcuts.xml
 new file mode 100644
-index 00000000..31cf6dd7
+index 0000000..31cf6dd
 --- /dev/null
 +++ b/androidApp/src/main/res/xml/mod_shortcuts.xml
 @@ -0,0 +1,26 @@
@@ -109,21 +78,19 @@ index 00000000..31cf6dd7
 +    </shortcut>
 +</shortcuts>
 diff --git a/composeApp/src/androidMain/kotlin/coredevices/coreapp/MainApplication.kt b/composeApp/src/androidMain/kotlin/coredevices/coreapp/MainApplication.kt
-index 40c3727d..036c3ff6 100644
+index 836d8ca..fa86cfb 100644
 --- a/composeApp/src/androidMain/kotlin/coredevices/coreapp/MainApplication.kt
 +++ b/composeApp/src/androidMain/kotlin/coredevices/coreapp/MainApplication.kt
-@@ -67,6 +67,10 @@ class MainApplication : Application(), SingletonImageLoader.Factory, Configurati
+@@ -62,6 +62,8 @@ class MainApplication : Application(), SingletonImageLoader.Factory {
  
      override fun onCreate() {
          super.onCreate()
-+        // personal build: the restart helper's process runs nothing else; a staged settings
-+        // import is applied before anything opens the databases
 +        if (coredevices.coreapp.mod.ModRestartActivity.isRestartProcess()) return
 +        coredevices.coreapp.mod.ModBackup.applyPendingImport(this)
-         if (AppContext(this).isDebugBuild()) {
+         if (isDebuggableBuild) {
              Firebase.crashlytics.setCrashlyticsCollectionEnabled(false)
          }
-@@ -106,6 +110,7 @@ class MainApplication : Application(), SingletonImageLoader.Factory, Configurati
+@@ -101,6 +103,7 @@ class MainApplication : Application(), SingletonImageLoader.Factory {
          scheduleBackgroundJob(AppContext(this), coreConfigHolder.config.value)
          commonAppDelegate.init()
          pebbleBackgroundManager.monitorToStartBackground()
@@ -133,7 +100,7 @@ index 40c3727d..036c3ff6 100644
      private fun dumpPreviousExitInfo() {
 diff --git a/composeApp/src/androidMain/kotlin/coredevices/coreapp/mod/ModBackup.kt b/composeApp/src/androidMain/kotlin/coredevices/coreapp/mod/ModBackup.kt
 new file mode 100644
-index 00000000..641e1acf
+index 0000000..641e1ac
 --- /dev/null
 +++ b/composeApp/src/androidMain/kotlin/coredevices/coreapp/mod/ModBackup.kt
 @@ -0,0 +1,140 @@
@@ -279,7 +246,7 @@ index 00000000..641e1acf
 +}
 diff --git a/composeApp/src/androidMain/kotlin/coredevices/coreapp/mod/ModBackupActivity.kt b/composeApp/src/androidMain/kotlin/coredevices/coreapp/mod/ModBackupActivity.kt
 new file mode 100644
-index 00000000..52052983
+index 0000000..5205298
 --- /dev/null
 +++ b/composeApp/src/androidMain/kotlin/coredevices/coreapp/mod/ModBackupActivity.kt
 @@ -0,0 +1,119 @@
@@ -404,7 +371,7 @@ index 00000000..52052983
 +}
 diff --git a/composeApp/src/androidMain/kotlin/coredevices/coreapp/mod/ModRestartActivity.kt b/composeApp/src/androidMain/kotlin/coredevices/coreapp/mod/ModRestartActivity.kt
 new file mode 100644
-index 00000000..7bb746b3
+index 0000000..7bb746b
 --- /dev/null
 +++ b/composeApp/src/androidMain/kotlin/coredevices/coreapp/mod/ModRestartActivity.kt
 @@ -0,0 +1,55 @@
@@ -465,7 +432,7 @@ index 00000000..7bb746b3
 +}
 diff --git a/composeApp/src/androidMain/kotlin/coredevices/coreapp/mod/ModUpdate.kt b/composeApp/src/androidMain/kotlin/coredevices/coreapp/mod/ModUpdate.kt
 new file mode 100644
-index 00000000..35cbc27d
+index 0000000..35cbc27
 --- /dev/null
 +++ b/composeApp/src/androidMain/kotlin/coredevices/coreapp/mod/ModUpdate.kt
 @@ -0,0 +1,118 @@
@@ -588,10 +555,10 @@ index 00000000..35cbc27d
 +    }
 +}
 diff --git a/util/build.gradle.kts b/util/build.gradle.kts
-index e963235a..c709cdd5 100644
+index 7ebc12a..2ec7ac2 100644
 --- a/util/build.gradle.kts
 +++ b/util/build.gradle.kts
-@@ -192,6 +192,9 @@ buildkonfig {
+@@ -205,6 +205,9 @@ buildkonfig {
          buildConfigField(FieldSpec.Type.STRING, "KIRINKI_URL", gradleStringPropOrNull("kirinkiUrl"), nullable = true)
          // Self-hosted kirinki-compatible STT: a static bearer token instead of the Firebase ID token.
          buildConfigField(FieldSpec.Type.STRING, "KIRINKI_TOKEN", gradleStringPropOrNull("kirinkiToken"), nullable = true)
@@ -601,6 +568,3 @@ index e963235a..c709cdd5 100644
          buildConfigField(FieldSpec.Type.STRING, "MEMFAULT_TOKEN", gradleStringPropOrNull("memfaultToken"), nullable = true)
          buildConfigField(FieldSpec.Type.STRING, "GOOGLE_CLIENT_ID", gradleStringPropOrNull("googleClientId"), nullable = true)
          buildConfigField(FieldSpec.Type.BOOLEAN, "GOOGLE_AUTH_ENABLED", gradleBooleanProp("googleAuthEnabled", default = true).toString())
--- 
-2.43.0
-

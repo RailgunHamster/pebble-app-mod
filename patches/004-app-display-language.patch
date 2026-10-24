@@ -1,0 +1,65 @@
+diff --git a/composeApp/src/androidMain/kotlin/coredevices/coreapp/MainApplication.kt b/composeApp/src/androidMain/kotlin/coredevices/coreapp/MainApplication.kt
+index fa86cfb..a180f12 100644
+--- a/composeApp/src/androidMain/kotlin/coredevices/coreapp/MainApplication.kt
++++ b/composeApp/src/androidMain/kotlin/coredevices/coreapp/MainApplication.kt
+@@ -79,6 +79,7 @@ class MainApplication : Application(), SingletonImageLoader.Factory {
+                 watchModule,
+             )
+         }
++        coredevices.util.localization.AppLanguage.initialize(org.koin.core.context.GlobalContext.get().get())
+         initLogging()
+         logger.i { "onCreate() version = $appVersionName ($appVersionCode) ${if (isDebuggableBuild) "debug" else "release"}" }
+         dumpPreviousExitInfo()
+diff --git a/composeApp/src/commonMain/kotlin/coredevices/coreapp/ui/App.kt b/composeApp/src/commonMain/kotlin/coredevices/coreapp/ui/App.kt
+index 2c6b6d8..becd1f2 100644
+--- a/composeApp/src/commonMain/kotlin/coredevices/coreapp/ui/App.kt
++++ b/composeApp/src/commonMain/kotlin/coredevices/coreapp/ui/App.kt
+@@ -1,5 +1,6 @@
+ package coredevices.coreapp.ui
+ 
++import coredevices.util.localization.AppLanguageEnvironment
+ import CommonRoutes
+ import androidx.compose.foundation.layout.Box
+ import androidx.compose.foundation.layout.fillMaxSize
+@@ -32,6 +33,7 @@ fun App() {
+             navHostController.removeOnDestinationChangedListener(listener)
+         }
+     }
++    AppLanguageEnvironment(koinInject<Settings>()) {
+     AppTheme {
+         val settings: Settings = koinInject()
+         val startDestination = if (settings.getBoolean(SHOWN_ONBOARDING, false)) {
+@@ -44,4 +46,5 @@ fun App() {
+             SttModelUpdatePrompt()
+         }
+     }
++    }
+ }
+\ No newline at end of file
+diff --git a/pebble/src/commonMain/kotlin/coredevices/pebble/ui/WatchSettingsScreen.kt b/pebble/src/commonMain/kotlin/coredevices/pebble/ui/WatchSettingsScreen.kt
+index 084bcd6..773a545 100644
+--- a/pebble/src/commonMain/kotlin/coredevices/pebble/ui/WatchSettingsScreen.kt
++++ b/pebble/src/commonMain/kotlin/coredevices/pebble/ui/WatchSettingsScreen.kt
+@@ -1,5 +1,6 @@
+ package coredevices.pebble.ui
+ 
++import coredevices.util.localization.AppLanguage
+ import AppUpdateTracker
+ import CommonRoutes
+ import CoreAppVersion
+@@ -506,6 +507,15 @@ fun rememberSettingsItemsState(navBarNav: NavBarNav?, snackbarDisplay: SnackbarD
+             platformSttAvailable,
+         ) {
+             listOfNotNull(
++                basicSettingsDropdownItem(
++                    title = "App display language",
++                    topLevelType = TopLevelType.Phone,
++                    section = Section.General,
++                    items = AppLanguage.choices,
++                    selectedItem = AppLanguage.selected,
++                    onItemSelected = { AppLanguage.select(settings, it) },
++                    itemText = { AppLanguage.label(it) },
++                ),
+                 basicSettingsActionItem(
+                     title = "App Update Available",
+                     description = "Please update the Pebble App!",
