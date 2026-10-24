@@ -47,11 +47,14 @@ fun appText(english: String, vararg arguments: Any?): String {
         else -> null
     } ?: translated?.third ?: english
     return argumentPattern.replace(template) { match ->
-        val value = arguments.getOrNull(match.groupValues[1].toInt() - 1)
-        when (value) {
-            is Permission -> appText(value.name)
-            null -> match.value
-            else -> value.toString()
+        val index = match.groupValues[1].toInt() - 1
+        if (index !in arguments.indices) {
+            match.value
+        } else {
+            when (val value = arguments[index]) {
+                is Permission -> appText(value.name)
+                else -> value.toString()
+            }
         }
     }
 }
@@ -61,7 +64,7 @@ fun AppLanguageEnvironment(settings: Settings, content: @Composable () -> Unit) 
     remember(settings) { AppLanguage.initialize(settings) }
     val selected = AppLanguage.selected
     CompositionLocalProvider(LocalAppLocale provides selected.takeUnless { it == "system" }) {
-        key(selected) { content() }
+        key(selected, AppLanguage.resolved()) { content() }
     }
 }
 

@@ -233,17 +233,22 @@ def generate(source, catalog):
                                   + ' + '.join(f'{name}()' for name in chunks) + '\n', encoding='utf-8')
     for module in ('composeApp', 'pebble', 'util', 'experimental'):
         base = source / module / 'src/commonMain/composeResources'
-        for original in (base / 'values').glob('strings.xml'):
+        for original in (base / 'values').glob('*.xml'):
+            if original.name == 'mod_strings.xml':
+                continue
             for locale, index in (('values-zh', 0), ('values-ja', 1)):
-                resources = ET.Element('resources')
+                path = base / locale / original.name
+                resources = ET.parse(path).getroot() if path.exists() else ET.Element('resources')
+                existing = {entry.attrib.get('name') for entry in resources}
                 for entry in ET.parse(original).getroot():
                     english = ''.join(entry.itertext())
+                    if entry.attrib.get('name') in existing or entry.attrib.get('translatable') == 'false':
+                        continue
                     if entry.tag != 'string' or english not in catalog:
                         print(f'New resource uses English fallback: {original}: {entry.attrib}')
                         continue
                     ET.SubElement(resources, 'string', **entry.attrib).text = catalog[english][index].replace("'", "\\'")
                 ET.indent(resources)
-                path = base / locale / 'strings.xml'
                 path.parent.mkdir(parents=True, exist_ok=True)
                 ET.ElementTree(resources).write(path, encoding='utf-8', xml_declaration=True)
 
