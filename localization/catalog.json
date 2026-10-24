@@ -1,4 +1,8 @@
 {
+  "\n\nDo you want to disable Bluetooth sync for this profile to avoid conflicts?": [
+    "\n\n是否关闭此用户资料的蓝牙同步，以避免冲突？",
+    "\n\n競合を避けるため、このプロファイルの Bluetooth 同期を無効にしますか？"
+  ],
   "\n\nSupported languages:\n": [
     "\n\n支持的语言：\n",
     "\n\n対応言語：\n"
@@ -27,9 +31,29 @@
     "你的设备可能难以运行大模型，将使用准确度稍低的模型。",
     "この端末では大きなモデルの実行が難しいため、精度を抑えたモデルを使用します。"
   ],
+  " above to turn them back on.": [
+    "，即可重新启用。",
+    "にすると再び有効になります。"
+  ],
   " needs re-linking": [
     "需要重新关联",
     "の再連携が必要です"
+  ],
+  " to get accurate weather and other info": [
+    "，以获取准确的天气等信息",
+    "」をタップすると、正確な天気などの情報を取得できます"
+  ],
+  " to get accurate weather, sunrise/sunset and other info": [
+    "，以获取准确的天气、日出日落等信息",
+    "」をタップすると、正確な天気や日の出・日の入りなどの情報を取得できます"
+  ],
+  " to keep Pebble working correctly while the app is in the background": [
+    "，以便应用在后台时 Pebble 仍能正常工作",
+    "」をタップすると、アプリがバックグラウンドにあるときも Pebble が正常に動作します"
+  ],
+  " — tap to regenerate": [
+    "，点按可重新生成",
+    " — タップして再生成"
   ],
   "\"%1$s\"": [
     "“%1$s”",
@@ -155,6 +179,10 @@
     "（text/plain）发送给 Tasker，再由其转交其他应用或操作。",
     "（text/plain）で Tasker に送り、任意のアプリやアクションに振り分けられます。"
   ],
+  ", or tap to regenerate": [
+    "，或点按重新生成",
+    "、またはタップして再生成"
+  ],
   "1 hour": [
     "1 小时",
     "1 時間"
@@ -210,6 +238,10 @@
   "A folder inside your vault. Created if it doesn't exist.": [
     "仓库内的文件夹，不存在时自动创建。",
     "保管庫内のフォルダーです。存在しない場合は作成します。"
+  ],
+  "A key was generated before but isn't on this device — restore it instead": [
+    "之前已生成密钥，但此设备上没有，请恢复原密钥",
+    "以前生成したキーがこのデバイスにありません。元のキーを復元してください"
   ],
   "A sample watchface for preview purposes.": [
     "用于预览的示例表盘。",
@@ -487,13 +519,25 @@
     "所有权限均已授予！",
     "すべての権限が許可されています！"
   ],
+  "All plugins run locally on your phone and connect directly ": [
+    "所有插件均在手机本地运行，并直接连接",
+    "すべてのプラグインはスマートフォン上で動作し、"
+  ],
   "Allow": [
     "允许",
     "許可"
   ],
+  "Allow All The Time": [
+    "始终允许",
+    "常に許可"
+  ],
   "Allow Aplite/Basalt/Chalk watches to appear in BLE scan results. By default these only show via the Bluetooth Classic scan option.": [
     "允许 Aplite、Basalt、Chalk 手表出现在 BLE 扫描结果中。默认仅在经典蓝牙扫描中显示。",
     "Aplite／Basalt／Chalk の時計を BLE スキャンに表示します。既定では Bluetooth Classic のスキャンでのみ表示されます。"
+  ],
+  "Allow While Using App": [
+    "使用应用期间允许",
+    "アプリの使用中は許可"
   ],
   "Allow all": [
     "全部允许",
@@ -558,6 +602,10 @@
   "An Index 01 is already paired to this phone. To pair a different Index 01, first unpair the existing one.": [
     "此手机已配对一个 Index 01。若要配对另一个，请先取消现有配对。",
     "このスマートフォンには Index 01 がペアリング済みです。別の Index 01 をペアリングするには、既存のペアリングを解除してください。"
+  ],
+  "An encryption key already exists. Generating a new one will overwrite it.\n\n": [
+    "加密密钥已存在。生成新密钥将覆盖现有密钥。\n\n",
+    "暗号化キーがすでに存在します。新しいキーを生成すると上書きされます。\n\n"
   ],
   "An error occurred: %1$s\nPlease try again ensuring you've clicked the button to wake up the device": [
     "发生错误：%1$s\n请按下按钮唤醒设备后重试",
@@ -840,6 +888,10 @@
     "备份",
     "バックアップ"
   ],
+  "Backup and updates": [
+    "备份与更新",
+    "バックアップと更新"
+  ],
   "Backup enabled": [
     "已启用备份",
     "バックアップ有効"
@@ -1004,6 +1056,10 @@
     "更改列表类型",
     "リストの種類を変更"
   ],
+  "Change to Always Allow": [
+    "更改为始终允许",
+    "常に許可に変更"
+  ],
   "Changelog": [
     "更新日志",
     "更新履歴"
@@ -1015,6 +1071,14 @@
   "Check Core Devices service for Core watch firmware updates instead of Memfault (falls back to Memfault on failure)": [
     "从 Core Devices 服务检查 Core 手表固件更新，失败时回退到 Memfault",
     "Core の時計の更新を Memfault の代わりに Core Devices で確認します。失敗時は Memfault を使用します"
+  ],
+  "Check for a new app version": [
+    "检查 App 新版本",
+    "アプリの新しいバージョンを確認"
+  ],
+  "Check for updates": [
+    "检查更新",
+    "更新を確認"
   ],
   "Check your connection and try again.": [
     "请检查网络连接后重试。",
@@ -1236,6 +1300,10 @@
     "复制文本",
     "テキストをコピー"
   ],
+  "Copy original": [
+    "复制原文",
+    "原文をコピー"
+  ],
   "Could not play recording — audio unavailable": [
     "无法播放录音：音频不可用",
     "録音を再生できません。音声を利用できません"
@@ -1275,6 +1343,10 @@
   "Create a test notification, with actions": [
     "创建带操作按钮的测试通知",
     "アクション付きのテスト通知を作成します"
+  ],
+  "Create encryption key": [
+    "创建加密密钥",
+    "暗号化キーを作成"
   ],
   "Created %1$s": [
     "创建于 %1$s",
@@ -1900,6 +1972,10 @@
     "展开",
     "展開"
   ],
+  "Export or import app settings and data": [
+    "导出或导入 App 设置和数据",
+    "アプリの設定とデータをエクスポート・インポート"
+  ],
   "Export recording": [
     "导出录音",
     "録音を書き出す"
@@ -2284,6 +2360,10 @@
     "如果手机上装有其他 Pebble App，请先卸载，",
     "スマートフォンに他の Pebble アプリがある場合は、アンインストールしてください。"
   ],
+  "If you lose this key, you will not be able to sync or restore anything from backups and will have to start fresh.": [
+    "如果丢失此密钥，将无法同步或恢复任何备份，只能重新开始。",
+    "このキーを紛失するとバックアップを同期・復元できず、最初から設定し直す必要があります。"
+  ],
   "Ignore Missing PRF": [
     "忽略缺失的 PRF",
     "PRF の欠落を無視"
@@ -2400,6 +2480,10 @@
     "Index 录音",
     "Index の録音"
   ],
+  "Index agent": [
+    "Index 助手",
+    "Index エージェント"
+  ],
   "Index bug": [
     "Index 问题",
     "Index の不具合"
@@ -2496,6 +2580,10 @@
     "将 Index 01 放在手机旁，并按下按钮…",
     "Index 01 をスマートフォンの近くに置き、ボタンを押してください…"
   ],
+  "Key exists": [
+    "密钥已存在",
+    "キーあり"
+  ],
   "LED color used at night when \"Change Backlight Color at Night\" is on": [
     "开启“夜间更换背光颜色”后，夜间使用的 LED 颜色",
     "「夜間にバックライトの色を変更」が有効なときの夜間の LED 色"
@@ -2523,6 +2611,10 @@
   "Last Night's Sleep": [
     "昨晚睡眠",
     "昨夜の睡眠"
+  ],
+  "Last dictation original": [
+    "上次听写原文",
+    "前回の音声入力の原文"
   ],
   "Last recording was <1.5s": [
     "上一次录音短于 1.5 秒",
@@ -2563,6 +2655,10 @@
   "Light": [
     "浅色",
     "ライト"
+  ],
+  "Lightly edit the full text after finishing; requires a network connection": [
+    "结束后轻度整理全文；需要网络连接",
+    "入力終了後に文章全体を整えます。ネット接続が必要です"
   ],
   "Limited background access": [
     "受限的后台访问",
@@ -2940,6 +3036,10 @@
     "尚未添加联系人。",
     "連絡先はまだ追加されていません。"
   ],
+  "No dictation draft yet": [
+    "暂无听写原文",
+    "音声入力の原文はまだありません"
+  ],
   "No lists yet.": [
     "暂无列表。",
     "リストはまだありません。"
@@ -3091,6 +3191,10 @@
   "Nothing here yet.": [
     "这里还没有内容。",
     "まだ何もありません。"
+  ],
+  "Nothing routes to the Index agent right now, so actions are off. Point a gesture at ": [
+    "目前没有手势关联 Index 助手，操作已关闭。请将上方的手势目标设为",
+    "現在 Index エージェントに割り当てられた操作がないため、アクションは無効です。上のジェスチャーの割り当てを"
   ],
   "Notification": [
     "通知",
@@ -3389,6 +3493,10 @@
     "正在选择…",
     "選択中…"
   ],
+  "Place the device right next to your phone, ": [
+    "请将设备放在手机旁边，",
+    "デバイスをスマートフォンのすぐ横に置いて、"
+  ],
   "Play": [
     "播放",
     "再生"
@@ -3433,6 +3541,14 @@
     "插件合集",
     "プラグインのコレクション"
   ],
+  "Plugins integrate with online services and your phone to provide shortcuts and live ": [
+    "插件连接在线服务和手机，为表盘、应用及 Index 助手提供快捷操作和实时",
+    "プラグインはオンラインサービスやスマートフォンと連携し、文字盤、アプリ、Index エージェントにショートカットとリアルタイム"
+  ],
+  "Polish dictation text": [
+    "整理语音文字",
+    "音声入力の文章を整える"
+  ],
   "Populate fake health data": [
     "填充模拟健康数据",
     "テスト用ヘルスケアデータを作成"
@@ -3460,6 +3576,10 @@
   "Press the button on your Index 01 to wake it.": [
     "按下 Index 01 的按钮将其唤醒。",
     "Index 01 のボタンを押してスリープを解除してください。"
+  ],
+  "Previously encrypted backups (cloud sync or local) will be permanently lost.": [
+    "以前加密的备份（云同步或本地）将永久丢失。",
+    "以前の暗号化バックアップ（クラウド同期・ローカル）は永久に失われます。"
   ],
   "Processed offline": [
     "离线处理",
@@ -3968,6 +4088,10 @@
   "Secondary action": [
     "辅助操作",
     "サブ操作"
+  ],
+  "Secure Folder, or Private Space. If you already have the app set up in another profile, ": [
+    "安全文件夹或隐私空间。如果你已在其他资料中设置本应用，",
+    "セキュリティフォルダ、プライベートスペースなどの別プロファイルで動作しています。他のプロファイルで設定済みの場合、"
   ],
   "See all": [
     "查看全部",
@@ -4557,6 +4681,10 @@
     "点按",
     "タップ"
   ],
+  "Tap ": [
+    "点按",
+    "「"
+  ],
   "Tap custom pattern": [
     "点按输入自定义模式",
     "タップしてカスタムパターンを入力"
@@ -4661,9 +4789,17 @@
     "帮助统计连接情况等指标，追踪不同错误并提高可靠性",
     "接続状況などを測定し、さまざまなエラーを追跡して信頼性を改善します"
   ],
+  "This app is running in a secondary profile on this phone, such as a work profile, ": [
+    "本应用正在手机的辅助用户资料中运行，例如工作资料、",
+    "このアプリは、仕事用プロファイル、"
+  ],
   "This app's settings page may not work any more": [
     "此应用的设置页面可能已不可用",
     "このアプリの設定ページは利用できなくなっている可能性があります"
+  ],
+  "This checks the Bluetooth connection between your phone and Index 01. ": [
+    "此操作检查手机与 Index 01 之间的蓝牙连接。",
+    "スマートフォンと Index 01 の Bluetooth 接続を確認します。"
   ],
   "This device doesn't support local speech recognition": [
     "此设备不支持本地语音识别",
@@ -5069,6 +5205,10 @@
     "查看调试统计",
     "デバッグ統計を表示"
   ],
+  "View or copy the original transcript before polishing": [
+    "查看或复制整理前的识别原文",
+    "文章を整える前の原文を表示・コピー"
+  ],
   "View your synced health data in Google Fit": [
     "在 Google Fit 中查看已同步的健康数据",
     "同期したヘルスケアデータを Google Fit で表示します"
@@ -5201,6 +5341,10 @@
     "提醒保存位置",
     "リマインダーの保存先"
   ],
+  "While using the app": [
+    "使用应用时",
+    "アプリの使用中のみ"
+  ],
   "Wind Speed": [
     "风速",
     "風速"
@@ -5285,6 +5429,10 @@
     "全部完成了！",
     "すべて完了です！"
   ],
+  "You're attempting to enable backup encryption without a confirmed keychain backup of your key, ": [
+    "你正在启用备份加密，但尚未确认密钥已备份到钥匙串。",
+    "キーチェーンへのキーのバックアップを確認せずに、バックアップの暗号化を有効にしようとしています。"
+  ],
   "You're holding an entirely new type of device. Index 01 isn't like ": [
     "你手中是一种全新的设备。Index 01",
     "お手元の Index 01 は、まったく新しい種類のデバイスです。"
@@ -5332,6 +5480,10 @@
   "coredevices.coreapp.": [
     "coredevices.coreapp 限定为此 App。",
     "coredevices.coreapp でこのアプリに限定します。"
+  ],
+  "data to watchfaces, apps, and the Index Agent. ": [
+    "数据。",
+    "データを提供します。"
   ],
   "delete": [
     "delete",
@@ -5421,6 +5573,10 @@
     "请粘贴备份密钥，或导入",
     "バックアップしたキーを貼り付けるか、"
   ],
+  "please ensure you've saved your key either via QR code or copied it to your clipboard and saved it elsewhere.\n\n": [
+    "请通过二维码保存密钥，或复制到剪贴板后另行保存。\n\n",
+    "QR コードで保存するか、クリップボードにコピーして別の場所に保管してください。\n\n"
+  ],
   "sandbox group's model to \"Index Agent\" to use it.": [
     "沙盒分组的模型设为“Index Agent”。",
     "サンドボックスグループのモデルを「Index Agent」に設定してください。"
@@ -5445,9 +5601,21 @@
     "sync-hint-pulse",
     "sync-hint-pulse"
   ],
+  "then tap Start.": [
+    "然后点按开始。",
+    "「開始」をタップしてください。"
+  ],
+  "this will break communication with your Index 01.": [
+    "这会中断与 Index 01 的通信。",
+    "Index 01 との通信が切断されます。"
+  ],
   "to": [
     "到",
     "へ"
+  ],
+  "to each service, they can only use the permissions you allow.": [
+    "各项服务，只能使用你授予的权限。",
+    "各サービスに直接接続します。許可された権限のみを使用できます。"
   ],
   "transcription fails.": [
     "将改用云端转写。",
@@ -5620,149 +5788,5 @@
     "连不上更新服务器，稍后再试",
     "更新サーバーに接続できません。後でもう一度お試しください",
     "Could not reach the update server. Try again later"
-  ],
-  "Tap ": [
-    "点按",
-    "「"
-  ],
-  "While using the app": [
-    "使用应用时",
-    "アプリの使用中のみ"
-  ],
-  " to get accurate weather, sunrise/sunset and other info": [
-    "，以获取准确的天气、日出日落等信息",
-    "」をタップすると、正確な天気や日の出・日の入りなどの情報を取得できます"
-  ],
-  "Allow All The Time": [
-    "始终允许",
-    "常に許可"
-  ],
-  " to keep Pebble working correctly while the app is in the background": [
-    "，以便应用在后台时 Pebble 仍能正常工作",
-    "」をタップすると、アプリがバックグラウンドにあるときも Pebble が正常に動作します"
-  ],
-  "Allow While Using App": [
-    "使用应用期间允许",
-    "アプリの使用中は許可"
-  ],
-  " to get accurate weather and other info": [
-    "，以获取准确的天气等信息",
-    "」をタップすると、正確な天気などの情報を取得できます"
-  ],
-  "Change to Always Allow": [
-    "更改为始终允许",
-    "常に許可に変更"
-  ],
-  "Plugins integrate with online services and your phone to provide shortcuts and live ": [
-    "插件连接在线服务和手机，为表盘、应用及 Index 助手提供快捷操作和实时",
-    "プラグインはオンラインサービスやスマートフォンと連携し、文字盤、アプリ、Index エージェントにショートカットとリアルタイム"
-  ],
-  "data to watchfaces, apps, and the Index Agent. ": [
-    "数据。",
-    "データを提供します。"
-  ],
-  "All plugins run locally on your phone and connect directly ": [
-    "所有插件均在手机本地运行，并直接连接",
-    "すべてのプラグインはスマートフォン上で動作し、"
-  ],
-  "to each service, they can only use the permissions you allow.": [
-    "各项服务，只能使用你授予的权限。",
-    "各サービスに直接接続します。許可された権限のみを使用できます。"
-  ],
-  "This app is running in a secondary profile on this phone, such as a work profile, ": [
-    "本应用正在手机的辅助用户资料中运行，例如工作资料、",
-    "このアプリは、仕事用プロファイル、"
-  ],
-  "Secure Folder, or Private Space. If you already have the app set up in another profile, ": [
-    "安全文件夹或隐私空间。如果你已在其他资料中设置本应用，",
-    "セキュリティフォルダ、プライベートスペースなどの別プロファイルで動作しています。他のプロファイルで設定済みの場合、"
-  ],
-  "this will break communication with your Index 01.": [
-    "这会中断与 Index 01 的通信。",
-    "Index 01 との通信が切断されます。"
-  ],
-  "\n\nDo you want to disable Bluetooth sync for this profile to avoid conflicts?": [
-    "\n\n是否关闭此用户资料的蓝牙同步，以避免冲突？",
-    "\n\n競合を避けるため、このプロファイルの Bluetooth 同期を無効にしますか？"
-  ],
-  "An encryption key already exists. Generating a new one will overwrite it.\n\n": [
-    "加密密钥已存在。生成新密钥将覆盖现有密钥。\n\n",
-    "暗号化キーがすでに存在します。新しいキーを生成すると上書きされます。\n\n"
-  ],
-  "Previously encrypted backups (cloud sync or local) will be permanently lost.": [
-    "以前加密的备份（云同步或本地）将永久丢失。",
-    "以前の暗号化バックアップ（クラウド同期・ローカル）は永久に失われます。"
-  ],
-  "Key exists": [
-    "密钥已存在",
-    "キーあり"
-  ],
-  " — tap to regenerate": [
-    "，点按可重新生成",
-    " — タップして再生成"
-  ],
-  "A key was generated before but isn't on this device — restore it instead": [
-    "之前已生成密钥，但此设备上没有，请恢复原密钥",
-    "以前生成したキーがこのデバイスにありません。元のキーを復元してください"
-  ],
-  ", or tap to regenerate": [
-    "，或点按重新生成",
-    "、またはタップして再生成"
-  ],
-  "Create encryption key": [
-    "创建加密密钥",
-    "暗号化キーを作成"
-  ],
-  "This checks the Bluetooth connection between your phone and Index 01. ": [
-    "此操作检查手机与 Index 01 之间的蓝牙连接。",
-    "スマートフォンと Index 01 の Bluetooth 接続を確認します。"
-  ],
-  "Place the device right next to your phone, ": [
-    "请将设备放在手机旁边，",
-    "デバイスをスマートフォンのすぐ横に置いて、"
-  ],
-  "then tap Start.": [
-    "然后点按开始。",
-    "「開始」をタップしてください。"
-  ],
-  "You're attempting to enable backup encryption without a confirmed keychain backup of your key, ": [
-    "你正在启用备份加密，但尚未确认密钥已备份到钥匙串。",
-    "キーチェーンへのキーのバックアップを確認せずに、バックアップの暗号化を有効にしようとしています。"
-  ],
-  "please ensure you've saved your key either via QR code or copied it to your clipboard and saved it elsewhere.\n\n": [
-    "请通过二维码保存密钥，或复制到剪贴板后另行保存。\n\n",
-    "QR コードで保存するか、クリップボードにコピーして別の場所に保管してください。\n\n"
-  ],
-  "If you lose this key, you will not be able to sync or restore anything from backups and will have to start fresh.": [
-    "如果丢失此密钥，将无法同步或恢复任何备份，只能重新开始。",
-    "このキーを紛失するとバックアップを同期・復元できず、最初から設定し直す必要があります。"
-  ],
-  "Nothing routes to the Index agent right now, so actions are off. Point a gesture at ": [
-    "目前没有手势关联 Index 助手，操作已关闭。请将上方的手势目标设为",
-    "現在 Index エージェントに割り当てられた操作がないため、アクションは無効です。上のジェスチャーの割り当てを"
-  ],
-  "Index agent": [
-    "Index 助手",
-    "Index エージェント"
-  ],
-  " above to turn them back on.": [
-    "，即可重新启用。",
-    "にすると再び有効になります。"
-  ],
-  "Backup and updates": [
-    "备份与更新",
-    "バックアップと更新"
-  ],
-  "Export or import app settings and data": [
-    "导出或导入 App 设置和数据",
-    "アプリの設定とデータをエクスポート・インポート"
-  ],
-  "Check for updates": [
-    "检查更新",
-    "更新を確認"
-  ],
-  "Check for a new app version": [
-    "检查 App 新版本",
-    "アプリの新しいバージョンを確認"
   ]
 }

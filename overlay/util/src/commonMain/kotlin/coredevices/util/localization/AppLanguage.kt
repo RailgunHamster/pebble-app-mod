@@ -19,6 +19,7 @@ object AppLanguage {
         private set
 
     fun initialize(settings: Settings) {
+        coredevices.util.transcription.ModDictationOptions.initialize(settings)
         selected = settings.getString("mod.appLanguage", "system").takeIf { it in choices } ?: "system"
     }
 

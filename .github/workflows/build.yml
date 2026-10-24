@@ -36,6 +36,10 @@ on:
       tag:
         description: "upstream release tag (empty = newest)"
         required: false
+      publish:
+        description: "Publish after automated checks (push builds keep an encrypted artifact for emulator acceptance)"
+        type: boolean
+        default: false
   schedule:
     - cron: "17 20 * * *"   # 04:17 Beijing time
 
@@ -158,6 +162,13 @@ jobs:
           key: gradle-${{ hashFiles('app/gradle/**', 'app/*.gradle*', 'app/gradle.properties') }}
           restore-keys: gradle-
 
+      - name: Test continuous dictation and voice compatibility
+        if: steps.pick.outputs.skip != '1'
+        working-directory: app
+        run: |
+          ./gradlew --no-configuration-cache :libpebble3:testAndroidHostTest --tests '*ContinuousVoiceTest*'
+          ./gradlew --no-configuration-cache :util:testAndroidHostTest --tests '*ContinuousDictationTest*'
+
       - name: Build release APK
         if: steps.pick.outputs.skip != '1'
         working-directory: app
@@ -194,7 +205,7 @@ jobs:
           if-no-files-found: error
 
       - name: Upload to the relay (app updates)
-        if: steps.pick.outputs.skip != '1'
+        if: steps.pick.outputs.skip != '1' && (github.event_name == 'schedule' || inputs.publish == true)
         env:
           UP: ${{ secrets.APP_UPLOAD_TOKEN || secrets.CLAW_APP_UPLOAD_TOKEN }}
           READ_TOKEN: ${{ secrets.STT_TOKEN || secrets.CLAW_STT_TOKEN }}
@@ -207,7 +218,7 @@ jobs:
             "${RELAY%/}/app/upload" "${{ steps.pick.outputs.tag }}" "${{ github.run_number }}"
 
       - name: GitHub release (private repository only)
-        if: steps.pick.outputs.skip != '1'
+        if: steps.pick.outputs.skip != '1' && (github.event_name == 'schedule' || inputs.publish == true)
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
