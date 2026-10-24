@@ -16,6 +16,7 @@ import io.ktor.websocket.Frame
 import io.ktor.websocket.close
 import io.ktor.websocket.readText
 import kotlinx.coroutines.CancellationException
+import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.TimeoutCancellationException
 import kotlinx.coroutines.CoroutineStart
 import kotlinx.coroutines.Dispatchers
@@ -28,6 +29,7 @@ import kotlinx.coroutines.flow.buffer
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.produceIn
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.selects.select
 import kotlinx.coroutines.withContext
 import kotlinx.coroutines.withTimeout
 import kotlinx.serialization.json.*
@@ -101,7 +103,7 @@ class ContinuousDictation(private val settings: Settings) {
         }
         val transcript = DictationTranscript()
         var expectedSession: String? = null
-        var finished = false
+        val endOfInput = CompletableDeferred<Unit>()
         var sender: kotlinx.coroutines.Job? = null
         try {
             socket.send(Frame.Text(buildJsonObject {
@@ -122,11 +124,18 @@ class ContinuousDictation(private val settings: Settings) {
                     }
                 }
                 socket.send(Frame.Text("{\"type\":\"finish\"}"))
-                finished = true
+                endOfInput.complete(Unit)
             }
             while (true) {
-                val frame = if (finished) withTimeout(13.seconds) { socket.incoming.receive() }
-                    else withTimeout(320.seconds) { socket.incoming.receive() }
+                // Wake an already pending receive when recording finishes, so an unresponsive
+                // server cannot keep the watch waiting for the entire capture timeout.
+                val frame = if (endOfInput.isCompleted) withTimeout(13.seconds) { socket.incoming.receive() }
+                    else withTimeout(320.seconds) {
+                        select<Frame> {
+                            socket.incoming.onReceive { it }
+                            endOfInput.onAwait { withTimeout(13.seconds) { socket.incoming.receive() } }
+                        }
+                    }
                 if (frame !is Frame.Text) continue
                 val message = json.parseToJsonElement(frame.readText()).jsonObject
                 val type = message["type"]?.jsonPrimitive?.content
