@@ -36,7 +36,7 @@ No Firebase config is included, so features that need a Core Devices account (si
 `006` 将固件的字体能力位 60、表情回落能力位 61 暴露给 PebbleKit JS，供 Claw 等应用协商使用。
 上游能力位 27（App 权限）保持原意。官方固件不会误开启这些功能。
 
-本地检查：`python -m pip install -r requirements-localization.txt`，然后 `python -m unittest discover -s tests -v`。构建继续沿用现有私有 relay 分发流程，APK 不放公开附件。
+本地检查：`python -m pip install -r requirements-localization.txt -r requirements-transfer.txt`，然后 `python -m unittest discover -s tests -v`。构建继续沿用现有私有 relay 分发流程，APK 不放公开附件。
 
 跨境上传较慢时，Actions 另存一份加密 APK 附件（保留一天），使用 AES-256-GCM，
 随机密钥由 RSA-OAEP 加密。仓库只有公钥 `tools/apk-transfer-public.pem`；

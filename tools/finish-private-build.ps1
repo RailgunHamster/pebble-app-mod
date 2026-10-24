@@ -21,7 +21,7 @@ New-Item -ItemType Directory -Path $local -Force | Out-Null
 $archivePath = Join-Path $local 'artifact.zip'
 if (-not (Test-Path -LiteralPath $archivePath)) {
     & (Join-Path $PSScriptRoot 'github.ps1') -ApiPath "$repo/actions/artifacts/$($artifact.id)/zip" `
-        -Accept application/octet-stream -OutFile ($archivePath + '.download') | Out-Null
+        -OutFile ($archivePath + '.download') | Out-Null
     Move-Item -LiteralPath ($archivePath + '.download') -Destination $archivePath -Force
 }
 if ($artifact.digest -and ('sha256:' + (Get-FileHash -LiteralPath $archivePath -Algorithm SHA256).Hash.ToLower()) -ne $artifact.digest) {
