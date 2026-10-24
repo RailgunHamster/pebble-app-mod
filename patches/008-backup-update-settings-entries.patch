@@ -1,0 +1,25 @@
+diff --git a/pebble/src/commonMain/kotlin/coredevices/pebble/ui/WatchSettingsScreen.kt b/pebble/src/commonMain/kotlin/coredevices/pebble/ui/WatchSettingsScreen.kt
+index 65e0f5a..59969fe 100644
+--- a/pebble/src/commonMain/kotlin/coredevices/pebble/ui/WatchSettingsScreen.kt
++++ b/pebble/src/commonMain/kotlin/coredevices/pebble/ui/WatchSettingsScreen.kt
+@@ -572,6 +572,20 @@ fun rememberSettingsItemsState(navBarNav: NavBarNav?, snackbarDisplay: SnackbarD
+                     onItemSelected = { AppLanguage.select(settings, it) },
+                     itemText = { AppLanguage.label(it) },
+                 ),
++                if (platform == Platform.Android) basicSettingsActionItem(
++                    title = "Backup and updates",
++                    description = "Export or import app settings and data",
++                    topLevelType = TopLevelType.Phone,
++                    section = Section.General,
++                    action = { openModBackupSettings(uiContext, checkUpdates = false) },
++                ) else null,
++                if (platform == Platform.Android) basicSettingsActionItem(
++                    title = "Check for updates",
++                    description = "Check for a new app version",
++                    topLevelType = TopLevelType.Phone,
++                    section = Section.General,
++                    action = { openModBackupSettings(uiContext, checkUpdates = true) },
++                ) else null,
+                 basicSettingsActionItem(
+                     title = "App Update Available",
+                     description = "Please update the Pebble App!",

@@ -5748,5 +5748,21 @@
   " above to turn them back on.": [
     "，即可重新启用。",
     "にすると再び有効になります。"
+  ],
+  "Backup and updates": [
+    "备份与更新",
+    "バックアップと更新"
+  ],
+  "Export or import app settings and data": [
+    "导出或导入 App 设置和数据",
+    "アプリの設定とデータをエクスポート・インポート"
+  ],
+  "Check for updates": [
+    "检查更新",
+    "更新を確認"
+  ],
+  "Check for a new app version": [
+    "检查 App 新版本",
+    "アプリの新しいバージョンを確認"
   ]
 }

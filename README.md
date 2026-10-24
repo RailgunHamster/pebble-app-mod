@@ -10,6 +10,7 @@ My personal version of the Core Devices Pebble app ([coredevices/mobileapp](http
 | `001-self-hosted-dictation` | Watch dictation goes to a self-hosted recognizer, reached through my relay, instead of WisprFlow, so Chinese works without foreign services. "Cloud Only" no longer needs a Core account. |
 | `002-settings-backup-and-updates` | Long-press the app icon → 备份与更新. Export or import all settings as one zip; import restarts the app. Every 12 h the app checks the relay for a newer build and notifies. |
 | `003-on-device-sensevoice` + `overlay/` | On-device dictation. The "System (On-Device)" speech mode runs SenseVoice-Small (Chinese, English, Japanese, Korean, Cantonese) on the phone through sherpa-onnx. The model (~230 MB) downloads once from hf-mirror.com. If on-device recognition fails, it falls back to the cloud recognizer. |
+| `008-backup-update-settings-entries` | Android Settings → General adds Backup and updates and Check for updates, reusing the existing launcher-shortcut activity. |
 
 Adding a change: put `003-....patch` (a `git format-patch` against an upstream tag) in `patches/`, then push. The workflow (`.github/workflows/build.yml`) builds the APK, uploads it to the relay, and the app's update check offers it.
 
@@ -29,7 +30,7 @@ No Firebase config is included, so features that need a Core Devices account (si
 
 上游新增文案默认回退英文，并记录到 Actions 的 `localization-report`，便于补译。生成的资源可单独整理成上游翻译提交。脚本不会翻译用户输入、录音转写或协议标识。
 
-当前翻译表有 1,430 项，覆盖设置、引导、权限说明、手表选项和 Index 界面。
+当前翻译表有 1,434 项，覆盖设置、引导、权限说明、手表选项和 Index 界面。
 `005` 让设置分类名称随语言更新，`007` 刷新缓存文案和标题；资源查找单独刷新，
 保留当前导航与表单状态。上游已有的中文、日文资源会保留。iOS 实现尚未在 macOS 上编译验收。
 
@@ -47,4 +48,9 @@ No Firebase config is included, so features that need a Core Devices account (si
 加 `-Publish` 可经现有 `tc` SSH 通道补传，校验文件后原子替换服务器上的 APK 与更新信息。
 CI 会识别同一构建已发布并结束上传。整个过程不公开 APK 明文或访问令牌，手机仍使用原来的更新入口。
 本地检查加密传输还需 `pip install -r requirements-transfer.txt`。
+
+安卓“设置 → 常规”也提供“备份与更新”和“检查更新”：前者打开现有导出、导入及更新菜单，
+后者立即检查此定制版 App 的更新。长按图标的两个入口继续保留；两处使用同一份备份与更新逻辑。
+这两个入口及说明随 App 显示语言切换。新增平台桥接文件独立放在 `overlay/pebble/`，
+设置页只增加 `008` 的小补丁。原备份/更新功能为安卓专用，iOS 不显示这些入口。
 
