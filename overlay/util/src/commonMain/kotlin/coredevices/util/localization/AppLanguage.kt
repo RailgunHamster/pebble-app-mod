@@ -73,7 +73,7 @@ fun AppLanguageEnvironment(settings: Settings, content: @Composable () -> Unit) 
 @Composable
 fun appStringResource(resource: StringResource, vararg formatArgs: Any): String =
     key(AppLanguage.selected, AppLanguage.resolved()) {
-        stringResource(resource, *formatArgs)
+        if (formatArgs.isEmpty()) stringResource(resource) else stringResource(resource, *formatArgs)
     }
 
 internal expect fun deviceLanguage(): String
