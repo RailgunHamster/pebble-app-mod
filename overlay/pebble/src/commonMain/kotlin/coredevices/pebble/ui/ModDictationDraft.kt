@@ -18,7 +18,7 @@ import coredevices.util.transcription.DICTATION_ORIGINAL_KEY
 internal fun ModDictationDraftButton(settings: Settings) {
     var open by remember { mutableStateOf(false) }
     val clipboard=LocalClipboardManager.current
-    TextButton(onClick={open=true}) { Text(appText("Show")) }
+    TextButton(onClick={open=true}) { Text(appText("Last dictation original")) }
     if(open) {
         val text=settings.getString(DICTATION_ORIGINAL_KEY,"")
         AlertDialog(onDismissRequest={open=false},title={Text(appText("Last dictation original"))},
