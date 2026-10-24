@@ -1,0 +1,46 @@
+diff --git a/libpebble3/src/commonMain/kotlin/io/rebble/libpebblecommon/js/ActivePebbleWatchInfo.kt b/libpebble3/src/commonMain/kotlin/io/rebble/libpebblecommon/js/ActivePebbleWatchInfo.kt
+index 1f5c9e2..ae24761 100644
+--- a/libpebble3/src/commonMain/kotlin/io/rebble/libpebblecommon/js/ActivePebbleWatchInfo.kt
++++ b/libpebble3/src/commonMain/kotlin/io/rebble/libpebblecommon/js/ActivePebbleWatchInfo.kt
+@@ -1,6 +1,7 @@
+ package io.rebble.cobble.shared.data.js
+ 
+ import io.rebble.libpebblecommon.services.WatchInfo
++import io.rebble.libpebblecommon.packets.ProtocolCapsFlag
+ import kotlinx.serialization.Serializable
+ 
+ @Serializable
+@@ -8,7 +9,9 @@ data class ActivePebbleWatchInfo(
+         val platform: String,
+         val model: String,
+         val language: String,
+-        val firmware: FirmwareVersion
++        val firmware: FirmwareVersion,
++        val tintedFont2bppSupport: Boolean = false,
++        val systemEmojiFallbackSupport: Boolean = false
+ ) {
+     @Serializable
+     data class FirmwareVersion(
+@@ -25,6 +28,8 @@ fun ActivePebbleWatchInfo.Companion.fromWatchInfo(watchInfo: WatchInfo): ActiveP
+             platform = watchInfo.platform.watchType.codename,
+             model = watchInfo.color.jsName,
+             language = watchInfo.language,
++            tintedFont2bppSupport = ProtocolCapsFlag.SupportsTintedFont2bpp in watchInfo.capabilities,
++            systemEmojiFallbackSupport = ProtocolCapsFlag.SupportsCustomFontSystemEmoji in watchInfo.capabilities,
+             firmware = ActivePebbleWatchInfo.FirmwareVersion(
+                     major = fwVersion.major,
+                     minor = fwVersion.minor,
+diff --git a/libpebble3/src/commonMain/kotlin/io/rebble/libpebblecommon/packets/System.kt b/libpebble3/src/commonMain/kotlin/io/rebble/libpebblecommon/packets/System.kt
+index c123e88..3ce5eab 100644
+--- a/libpebble3/src/commonMain/kotlin/io/rebble/libpebblecommon/packets/System.kt
++++ b/libpebble3/src/commonMain/kotlin/io/rebble/libpebblecommon/packets/System.kt
+@@ -377,6 +377,9 @@ enum class ProtocolCapsFlag(val value: Int) {
+     SupportsWeatherDbV4(24),
+     SupportsUnknownTimelineAttributes(25),
+     SupportsAppPermissions(27),
++    // PT2 extension bits; keep the upstream range available for future additions.
++    SupportsTintedFont2bpp(60),
++    SupportsCustomFontSystemEmoji(61),
+     ;
+ 
+     companion object {
