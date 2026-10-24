@@ -5620,5 +5620,133 @@
     "连不上更新服务器，稍后再试",
     "更新サーバーに接続できません。後でもう一度お試しください",
     "Could not reach the update server. Try again later"
+  ],
+  "Tap ": [
+    "点按",
+    "「"
+  ],
+  "While using the app": [
+    "使用应用时",
+    "アプリの使用中のみ"
+  ],
+  " to get accurate weather, sunrise/sunset and other info": [
+    "，以获取准确的天气、日出日落等信息",
+    "」をタップすると、正確な天気や日の出・日の入りなどの情報を取得できます"
+  ],
+  "Allow All The Time": [
+    "始终允许",
+    "常に許可"
+  ],
+  " to keep Pebble working correctly while the app is in the background": [
+    "，以便应用在后台时 Pebble 仍能正常工作",
+    "」をタップすると、アプリがバックグラウンドにあるときも Pebble が正常に動作します"
+  ],
+  "Allow While Using App": [
+    "使用应用期间允许",
+    "アプリの使用中は許可"
+  ],
+  " to get accurate weather and other info": [
+    "，以获取准确的天气等信息",
+    "」をタップすると、正確な天気などの情報を取得できます"
+  ],
+  "Change to Always Allow": [
+    "更改为始终允许",
+    "常に許可に変更"
+  ],
+  "Plugins integrate with online services and your phone to provide shortcuts and live ": [
+    "插件连接在线服务和手机，为表盘、应用及 Index 助手提供快捷操作和实时",
+    "プラグインはオンラインサービスやスマートフォンと連携し、文字盤、アプリ、Index エージェントにショートカットとリアルタイム"
+  ],
+  "data to watchfaces, apps, and the Index Agent. ": [
+    "数据。",
+    "データを提供します。"
+  ],
+  "All plugins run locally on your phone and connect directly ": [
+    "所有插件均在手机本地运行，并直接连接",
+    "すべてのプラグインはスマートフォン上で動作し、"
+  ],
+  "to each service, they can only use the permissions you allow.": [
+    "各项服务，只能使用你授予的权限。",
+    "各サービスに直接接続します。許可された権限のみを使用できます。"
+  ],
+  "This app is running in a secondary profile on this phone, such as a work profile, ": [
+    "本应用正在手机的辅助用户资料中运行，例如工作资料、",
+    "このアプリは、仕事用プロファイル、"
+  ],
+  "Secure Folder, or Private Space. If you already have the app set up in another profile, ": [
+    "安全文件夹或隐私空间。如果你已在其他资料中设置本应用，",
+    "セキュリティフォルダ、プライベートスペースなどの別プロファイルで動作しています。他のプロファイルで設定済みの場合、"
+  ],
+  "this will break communication with your Index 01.": [
+    "这会中断与 Index 01 的通信。",
+    "Index 01 との通信が切断されます。"
+  ],
+  "\n\nDo you want to disable Bluetooth sync for this profile to avoid conflicts?": [
+    "\n\n是否关闭此用户资料的蓝牙同步，以避免冲突？",
+    "\n\n競合を避けるため、このプロファイルの Bluetooth 同期を無効にしますか？"
+  ],
+  "An encryption key already exists. Generating a new one will overwrite it.\n\n": [
+    "加密密钥已存在。生成新密钥将覆盖现有密钥。\n\n",
+    "暗号化キーがすでに存在します。新しいキーを生成すると上書きされます。\n\n"
+  ],
+  "Previously encrypted backups (cloud sync or local) will be permanently lost.": [
+    "以前加密的备份（云同步或本地）将永久丢失。",
+    "以前の暗号化バックアップ（クラウド同期・ローカル）は永久に失われます。"
+  ],
+  "Key exists": [
+    "密钥已存在",
+    "キーあり"
+  ],
+  " — tap to regenerate": [
+    "，点按可重新生成",
+    " — タップして再生成"
+  ],
+  "A key was generated before but isn't on this device — restore it instead": [
+    "之前已生成密钥，但此设备上没有，请恢复原密钥",
+    "以前生成したキーがこのデバイスにありません。元のキーを復元してください"
+  ],
+  ", or tap to regenerate": [
+    "，或点按重新生成",
+    "、またはタップして再生成"
+  ],
+  "Create encryption key": [
+    "创建加密密钥",
+    "暗号化キーを作成"
+  ],
+  "This checks the Bluetooth connection between your phone and Index 01. ": [
+    "此操作检查手机与 Index 01 之间的蓝牙连接。",
+    "スマートフォンと Index 01 の Bluetooth 接続を確認します。"
+  ],
+  "Place the device right next to your phone, ": [
+    "请将设备放在手机旁边，",
+    "デバイスをスマートフォンのすぐ横に置いて、"
+  ],
+  "then tap Start.": [
+    "然后点按开始。",
+    "「開始」をタップしてください。"
+  ],
+  "You're attempting to enable backup encryption without a confirmed keychain backup of your key, ": [
+    "你正在启用备份加密，但尚未确认密钥已备份到钥匙串。",
+    "キーチェーンへのキーのバックアップを確認せずに、バックアップの暗号化を有効にしようとしています。"
+  ],
+  "please ensure you've saved your key either via QR code or copied it to your clipboard and saved it elsewhere.\n\n": [
+    "请通过二维码保存密钥，或复制到剪贴板后另行保存。\n\n",
+    "QR コードで保存するか、クリップボードにコピーして別の場所に保管してください。\n\n"
+  ],
+  "If you lose this key, you will not be able to sync or restore anything from backups and will have to start fresh.": [
+    "如果丢失此密钥，将无法同步或恢复任何备份，只能重新开始。",
+    "このキーを紛失するとバックアップを同期・復元できず、最初から設定し直す必要があります。"
+  ],
+  "Nothing routes to the Index agent right now, so actions are off. Point a gesture at ": [
+    "目前没有手势关联 Index 助手，操作已关闭。请将上方的手势目标设为",
+    "現在 Index エージェントに割り当てられた操作がないため、アクションは無効です。上のジェスチャーの割り当てを"
+  ],
+  "Index agent": [
+    "Index 助手",
+    "Index エージェント"
+  ],
+  " above to turn them back on.": [
+    "，即可重新启用。",
+    "にすると再び有効になります。"
   ]
 }

@@ -38,6 +38,10 @@ class LocalizationTests(unittest.TestCase):
     def test_animation_labels_are_not_ui(self):
         self.assertFalse(self.strings('fun View(){ Crossfade(state, label = "onboarding_step") {} }')[0][1])
 
+    def test_rich_text_only_localizes_annotated_ui_builders(self):
+        result = self.strings('fun View(){ val help = buildAnnotatedString { append("Tap "); withStyle(style) { append("Allow") } }; val protocol = StringBuilder().append("route_id") }')
+        self.assertEqual([v[0][0] for v in result if v[1]], ['Tap ', 'Allow'])
+
     def test_user_names_and_variable_text_remain_unchanged(self):
         with tempfile.TemporaryDirectory() as temporary:
             source = pathlib.Path(temporary)

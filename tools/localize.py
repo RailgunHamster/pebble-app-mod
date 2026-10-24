@@ -17,7 +17,8 @@ LABELS = {'title', 'description', 'text', 'label', 'message', 'confirmText',
 LABELS |= {'itemText', 'unit', 'question', 'answer'}
 CALLS = {'Text', 'SectionText', 'showSnackbar', 'BasicText', 'CoreButton', 'Section',
          'TopLevelType', 'errorDialog', 'setContentTitle', 'setContentText', 'setTitle',
-         'setMessage', 'setPositiveButton', 'setNegativeButton', 'Toast.makeText'}
+         'setMessage', 'setPositiveButton', 'setNegativeButton', 'Toast.makeText',
+         'AnnotatedString'}
 
 
 def text(node, source):
@@ -81,6 +82,11 @@ def eligible(node, source):
             if name and name[1] in LABELS:
                 return True
             if call and call.type == 'call_expression':
+                if callee == 'append' and any(
+                    p.type == 'call_expression' and text(p.named_children[0], source) == 'buildAnnotatedString'
+                    for p in ancestors(call)
+                ):
+                    return True
                 if callee in CALLS or callee.rsplit('.', 1)[-1] in CALLS:
                     return True
             return False
