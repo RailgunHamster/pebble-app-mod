@@ -1,14 +1,14 @@
 diff --git a/composeApp/src/androidMain/kotlin/coredevices/coreapp/MainApplication.kt b/composeApp/src/androidMain/kotlin/coredevices/coreapp/MainApplication.kt
-index fa86cfb..a180f12 100644
+index 681b4da..0dd2d7a 100644
 --- a/composeApp/src/androidMain/kotlin/coredevices/coreapp/MainApplication.kt
 +++ b/composeApp/src/androidMain/kotlin/coredevices/coreapp/MainApplication.kt
-@@ -79,6 +79,7 @@ class MainApplication : Application(), SingletonImageLoader.Factory {
+@@ -84,6 +84,7 @@ class MainApplication : Application(), SingletonImageLoader.Factory, Configurati
                  watchModule,
              )
          }
 +        coredevices.util.localization.AppLanguage.initialize(org.koin.core.context.GlobalContext.get().get())
          initLogging()
-         logger.i { "onCreate() version = $appVersionName ($appVersionCode) ${if (isDebuggableBuild) "debug" else "release"}" }
+         logger.i { "onCreate() version = $appVersionName ($appVersionCode) ${if (AppContext(this).isDebugBuild()) "debug" else "release"}" }
          dumpPreviousExitInfo()
 diff --git a/composeApp/src/commonMain/kotlin/coredevices/coreapp/ui/App.kt b/composeApp/src/commonMain/kotlin/coredevices/coreapp/ui/App.kt
 index 2c6b6d8..becd1f2 100644
@@ -37,7 +37,7 @@ index 2c6b6d8..becd1f2 100644
  }
 \ No newline at end of file
 diff --git a/pebble/src/commonMain/kotlin/coredevices/pebble/ui/WatchSettingsScreen.kt b/pebble/src/commonMain/kotlin/coredevices/pebble/ui/WatchSettingsScreen.kt
-index 084bcd6..773a545 100644
+index 5e27d6f..51a3884 100644
 --- a/pebble/src/commonMain/kotlin/coredevices/pebble/ui/WatchSettingsScreen.kt
 +++ b/pebble/src/commonMain/kotlin/coredevices/pebble/ui/WatchSettingsScreen.kt
 @@ -1,5 +1,6 @@
@@ -47,8 +47,8 @@ index 084bcd6..773a545 100644
  import AppUpdateTracker
  import CommonRoutes
  import CoreAppVersion
-@@ -506,6 +507,15 @@ fun rememberSettingsItemsState(navBarNav: NavBarNav?, snackbarDisplay: SnackbarD
-             platformSttAvailable,
+@@ -556,6 +557,15 @@ fun rememberSettingsItemsState(navBarNav: NavBarNav?, snackbarDisplay: SnackbarD
+             anyWatchSupportsFiveMinHrm,
          ) {
              listOfNotNull(
 +                basicSettingsDropdownItem(
