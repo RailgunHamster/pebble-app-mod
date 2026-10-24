@@ -200,6 +200,13 @@ def main():
             if after_errors > before_errors:
                 raise SystemExit(f'Localization introduced Kotlin syntax errors in {path}')
             path.write_bytes(source)
+        # Resource strings also observe the chosen language. Keep navigation and
+        # form state alive; only the resource lookup gets a new composition key.
+        source = path.read_bytes()
+        source = source.replace(
+            b'import org.jetbrains.compose.resources.stringResource',
+            b'import coredevices.util.localization.appStringResource as stringResource')
+        path.write_bytes(source)
     generate(args.source, catalog)
     print(f'Localized {len(found) - len(missing)}/{len(found)} source strings; {len(missing)} new strings reported')
 

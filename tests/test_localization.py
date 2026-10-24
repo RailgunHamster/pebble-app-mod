@@ -47,7 +47,7 @@ class LocalizationTests(unittest.TestCase):
             source = pathlib.Path(temporary)
             path = source / 'pebble/src/commonMain/kotlin/example/ui/View.kt'
             path.parent.mkdir(parents=True)
-            path.write_text('package example\nfun View(title: String){ Text(title); Text(app.title); Text("Settings") }', encoding='utf-8')
+            path.write_text('package example\nimport org.jetbrains.compose.resources.stringResource\nfun View(title: String){ Text(title); Text(app.title); Text("Settings") }', encoding='utf-8')
             catalog = source / 'catalog.json'
             catalog.write_text(json.dumps({'Settings': ['设置', '設定']}), encoding='utf-8')
             command = [sys.executable, str(ROOT / 'tools/localize.py'), str(source), '--catalog', str(catalog)]
@@ -56,6 +56,7 @@ class LocalizationTests(unittest.TestCase):
             self.assertIn('Text(title)', result)
             self.assertIn('Text(app.title)', result)
             self.assertIn('Text(appText("Settings"))', result)
+            self.assertIn('import coredevices.util.localization.appStringResource as stringResource', result)
             subprocess.run(command, check=True, capture_output=True)
             self.assertEqual(result, path.read_text(encoding='utf-8'))
 

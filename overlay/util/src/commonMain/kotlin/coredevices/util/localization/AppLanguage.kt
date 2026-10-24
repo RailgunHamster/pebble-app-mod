@@ -10,6 +10,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import com.russhwolf.settings.Settings
 import coredevices.util.Permission
+import org.jetbrains.compose.resources.StringResource
+import org.jetbrains.compose.resources.stringResource
 
 object AppLanguage {
     val choices = listOf("system", "zh-CN", "ja", "en")
@@ -26,7 +28,7 @@ object AppLanguage {
         selected = language
     }
 
-    internal fun resolved() = if (selected == "system") deviceLanguage() else selected
+    fun resolved() = if (selected == "system") deviceLanguage() else selected
 
     fun label(language: String): String = when (language) {
         "zh-CN" -> "简体中文"
@@ -64,9 +66,15 @@ fun AppLanguageEnvironment(settings: Settings, content: @Composable () -> Unit) 
     remember(settings) { AppLanguage.initialize(settings) }
     val selected = AppLanguage.selected
     CompositionLocalProvider(LocalAppLocale provides selected.takeUnless { it == "system" }) {
-        key(selected, AppLanguage.resolved()) { content() }
+        content()
     }
 }
+
+@Composable
+fun appStringResource(resource: StringResource, vararg formatArgs: Any): String =
+    key(AppLanguage.selected, AppLanguage.resolved()) {
+        stringResource(resource, *formatArgs)
+    }
 
 internal expect fun deviceLanguage(): String
 

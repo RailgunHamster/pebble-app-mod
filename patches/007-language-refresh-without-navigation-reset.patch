@@ -1,0 +1,31 @@
+diff --git a/pebble/src/commonMain/kotlin/coredevices/pebble/ui/WatchSettingsScreen.kt b/pebble/src/commonMain/kotlin/coredevices/pebble/ui/WatchSettingsScreen.kt
+index 642754d..65e0f5a 100644
+--- a/pebble/src/commonMain/kotlin/coredevices/pebble/ui/WatchSettingsScreen.kt
++++ b/pebble/src/commonMain/kotlin/coredevices/pebble/ui/WatchSettingsScreen.kt
+@@ -545,6 +545,8 @@ fun rememberSettingsItemsState(navBarNav: NavBarNav?, snackbarDisplay: SnackbarD
+     val healthIsSyncing by platformHealthSync.syncing.collectAsState()
+ 
+     val rawSettingsItems = remember(
++            AppLanguage.selected,
++            AppLanguage.resolved(),
+             libPebbleConfig,
+             debugOptionsEnabled,
+             missingPermissions,
+@@ -2257,7 +2259,7 @@ fun WatchSettingsScreen(navBarNav: NavBarNav, topBarParams: TopBarParams) {
+ 
+         val listState = rememberLazyListState()
+ 
+-        LaunchedEffect(Unit) {
++        LaunchedEffect(AppLanguage.selected, AppLanguage.resolved()) {
+             topBarParams.searchAvailable(viewModel.searchState)
+             topBarParams.actions { }
+             topBarParams.title("Settings")
+@@ -2505,7 +2507,7 @@ fun WatchSettingsCategoryScreen(
+     ) {
+         val state = rememberSettingsItemsState(navBarNav, topBarParams) ?: return
+ 
+-        LaunchedEffect(Unit) {
++        LaunchedEffect(AppLanguage.selected, AppLanguage.resolved()) {
+             topBarParams.searchAvailable(null)
+             topBarParams.actions {}
+             topBarParams.title(section.title)

@@ -16,6 +16,8 @@ internal actual object LocalAppLocale {
     actual infix fun provides(language: String?): ProvidedValue<*> {
         val current = LocalConfiguration.current
         val locale = Locale.forLanguageTag(language ?: deviceLanguage())
+        // Compose Resources 1.11 reads Locale.current from the process default.
+        Locale.setDefault(locale)
         val configuration = remember(current, locale) {
             Configuration(current).apply { setLocale(locale) }
         }
