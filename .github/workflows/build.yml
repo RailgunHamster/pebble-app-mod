@@ -112,7 +112,7 @@ jobs:
               sed -i '/BEGIN releaseUnusedModels/,/END releaseUnusedModels/d' "$stt"
             fi
           fi
-          python3 -m pip install -r ../mod/requirements-localization.txt
+          python3 -m pip install -r ../mod/requirements-localization.txt -r ../mod/requirements-transfer.txt
           python3 ../mod/tools/localize.py . --catalog ../mod/localization/catalog.json
           # 64-bit ARM only (every current phone): about half the native code,
           # so half the upload to tc
@@ -179,54 +179,32 @@ jobs:
           cp "$apk" "../pebble-mod-${{ steps.pick.outputs.tag }}.apk"
           ls -la ../pebble-mod-*.apk
 
+      - name: Encrypt private recovery artifact
+        if: steps.pick.outputs.skip != '1'
+        run: |
+          python3 mod/tools/private-build.py encrypt "pebble-mod-${{ steps.pick.outputs.tag }}.apk"             mod/tools/apk-transfer-public.pem private-artifact "${{ github.run_number }}" "${{ steps.pick.outputs.tag }}"
+
+      - name: Save encrypted APK for private transfer
+        if: steps.pick.outputs.skip != '1'
+        uses: actions/upload-artifact@v4
+        with:
+          name: private-apk-${{ github.run_number }}
+          path: private-artifact/
+          retention-days: 1
+          if-no-files-found: error
+
       - name: Upload to the relay (app updates)
         if: steps.pick.outputs.skip != '1'
         env:
           UP: ${{ secrets.APP_UPLOAD_TOKEN || secrets.CLAW_APP_UPLOAD_TOKEN }}
+          READ_TOKEN: ${{ secrets.STT_TOKEN || secrets.CLAW_STT_TOKEN }}
         run: |
           if [ -z "$UP" ]; then
-            echo "::warning::secret APP_UPLOAD_TOKEN missing: not uploaded, the app won't see this build"
+            echo "::warning::APP_UPLOAD_TOKEN is missing; encrypted artifact is available"
             exit 0
           fi
-          # GitHub (US) -> tc (China) is slow: 4 MB chunks, each retried, resumable
-          python3 - "pebble-mod-${{ steps.pick.outputs.tag }}.apk" "${RELAY%/}/app/upload" \
-                    "${{ steps.pick.outputs.tag }}" "${{ github.run_number }}" <<'PY'
-          import json, os, sys, time, urllib.error, urllib.request
-          path, url, version, build = sys.argv[1:5]
-          token = os.environ["UP"]
-          total = os.path.getsize(path)
-          CHUNK = 4 << 20
-          off, t0 = 0, time.time()
-          print(f"uploading {total / 1048576:.1f} MB to the relay")
-          with open(path, "rb") as f:
-              while off < total:
-                  f.seek(off)
-                  body = f.read(CHUNK)
-                  q = f"?version={version}&build={build}&offset={off}&total={total}"
-                  for attempt in range(1, 9):
-                      req = urllib.request.Request(url + q, data=body, method="PUT", headers={
-                          "Authorization": "Bearer " + token, "Content-Type": "application/octet-stream"})
-                      c0 = time.time()
-                      try:
-                          with urllib.request.urlopen(req, timeout=600) as r:
-                              got = json.load(r)["received"]
-                          break
-                      except urllib.error.HTTPError as e:
-                          detail = e.read().decode(errors="replace")
-                          if e.code == 409:             # the relay has a different amount: resume there
-                              got = json.loads(detail)["received"]
-                              break
-                          print(f"  chunk at {off}: HTTP {e.code} {detail[:200]} (try {attempt})")
-                      except Exception as e:  # noqa: BLE001
-                          print(f"  chunk at {off}: {e} (try {attempt})")
-                      time.sleep(min(60, 5 * attempt))
-                  else:
-                      sys.exit("upload failed")
-                  rate = len(body) / max(0.001, time.time() - c0) / 1024
-                  off = got
-                  print(f"  {off / 1048576:6.1f} / {total / 1048576:.1f} MB  ({rate:.0f} KB/s)", flush=True)
-          print(f"published on the relay in {time.time() - t0:.0f} s")
-          PY
+          python3 mod/tools/upload-apk.py "pebble-mod-${{ steps.pick.outputs.tag }}.apk" \
+            "${RELAY%/}/app/upload" "${{ steps.pick.outputs.tag }}" "${{ github.run_number }}"
 
       - name: GitHub release (private repository only)
         if: steps.pick.outputs.skip != '1'

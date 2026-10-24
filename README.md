@@ -38,3 +38,13 @@ No Firebase config is included, so features that need a Core Devices account (si
 
 本地检查：`python -m pip install -r requirements-localization.txt`，然后 `python -m unittest discover -s tests -v`。构建继续沿用现有私有 relay 分发流程，APK 不放公开附件。
 
+跨境上传较慢时，Actions 另存一份加密 APK 附件（保留一天），使用 AES-256-GCM，
+随机密钥由 RSA-OAEP 加密。仓库只有公钥 `tools/apk-transfer-public.pem`；
+私钥保存在本机 `../pebble-signing/apk-transfer-private.pem`，需与签名密钥一起备份，绝不提交。
+构建编号、版本、大小与 SHA-256 均经过认证，附件内容或元数据被修改时会拒绝解密。
+
+`tools/finish-private-build.ps1 -RunId <Actions运行ID>` 自动下载并验证 APK；
+加 `-Publish` 可经现有 `tc` SSH 通道补传，校验文件后原子替换服务器上的 APK 与更新信息。
+CI 会识别同一构建已发布并结束上传。整个过程不公开 APK 明文或访问令牌，手机仍使用原来的更新入口。
+本地检查加密传输还需 `pip install -r requirements-transfer.txt`。
+
