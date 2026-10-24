@@ -158,11 +158,6 @@ jobs:
           key: gradle-${{ hashFiles('app/gradle/**', 'app/*.gradle*', 'app/gradle.properties') }}
           restore-keys: gradle-
 
-      - name: Test live dictation and voice packet compatibility
-        if: steps.pick.outputs.skip != '1'
-        working-directory: app
-        run: ./gradlew --no-configuration-cache :libpebble3:testAndroidHostTest --tests '*LiveDictationTest*' --tests '*VoiceTest*'
-
       - name: Build release APK
         if: steps.pick.outputs.skip != '1'
         working-directory: app

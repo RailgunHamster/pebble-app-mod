@@ -54,16 +54,3 @@ CI 会识别同一构建已发布并结束上传。整个过程不公开 APK 明
 这两个入口及说明随 App 显示语言切换。新增平台桥接文件独立放在 `overlay/pebble/`，
 设置页只增加 `008` 的小补丁。原备份/更新功能为安卓专用，iOS 不显示这些入口。
 
-
-## Live dictation (PT2 firmware extension)
-
-Patch 009 adds commands 0x04 (replace the current preview) and 0x05 (stop capture).
-Only dictation sessions explicitly requesting the extension (setup flag 31) use it;
-official firmware keeps the existing single-result path. PT2 firmware advertises bit 62.
-The existing selected recognizer handles incremental full-clip snapshots, with one
-inference in flight and a conflated queue. PCM-based endpointing waits for speech,
-then 700 ms of silence; recording remains bounded to 15 s. Final results still use
-command 0x02. Model/network speed determines preview latency; real-device timing is
-not implied by the protocol tests. Recognition failure never sends a partial as final.
-Cancellation closes the decoder and cancels pending work. The original uncommitted
-SenseVoice warm-up draft is kept separate from these changes.
