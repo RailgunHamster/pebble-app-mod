@@ -14,6 +14,7 @@ PARSER = Parser(Language(tree_sitter_kotlin.language()))
 LABELS = {'title', 'description', 'text', 'label', 'message', 'confirmText',
           'cancelText', 'dismissText', 'contentDescription', 'placeholder',
           'headline', 'supportingText', 'subtitle', 'buttonText', 'hint'}
+LABELS |= {'itemText', 'unit', 'question', 'answer'}
 CALLS = {'Text', 'SectionText', 'showSnackbar', 'BasicText', 'CoreButton', 'Section',
          'TopLevelType', 'errorDialog', 'setContentTitle', 'setContentText', 'setTitle',
          'setMessage', 'setPositiveButton', 'setNegativeButton', 'Toast.makeText'}
@@ -88,6 +89,21 @@ def eligible(node, source):
     return False
 
 
+def enum_label(node, source):
+    entry = next((p for p in ancestors(node) if p.type == 'enum_entry'), None)
+    declaration = next((p for p in ancestors(node) if p.type == 'class_declaration'), None)
+    if not entry or not declaration:
+        return False
+    header = text(declaration, source).split('{', 1)[0]
+    if not re.search(r'val\s+(?:displayName|englishDisplayName|title|englishTitle)', header):
+        return False
+    argument = node.parent
+    if argument.type != 'value_argument':
+        return False
+    args = [n for n in argument.parent.named_children if n.type == 'value_argument']
+    return args.index(argument) == 1 or 'description =' in text(argument, source)
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('source', type=pathlib.Path)
@@ -96,10 +112,11 @@ def main():
     args = parser.parse_args()
     found = {}
     files = []
-    for module in ('composeApp', 'pebble', 'util', 'experimental'):
+    for module in ('composeApp', 'pebble', 'util', 'experimental', 'libpebble3'):
         for path in (args.source / module / 'src').glob('*/kotlin/**/*.kt'):
             rel = path.relative_to(args.source).as_posix()
-            if not any(part in rel for part in ('/ui/', '/theme/', '/mod/')):
+            metadata_only = rel.endswith('/WatchPrefEntity.kt')
+            if not metadata_only and not any(part in rel for part in ('/ui/', '/theme/', '/mod/')):
                 continue
             source = path.read_bytes()
             tree = PARSER.parse(source)
@@ -112,13 +129,17 @@ def main():
                     continue
                 value, expressions = result
                 native_label = '/mod/' in rel and re.search('[\u3400-\u9fff]', value) and not any(
-                    p.type == 'string_literal' for p in ancestors(node))
-                if not native_label and not eligible(node, source):
+                    p.type == 'string_literal' or (p.type == 'call_expression' and
+                    text(p.named_children[0], source) == 'appText') for p in ancestors(node))
+                if not native_label and not eligible(node, source) and not enum_label(node, source):
                     continue
                 if not re.search('[A-Za-z\u3400-\u9fff]', value) or re.fullmatch(r'[%\d\W]+', value):
                     continue
                 found.setdefault(value, []).append(f'{rel}:{node.start_point.row + 1}')
-                selected.append((node, value, expressions))
+                if not metadata_only:
+                    selected.append((node, value, expressions))
+            if metadata_only:
+                continue
             files.append((path, source, selected))
     if args.inventory:
         args.inventory.write_text(json.dumps(found, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
@@ -146,18 +167,24 @@ def main():
                 call += ', ' + ', '.join(expressions)
             edits.append((node.start_byte, node.end_byte, (call + ')').encode()))
         for node in walk(PARSER.parse(source).root_node):
-            if node.type != 'call_expression' or text(node.named_children[0], source) not in ('Text', 'SectionText'):
+            if node.type != 'navigation_expression' or not eligible(node, source):
                 continue
-            values = next((c for c in node.named_children if c.type == 'value_arguments'), None)
-            if not values or not values.named_children:
-                continue
-            argument = values.named_children[0]
-            if argument.type != 'value_argument' or not argument.named_children:
-                continue
-            expression = argument.named_children[-1]
+            expression = node
             value = text(expression, source)
-            if re.fullmatch(r'(?:title|description|label|\w+\.title|\w+\.displayName|itemText\([^\n]+\))', value):
-                edits.append((expression.start_byte, expression.end_byte, f'appText({value})'.encode()))
+            function = next((p for p in ancestors(node) if p.type == 'function_declaration'), None)
+            function_name = text(function.child_by_field_name('name'), source) if function else ''
+            pref_label = path.name == 'WatchPrefsScreen.kt' and value in {
+                'pref.displayName', 'item.pref.displayName', 'pref.description', 'item.pref.description'}
+            enum_option = (path.name == 'WatchPrefsScreen.kt' and function_name == 'enumPref'
+                           and value == 'it.displayName')
+            settings_option = (path.name == 'WatchSettingsScreen.kt' and function_name == 'rememberSettingsItemsState'
+                               and value == 'it.displayName')
+            if path.name == 'WatchSettingsScreen.kt' and value == 'it.name':
+                call = next((p for p in ancestors(node) if p.type == 'call_expression'), None)
+                settings_option = bool(call and 'items = HealthGender.entries' in text(call, source))
+            if pref_label or enum_option or settings_option:
+                replacement = f'{value}?.let {{ appText(it) }}' if value.endswith('.description') else f'appText({value})'
+                edits.append((expression.start_byte, expression.end_byte, replacement.encode()))
         if edits:
             before_errors = sum(n.type == 'ERROR' or n.is_missing for n in walk(PARSER.parse(source).root_node))
             for start, end, replacement in sorted(edits, reverse=True):

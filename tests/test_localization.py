@@ -3,6 +3,8 @@ import pathlib
 import re
 import sys
 import unittest
+import tempfile
+import subprocess
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'tools'))
@@ -35,6 +37,23 @@ class LocalizationTests(unittest.TestCase):
 
     def test_animation_labels_are_not_ui(self):
         self.assertFalse(self.strings('fun View(){ Crossfade(state, label = "onboarding_step") {} }')[0][1])
+
+    def test_user_names_and_variable_text_remain_unchanged(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            source = pathlib.Path(temporary)
+            path = source / 'pebble/src/commonMain/kotlin/example/ui/View.kt'
+            path.parent.mkdir(parents=True)
+            path.write_text('package example\nfun View(title: String){ Text(title); Text(app.title); Text("Settings") }', encoding='utf-8')
+            catalog = source / 'catalog.json'
+            catalog.write_text(json.dumps({'Settings': ['设置', '設定']}), encoding='utf-8')
+            command = [sys.executable, str(ROOT / 'tools/localize.py'), str(source), '--catalog', str(catalog)]
+            subprocess.run(command, check=True, capture_output=True)
+            result = path.read_text(encoding='utf-8')
+            self.assertIn('Text(title)', result)
+            self.assertIn('Text(app.title)', result)
+            self.assertIn('Text(appText("Settings"))', result)
+            subprocess.run(command, check=True, capture_output=True)
+            self.assertEqual(result, path.read_text(encoding='utf-8'))
 
     def test_placeholders_match_in_both_languages(self):
         catalog = json.loads((ROOT / 'localization/catalog.json').read_text(encoding='utf-8'))

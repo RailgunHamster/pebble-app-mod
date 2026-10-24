@@ -9,6 +9,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import com.russhwolf.settings.Settings
+import coredevices.util.Permission
 
 object AppLanguage {
     val choices = listOf("system", "zh-CN", "ja", "en")
@@ -46,7 +47,12 @@ fun appText(english: String, vararg arguments: Any?): String {
         else -> null
     } ?: translated?.third ?: english
     return argumentPattern.replace(template) { match ->
-        arguments.getOrNull(match.groupValues[1].toInt() - 1)?.toString() ?: match.value
+        val value = arguments.getOrNull(match.groupValues[1].toInt() - 1)
+        when (value) {
+            is Permission -> appText(value.name)
+            null -> match.value
+            else -> value.toString()
+        }
     }
 }
 

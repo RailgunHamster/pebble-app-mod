@@ -1,0 +1,39 @@
+diff --git a/pebble/src/commonMain/kotlin/coredevices/pebble/ui/WatchSettingsScreen.kt b/pebble/src/commonMain/kotlin/coredevices/pebble/ui/WatchSettingsScreen.kt
+--- a/pebble/src/commonMain/kotlin/coredevices/pebble/ui/WatchSettingsScreen.kt
++++ b/pebble/src/commonMain/kotlin/coredevices/pebble/ui/WatchSettingsScreen.kt
+@@ -190,12 +190,14 @@
+ import kotlin.time.Duration.Companion.minutes
+ import kotlin.time.Instant
+ 
+-enum class TopLevelType(val displayName: String) {
++enum class TopLevelType(private val englishDisplayName: String) {
+     Phone("Phone"),
+     Watch("Watch"),
+     All("All"),
+     Notifications("Notifications"),
+     ;
++
++    val displayName: String get() = coredevices.util.localization.appText(englishDisplayName)
+ 
+     fun icon(platform: Platform) = when (this) {
+         Phone -> when (platform) {
+@@ -213,7 +215,7 @@
+     }
+ }
+ 
+-enum class Section(val title: String, val icon: ImageVector) {
++enum class Section(private val englishTitle: String, val icon: ImageVector) {
+     About("About", Icons.Default.Info),
+     Support("Get Help", Icons.Default.SupportAgent),
+     Defaults("Defaults", Icons.Default.Tune),
+@@ -235,7 +237,9 @@
+     Music("Music", Icons.Default.MusicNote),
+     Other("Other", Icons.Default.MoreHoriz), // watch only
+     Diagnostics("Diagnostics", Icons.Default.Timeline),
+-    Debug("Debug", Icons.Default.BugReport),
++    Debug("Debug", Icons.Default.BugReport);
++
++    val title: String get() = coredevices.util.localization.appText(englishTitle)
+ }
+ 
+ fun Section.navigatesDirectlyTo(): NavBarRoute? = when (this) {

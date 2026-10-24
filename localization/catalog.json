@@ -92,8 +92,8 @@
     "%2$s の %1$s、%3$s"
   ],
   "%1$s permission missing!": [
-    "缺少 %1$s 项权限！",
-    "%1$s 件の権限が不足しています！"
+    "缺少 %1$s 权限！",
+    "%1$s の権限がありません！"
   ],
   "%1$s permissions missing!": [
     "缺少 %1$s 项权限！",
@@ -155,17 +155,45 @@
     "（text/plain）发送给 Tasker，再由其转交其他应用或操作。",
     "（text/plain）で Tasker に送り、任意のアプリやアクションに振り分けられます。"
   ],
+  "1 hour": [
+    "1 小时",
+    "1 時間"
+  ],
   "1.  Add a profile, pick Event → Received Share.": [
     "1. 添加配置文件，选择“事件 → 接收到分享”。",
     "1. プロファイルを追加し、「イベント → 共有を受信」を選びます。"
+  ],
+  "12 hours": [
+    "12 小时",
+    "12 時間"
+  ],
+  "15 minutes": [
+    "15 分钟",
+    "15 分"
   ],
   "2.  Attach a task — your text arrives in the %rs_text variable.": [
     "2. 关联一个任务，文本将传入 %rs_text 变量。",
     "2. タスクを設定します。テキストは %rs_text 変数に入ります。"
   ],
+  "24 hours": [
+    "24 小时",
+    "24 時間"
+  ],
+  "24h clock": [
+    "24 小时制",
+    "24 時間表示"
+  ],
   "3.  Optional: limit it to this app with %rs_package_name = ": [
     "3. 可选：用 %rs_package_name = ",
     "3. 必要に応じて %rs_package_name = "
+  ],
+  "30 minutes": [
+    "30 分钟",
+    "30 分"
+  ],
+  "6 hours": [
+    "6 小时",
+    "6 時間"
   ],
   "<Empty>": [
     "<空>",
@@ -198,6 +226,10 @@
   "ADD DESTINATION": [
     "添加目标位置",
     "送信先を追加"
+  ],
+  "ALARMS LPM": [
+    "闹钟低功耗模式",
+    "アラーム低電力モード"
   ],
   "AM": [
     "上午",
@@ -431,6 +463,18 @@
     "全部应用",
     "すべてのアプリ"
   ],
+  "All Off": [
+    "全部关闭",
+    "すべてオフ"
+  ],
+  "All On": [
+    "全部开启",
+    "すべてオン"
+  ],
+  "All On (Legacy)": [
+    "全部开启（旧版）",
+    "すべてオン（従来）"
+  ],
   "All new uploads are encrypted": [
     "所有新上传内容均加密",
     "新しいアップロードはすべて暗号化されます"
@@ -491,6 +535,10 @@
     "同时发送到 Webhook",
     "Webhook にも送信"
   ],
+  "Alternative notification banner Style (B/W watches)": [
+    "备用通知横幅样式（黑白手表）",
+    "別の通知バナースタイル（白黒の時計）"
+  ],
   "Always": [
     "始终",
     "常に"
@@ -498,6 +546,14 @@
   "Always send notifications": [
     "始终发送通知",
     "常に通知を送信"
+  ],
+  "Ambient Light Sensor": [
+    "环境光传感器",
+    "周囲光センサー"
+  ],
+  "Ambient Light Threshold": [
+    "环境光阈值",
+    "周囲光のしきい値"
   ],
   "An Index 01 is already paired to this phone. To pair a different Index 01, first unpair the existing one.": [
     "此手机已配对一个 Index 01。若要配对另一个，请先取消现有配对。",
@@ -696,9 +752,29 @@
     "自动更新固件",
     "ファームウェアを自動更新"
   ],
+  "Automatic follows the Imperial Units setting.": [
+    "自动模式遵循英制单位设置。",
+    "自動では、ヤード・ポンド法の設定に従います。"
+  ],
+  "Automatically adjust backlight brightness to match your environment (using light sensor). Dimmer modes stay dimmer in bright light.": [
+    "根据周围光线自动调整背光亮度，较暗的模式在强光下也会保持较暗。",
+    "周囲の明るさに合わせて背光を自動調整します。暗めのモードでは、明るい場所でも暗めに保ちます。"
+  ],
   "Automatically continue an interrupted firmware update when the watch reconnects": [
     "手表重连时自动继续中断的固件更新",
     "時計が再接続されたら、中断したファームウェア更新を自動的に続行します"
+  ],
+  "Automatically enable Quiet Time during calendar events": [
+    "日历事件期间自动启用安静时段",
+    "カレンダーの予定中に静音時間を自動的に有効にします"
+  ],
+  "Automatically enable Quiet Time during the scheduled hours, Monday to Friday": [
+    "周一至周五，在设定时间自动启用安静时段",
+    "月曜から金曜の指定した時間帯に、静音時間を自動的に有効にします"
+  ],
+  "Automatically enable Quiet Time during the scheduled hours, Saturday and Sunday": [
+    "周六和周日，在设定时间自动启用安静时段",
+    "土曜と日曜の指定した時間帯に、静音時間を自動的に有効にします"
   ],
   "Automatically sync recordings to cloud": [
     "自动将录音同步到云端",
@@ -728,6 +804,38 @@
     "后台采样",
     "バックグラウンドでの測定"
   ],
+  "BackgroundLocation": [
+    "后台位置",
+    "バックグラウンドの位置情報"
+  ],
+  "Backlight": [
+    "背光",
+    "バックライト"
+  ],
+  "Backlight Color": [
+    "背光颜色",
+    "バックライトの色"
+  ],
+  "Backlight Intensity": [
+    "背光亮度",
+    "バックライトの明るさ"
+  ],
+  "Backlight Motion": [
+    "抬腕背光",
+    "手首の動きでバックライト"
+  ],
+  "Backlight Preset": [
+    "背光预设",
+    "バックライトのプリセット"
+  ],
+  "Backlight Timeout": [
+    "背光时长",
+    "バックライトの点灯時間"
+  ],
+  "Backlight on Tap": [
+    "触摸背光",
+    "タップでバックライト"
+  ],
   "Backup": [
     "备份",
     "バックアップ"
@@ -744,9 +852,21 @@
     "电池",
     "バッテリー"
   ],
+  "Battery Saver": [
+    "省电",
+    "省電力"
+  ],
+  "BatteryOptimization": [
+    "电池优化",
+    "バッテリーの最適化"
+  ],
   "Bearer token123...": [
     "Bearer token123...",
     "Bearer token123..."
+  ],
+  "Beeper": [
+    "Beeper",
+    "Beeper"
   ],
   "Beeper Contacts": [
     "Beeper 联系人",
@@ -764,6 +884,14 @@
     "纯黑",
     "ブラック"
   ],
+  "Blinding": [
+    "极亮",
+    "非常に明るい"
+  ],
+  "Bluetooth": [
+    "蓝牙",
+    "Bluetooth"
+  ],
   "Bluetooth state restoration": [
     "蓝牙状态恢复",
     "Bluetooth の状態復元"
@@ -779,6 +907,10 @@
   "Bread": [
     "面包",
     "パン"
+  ],
+  "Bright": [
+    "明亮",
+    "明るい"
   ],
   "Browse plugins in the store": [
     "在商店中浏览插件",
@@ -796,6 +928,10 @@
     "内置集成正被插件取代，将在后续版本移除。",
     "内蔵の連携機能はプラグインに置き換えられ、今後のバージョンで削除されます。"
   ],
+  "Bundles the ambient sensor, dynamic backlight, brightness and timeout into one mode. Choose Advanced to configure them individually.": [
+    "将环境光传感器、动态背光、亮度和时长组合为一个模式；选择“高级”可逐项配置。",
+    "周囲光センサー、動的バックライト、明るさ、点灯時間をまとめて設定します。「詳細設定」では個別に変更できます。"
+  ],
   "Button Actions": [
     "按钮操作",
     "ボタンの操作"
@@ -807,6 +943,10 @@
   "Button Release": [
     "按钮松开",
     "ボタンを離した時"
+  ],
+  "Button functions are reversed": [
+    "反转按钮功能",
+    "ボタンの機能を反転します"
   ],
   "Calendar": [
     "日历",
@@ -856,6 +996,10 @@
     "更改",
     "変更"
   ],
+  "Change Backlight Color at Night": [
+    "夜间更换背光颜色",
+    "夜間にバックライトの色を変更"
+  ],
   "Change list type": [
     "更改列表类型",
     "リストの種類を変更"
@@ -883,6 +1027,10 @@
   "Checking for PebbleOS updates..": [
     "正在检查 PebbleOS 更新…",
     "PebbleOS の更新を確認中…"
+  ],
+  "Choose Custom to use the installed language pack.": [
+    "选择“自定义”以使用已安装的语言包。",
+    "インストールした言語パックを使うには、「カスタム」を選んでください。"
   ],
   "Choose Language": [
     "选择语言",
@@ -935,6 +1083,10 @@
   "Close": [
     "关闭",
     "閉じる"
+  ],
+  "Cloud (with Local Fallback)": [
+    "云端优先，本地回退",
+    "クラウド優先（ローカルにフォールバック）"
   ],
   "Cloud Backup": [
     "云端备份",
@@ -1040,6 +1192,10 @@
     "联系开发者",
     "開発者に連絡"
   ],
+  "Contacts": [
+    "联系人",
+    "連絡先"
+  ],
   "Contacts Index is allowed to message. Try saying \"Message Alice - What's up?\"": [
     "Index 可以发送消息的联系人。试着说“给小明发消息：最近怎么样？”",
     "Index がメッセージを送信できる連絡先です。「アリスにメッセージ：元気？」と話してみてください"
@@ -1055,6 +1211,10 @@
   "Continuously track heart rate during detected walks and runs. This can have an impact on battery life.": [
     "检测到步行或跑步时持续记录心率，可能影响续航。",
     "歩行やランニングの検出中は心拍数を連続測定します。バッテリー持続時間に影響する場合があります。"
+  ],
+  "Controls how low ambient light needs to be to enable backlight (if using Ambient Light Sensor)": [
+    "控制环境光降低到什么程度时开启背光，需启用环境光传感器",
+    "周囲光センサーの使用時に、どの暗さからバックライトを点灯するかを設定します"
   ],
   "Copied to clipboard": [
     "已复制到剪贴板",
@@ -1132,6 +1292,10 @@
     "当前已安装：%1$s",
     "現在インストール済み：%1$s"
   ],
+  "Custom (Language Pack)": [
+    "自定义（语言包）",
+    "カスタム（言語パック）"
+  ],
   "Custom Group": [
     "自定义分组",
     "カスタムグループ"
@@ -1166,6 +1330,10 @@
   ],
   "Day": [
     "日",
+    "日"
+  ],
+  "Days": [
+    "天",
     "日"
   ],
   "Debug": [
@@ -1211,6 +1379,14 @@
   "Defaults": [
     "默认设置",
     "既定の設定"
+  ],
+  "Delay Notification Vibration": [
+    "延迟通知振动",
+    "通知の振動を遅らせる"
+  ],
+  "Delay notification vibration until the notification is visible (after animations)": [
+    "等动画结束、通知可见后再振动",
+    "アニメーションが終わり、通知が表示されてから振動します"
   ],
   "Delete": [
     "删除",
@@ -1336,6 +1512,10 @@
     "其他标题",
     "別のタイトル"
   ],
+  "Dim": [
+    "微暗",
+    "暗め"
+  ],
   "Disable": [
     "禁用",
     "無効にする"
@@ -1436,6 +1616,10 @@
     "双击",
     "2 回押し"
   ],
+  "Double Tap": [
+    "双击",
+    "ダブルタップ"
+  ],
   "Double click": [
     "双击",
     "2 回押し"
@@ -1520,6 +1704,10 @@
     "截止时间",
     "期限"
   ],
+  "Dynamic Backlight": [
+    "动态背光",
+    "動的バックライト"
+  ],
   "Early alert": [
     "提前提醒",
     "事前通知"
@@ -1584,6 +1772,10 @@
     "开启蓝牙以连接手表。",
     "時計に接続するには Bluetooth を有効にしてください。"
   ],
+  "Enable motion backlight during Quiet Time": [
+    "安静时段也启用抬腕背光",
+    "静音時間中も手首の動きによるバックライトを有効にします"
+  ],
   "Enable showsUserInterface actions": [
     "启用 showsUserInterface 操作",
     "showsUserInterface アクションを有効化"
@@ -1591,6 +1783,10 @@
   "Enable the new plugins API, and new permissions system. This is an experimental feature under development - not recommended unless you know what you are doing (API is unstable)": [
     "启用新的插件 API 和权限系统。这是开发中的实验功能，API 尚不稳定，除非了解其用途，否则不建议启用",
     "新しいプラグイン API と権限システムを有効にします。開発中の実験的な機能で API も不安定なため、内容を理解している場合のみ有効にしてください"
+  ],
+  "Enable touch backlight during Quiet Time": [
+    "安静时段也启用触摸背光",
+    "静音時間中もタップによるバックライトを有効にします"
   ],
   "Encrypt Backups": [
     "加密备份",
@@ -1676,6 +1872,22 @@
     "错误：%1$s",
     "エラー：%1$s"
   ],
+  "Every 10 minutes": [
+    "每 10 分钟",
+    "10 分ごと"
+  ],
+  "Every 30 minutes": [
+    "每 30 分钟",
+    "30 分ごと"
+  ],
+  "Every 5 minutes": [
+    "每 5 分钟",
+    "5 分ごと"
+  ],
+  "Every hour": [
+    "每小时",
+    "1 時間ごと"
+  ],
   "Everything is appended to Pebble Index.md": [
     "所有内容均追加到 Pebble Index.md",
     "すべての内容を Pebble Index.md に追記します"
@@ -1691,6 +1903,10 @@
   "Export recording": [
     "导出录音",
     "録音を書き出す"
+  ],
+  "ExternalStorage": [
+    "存储",
+    "ストレージ"
   ],
   "Extra debug info on devices tab": [
     "在设备标签页显示额外调试信息",
@@ -1852,6 +2068,10 @@
     "正在生成密钥并保存到密码管理器…",
     "キーを生成してパスワードマネージャーに保存中…"
   ],
+  "Gentle": [
+    "轻柔",
+    "弱め"
+  ],
   "Get Help": [
     "获取帮助",
     "ヘルプ"
@@ -1964,6 +2184,10 @@
     "十六进制",
     "16 進数"
   ],
+  "Hide": [
+    "隐藏",
+    "非表示"
+  ],
   "Hide Trace Timeline": [
     "隐藏处理时间线",
     "トレースタイムラインを非表示"
@@ -1975,6 +2199,10 @@
   "Hide tool calls": [
     "隐藏工具调用",
     "ツール呼び出しを非表示"
+  ],
+  "High": [
+    "高",
+    "高"
   ],
   "Hold to reconfigure": [
     "长按重新配置",
@@ -2003,6 +2231,10 @@
   "How should each note be saved?": [
     "每条笔记应如何保存？",
     "メモの保存方法"
+  ],
+  "How the Quick View peek is drawn on watchfaces that don't support it (supported watch models only)": [
+    "不支持 Quick View 的表盘如何显示预览，仅限支持此功能的手表型号",
+    "Quick View 非対応の文字盤での表示方法です。対応する時計のみで使用できます"
   ],
   "How to submit a great bug report": [
     "如何提交有帮助的问题报告",
@@ -2228,6 +2460,10 @@
     "备份中的项目",
     "バックアップ内の項目"
   ],
+  "Jackhammer": [
+    "强烈震动",
+    "強い連続振動"
+  ],
   "Jan": [
     "1 月",
     "1 月"
@@ -2260,6 +2496,14 @@
     "将 Index 01 放在手机旁，并按下按钮…",
     "Index 01 をスマートフォンの近くに置き、ボタンを押してください…"
   ],
+  "LED color used at night when \"Change Backlight Color at Night\" is on": [
+    "开启“夜间更换背光颜色”后，夜间使用的 LED 颜色",
+    "「夜間にバックライトの色を変更」が有効なときの夜間の LED 色"
+  ],
+  "LED color used when the backlight is on, unless over-ridden by an app (color-backlight watches only)": [
+    "背光开启时的 LED 颜色，应用可覆盖设置；仅限支持彩色背光的手表",
+    "バックライト点灯時の LED 色です。アプリが変更する場合があります。カラーバックライト対応の時計のみ使用できます"
+  ],
   "LISTS": [
     "列表",
     "リスト"
@@ -2267,6 +2511,14 @@
   "LLM Result: %1$s": [
     "大模型结果：%1$s",
     "LLM の結果：%1$s"
+  ],
+  "Language": [
+    "语言",
+    "言語"
+  ],
+  "Larger": [
+    "较大",
+    "大きめ"
   ],
   "Last Night's Sleep": [
     "昨晚睡眠",
@@ -2287,6 +2539,10 @@
   "Latitude": [
     "纬度",
     "緯度"
+  ],
+  "Left-handed Mode": [
+    "左手模式",
+    "左利きモード"
   ],
   "Legacy PebbleKit": [
     "旧版 PebbleKit",
@@ -2340,6 +2596,22 @@
     "正在加载…",
     "読み込み中…"
   ],
+  "Local (with Cloud Fallback)": [
+    "本地优先，云端回退",
+    "ローカル優先（クラウドにフォールバック）"
+  ],
+  "Local (with Rebble Fallback)": [
+    "本地优先，Rebble 回退",
+    "ローカル優先（Rebble にフォールバック）"
+  ],
+  "Local Only": [
+    "仅本地",
+    "ローカルのみ"
+  ],
+  "Location": [
+    "位置",
+    "位置情報"
+  ],
   "Locations": [
     "地点",
     "場所"
@@ -2367,6 +2639,10 @@
   "Loops completed: %1$s": [
     "已完成 %1$s 轮",
     "完了した回数：%1$s"
+  ],
+  "Low": [
+    "低",
+    "低"
   ],
   "MCP & Tool Settings": [
     "MCP 与工具设置",
@@ -2408,6 +2684,10 @@
     "手动位置",
     "手動の場所"
   ],
+  "Manually configure a time zone on the watch (instead of automatcially using the time zone of the phone)": [
+    "在手表上手动设置时区，不自动使用手机时区",
+    "スマートフォンのタイムゾーンを使わず、時計側で手動設定します"
+  ],
   "Mar": [
     "3 月",
     "3 月"
@@ -2415,6 +2695,10 @@
   "March": [
     "三月",
     "3 月"
+  ],
+  "Mario": [
+    "马里奥",
+    "マリオ"
   ],
   "Match field": [
     "匹配字段",
@@ -2428,9 +2712,29 @@
     "符合条件的通知将被屏蔽：",
     "一致する通知はブロックされます："
   ],
+  "Max Brightness": [
+    "最高亮度",
+    "最大の明るさ"
+  ],
+  "Maximum backlight brightness when on": [
+    "背光开启时的最高亮度",
+    "バックライト点灯時の最大の明るさ"
+  ],
   "May": [
     "五月",
     "5 月"
+  ],
+  "Medium": [
+    "中",
+    "中"
+  ],
+  "Medium-High": [
+    "中高",
+    "やや高"
+  ],
+  "Medium-Low": [
+    "中低",
+    "やや低"
   ],
   "Meet Index 01": [
     "认识 Index 01",
@@ -2439,6 +2743,14 @@
   "Meet Jims": [
     "见吉姆",
     "ジムに会う"
+  ],
+  "Menu Scrolling - Vibration": [
+    "菜单滚动振动",
+    "メニューのスクロール時に振動"
+  ],
+  "Menu Scrolling - Wrap Around": [
+    "菜单循环滚动",
+    "メニューの循環スクロール"
   ],
   "Message": [
     "消息",
@@ -2483,6 +2795,10 @@
   "More options": [
     "更多选项",
     "その他の項目"
+  ],
+  "Motion Sensitivity": [
+    "动作灵敏度",
+    "動きの感度"
   ],
   "Move To Top": [
     "移到顶部",
@@ -2592,9 +2908,17 @@
     "夜间",
     "夜間"
   ],
+  "Night Backlight Color": [
+    "夜间背光颜色",
+    "夜間のバックライト色"
+  ],
   "No Ring Paired": [
     "未配对戒指",
     "リング未ペアリング"
+  ],
+  "No Vibe": [
+    "不振动",
+    "振動なし"
   ],
   "No action taken": [
     "未执行操作",
@@ -2772,9 +3096,21 @@
     "通知",
     "通知"
   ],
+  "Notification Filter": [
+    "通知筛选",
+    "通知フィルター"
+  ],
   "Notification Shortcut": [
     "通知快捷操作",
     "通知のショートカット"
+  ],
+  "Notification Text Size": [
+    "通知文字大小",
+    "通知の文字サイズ"
+  ],
+  "Notification Timeout": [
+    "通知显示时长",
+    "通知の表示時間"
   ],
   "Notification filter rules": [
     "通知过滤规则",
@@ -2787,6 +3123,18 @@
   "Notifications": [
     "通知",
     "通知"
+  ],
+  "Notifications - Backlight": [
+    "通知背光",
+    "通知のバックライト"
+  ],
+  "Notifications are muted (and will stay on-screen without a timeout) when in quiet time": [
+    "安静时段中通知静音，并持续显示，不自动消失",
+    "静音時間中は通知がミュートされ、自動的に消えず画面に残ります"
+  ],
+  "Notifications time out (disappear) after this period (unless Quiet Time is enabled)": [
+    "通知在此时长后自动消失，安静时段开启时除外",
+    "静音時間中を除き、通知はこの時間が経過すると消えます"
   ],
   "Notifications won't be sent to watch if phone is in Do Not Disturb mode (unless configured for that app/person in phone settings)": [
     "手机处于勿扰模式时，不向手表发送通知，手机设置中为特定应用或联系人放行的除外",
@@ -2824,6 +3172,10 @@
     "十一月",
     "11 月"
   ],
+  "Nudge Nudge": [
+    "双重轻振",
+    "軽い振動 2 回"
+  ],
   "OK": [
     "确定",
     "OK"
@@ -2839,6 +3191,10 @@
   "October": [
     "十月",
     "10 月"
+  ],
+  "Off": [
+    "关闭",
+    "オフ"
   ],
   "Offline Only": [
     "仅离线",
@@ -2871,6 +3227,10 @@
   "One time": [
     "仅一次",
     "1 回のみ"
+  ],
+  "Only enable backlight when in a dark environment (using light sensor)": [
+    "仅在环境较暗时开启背光，使用光线传感器判断",
+    "光センサーを使い、暗い場所でのみバックライトを点灯します"
   ],
   "Only for Core Devices watches. This allows us to measure metrics e.g. battery life, and debug watch crashes (otherwise we do not know whether they are regressions in reliability or performance)": [
     "仅限 Core Devices 手表。用于统计续航等指标和排查手表崩溃，否则无法了解可靠性或性能是否退化",
@@ -2919,6 +3279,10 @@
   "Otherwise apps built before permissions keep the access they've always had.": [
     "否则，权限系统推出前开发的应用将保留原有访问权限。",
     "無効の場合、権限システムの導入前に作られたアプリは従来のアクセス権を保持します。"
+  ],
+  "Overlay": [
+    "叠加",
+    "重ねて表示"
   ],
   "Overwrite": [
     "覆盖",
@@ -3001,6 +3365,10 @@
     "手机日历已连接。",
     "スマートフォンのカレンダーを連携しました。"
   ],
+  "Phone Calls": [
+    "来电",
+    "着信"
+  ],
   "Pick a .pbw that includes MCP tools. It runs in a JS sandbox and shows up in ": [
     "选择包含 MCP 工具的 .pbw 文件。它会在 JS 沙盒中运行，并出现在",
     "MCP ツールを含む .pbw を選んでください。JS サンドボックスで実行され、"
@@ -3073,6 +3441,10 @@
     "发送测试通知",
     "テスト通知を送信"
   ],
+  "PostNotifications": [
+    "显示通知",
+    "通知の表示"
+  ],
   "Preset messages for notification replies on the watch (canned messages)": [
     "在手表上回复通知时使用的预设消息",
     "時計で通知に返信するときの定型文"
@@ -3105,6 +3477,10 @@
     "提示词（已选择 %1$s/%2$s）",
     "プロンプト（%1$s／%2$s 件を選択）"
   ],
+  "Pulse": [
+    "脉冲",
+    "パルス"
+  ],
   "QR code saved in your photos.": [
     "照片中保存的二维码。",
     "写真に保存した QR コードをインポートしてください。"
@@ -3113,6 +3489,38 @@
     "快捷启动",
     "クイック起動"
   ],
+  "Quick Launch: Hold Back": [
+    "快捷启动：长按返回键",
+    "クイック起動：戻るボタンを長押し"
+  ],
+  "Quick Launch: Hold Combo Back+Up": [
+    "快捷启动：长按返回键+上键",
+    "クイック起動：戻る＋上ボタンを長押し"
+  ],
+  "Quick Launch: Hold Combo Up+Down": [
+    "快捷启动：长按上键+下键",
+    "クイック起動：上＋下ボタンを長押し"
+  ],
+  "Quick Launch: Hold Down": [
+    "快捷启动：长按下键",
+    "クイック起動：下ボタンを長押し"
+  ],
+  "Quick Launch: Hold Select": [
+    "快捷启动：长按选择键",
+    "クイック起動：選択ボタンを長押し"
+  ],
+  "Quick Launch: Hold Up": [
+    "快捷启动：长按上键",
+    "クイック起動：上ボタンを長押し"
+  ],
+  "Quick Launch: Tap Down": [
+    "快捷启动：点按下键",
+    "クイック起動：下ボタンをタップ"
+  ],
+  "Quick Launch: Tap Up": [
+    "快捷启动：点按上键",
+    "クイック起動：上ボタンをタップ"
+  ],
   "Quick replies": [
     "快捷回复",
     "クイック返信"
@@ -3120,6 +3528,54 @@
   "Quiet Time": [
     "安静时段",
     "静音時間"
+  ],
+  "Quiet Time - Auto Dismiss": [
+    "安静时段：自动关闭通知",
+    "静音時間：通知を自動的に閉じる"
+  ],
+  "Quiet Time - Calendar Aware": [
+    "安静时段：跟随日历",
+    "静音時間：カレンダー連動"
+  ],
+  "Quiet Time - Manual": [
+    "安静时段：手动",
+    "静音時間：手動"
+  ],
+  "Quiet Time - Motion Backlight": [
+    "安静时段：抬腕背光",
+    "静音時間：手首の動きでバックライト"
+  ],
+  "Quiet Time - Notification Backlight": [
+    "安静时段：通知背光",
+    "静音時間：通知のバックライト"
+  ],
+  "Quiet Time - Show Notifications": [
+    "安静时段：显示通知",
+    "静音時間：通知を表示"
+  ],
+  "Quiet Time - Touch Backlight": [
+    "安静时段：触摸背光",
+    "静音時間：タップでバックライト"
+  ],
+  "Quiet Time - Weekday Hours": [
+    "安静时段：工作日时段",
+    "静音時間：平日の時間帯"
+  ],
+  "Quiet Time - Weekday Schedule": [
+    "安静时段：工作日计划",
+    "静音時間：平日のスケジュール"
+  ],
+  "Quiet Time - Weekend Hours": [
+    "安静时段：周末时段",
+    "静音時間：週末の時間帯"
+  ],
+  "Quiet Time - Weekend Schedule": [
+    "安静时段：周末计划",
+    "静音時間：週末のスケジュール"
+  ],
+  "Quiet Time Interruptions": [
+    "安静时段的例外",
+    "静音時間の割り込み"
   ],
   "RECORDED · %1$s": [
     "录制于 · %1$s",
@@ -3140,6 +3596,26 @@
   "Read key from Google Password Manager or iCloud Keychain": [
     "从 Google 密码管理器或 iCloud 钥匙串读取密钥",
     "Google パスワードマネージャーまたは iCloud キーチェーンからキーを読み取ります"
+  ],
+  "ReadCallLog": [
+    "通话记录",
+    "通話履歴"
+  ],
+  "ReadNotifications": [
+    "读取通知",
+    "通知へのアクセス"
+  ],
+  "ReadPhoneState": [
+    "电话状态",
+    "電話の状態"
+  ],
+  "Rebble (with Local Fallback)": [
+    "Rebble 优先，本地回退",
+    "Rebble 優先（ローカルにフォールバック）"
+  ],
+  "Rebble Only": [
+    "仅 Rebble",
+    "Rebble のみ"
   ],
   "Rebble speech recognition requires a Rebble subscription": [
     "Rebble 语音识别需要订阅 Rebble",
@@ -3164,6 +3640,10 @@
   "Record diagnostic information from your Index 01, only needed if support asks.": [
     "记录 Index 01 的诊断信息，仅在支持人员要求时使用。",
     "Index 01 の診断情報を記録します。サポートに依頼された場合のみ使用してください。"
+  ],
+  "RecordAudio": [
+    "录音",
+    "録音"
   ],
   "Recording": [
     "录音中",
@@ -3369,6 +3849,10 @@
     "正在重试…",
     "再試行中…"
   ],
+  "Reveille": [
+    "起床号",
+    "起床ラッパ"
+  ],
   "Reversed PPoG": [
     "反向 PPoG",
     "逆方向 PPoG"
@@ -3404,6 +3888,10 @@
   "SSE": [
     "SSE",
     "SSE"
+  ],
+  "Same as System": [
+    "跟随系统",
+    "システムと同じ"
   ],
   "Sample Watchface": [
     "示例表盘",
@@ -3609,6 +4097,10 @@
     "设置备份加密",
     "バックアップの暗号化を設定"
   ],
+  "SetAlarms": [
+    "设置闹钟",
+    "アラームの設定"
+  ],
   "Settings": [
     "设置",
     "設定"
@@ -3616,6 +4108,10 @@
   "Share": [
     "分享",
     "共有"
+  ],
+  "Shift Up": [
+    "向上移",
+    "上に移動"
   ],
   "Shopping": [
     "购物",
@@ -3629,6 +4125,14 @@
     "短按 3 次，长按 1 秒 3 次，再短按 3 次",
     "短押し 3 回、長押し 1 秒を 3 回、短押し 3 回"
   ],
+  "Show": [
+    "显示",
+    "表示"
+  ],
+  "Show Album Art": [
+    "显示专辑封面",
+    "アルバムアートを表示"
+  ],
   "Show Health Tab": [
     "显示健康标签页",
     "ヘルスケアタブを表示"
@@ -3641,6 +4145,10 @@
     "显示不兼容的应用",
     "非対応アプリを表示"
   ],
+  "Show Progress Bar": [
+    "显示进度条",
+    "進行状況バーを表示"
+  ],
   "Show Ring Onboarding": [
     "显示戒指初始设置",
     "リングの初期設定を表示"
@@ -3648,6 +4156,10 @@
   "Show Trace Timeline": [
     "显示处理时间线",
     "トレースタイムラインを表示"
+  ],
+  "Show Volume Controls": [
+    "显示音量控制",
+    "音量の操作を表示"
   ],
   "Show Watch Onboarding": [
     "显示手表初始设置",
@@ -3704,6 +4216,10 @@
   "Show tool calls": [
     "显示工具调用",
     "ツール呼び出しを表示"
+  ],
+  "Show upcoming events below watchface": [
+    "在表盘下方显示即将到来的事件",
+    "文字盤の下に今後の予定を表示します"
   ],
   "Show watch connection debug info": [
     "显示手表连接调试信息",
@@ -3841,6 +4357,10 @@
     "睡眠洞察",
     "睡眠の分析"
   ],
+  "Smaller": [
+    "较小",
+    "小さめ"
+  ],
   "Something you intend to do": [
     "打算执行的事项",
     "実行するつもりのこと"
@@ -3877,9 +4397,33 @@
     "语音识别",
     "音声認識"
   ],
+  "SpeechRecognizer": [
+    "语音识别",
+    "音声認識"
+  ],
   "Spoken Language": [
     "语音语言",
     "認識する言語"
+  ],
+  "Squish Up": [
+    "向上压缩",
+    "上に縮める"
+  ],
+  "Standard": [
+    "标准",
+    "標準"
+  ],
+  "Standard - High": [
+    "标准：高",
+    "標準：高"
+  ],
+  "Standard - Low": [
+    "标准：低",
+    "標準：低"
+  ],
+  "Standby Mode": [
+    "待机模式",
+    "スタンバイモード"
   ],
   "Star": [
     "星标",
@@ -3929,6 +4473,14 @@
     "星期日",
     "日曜日"
   ],
+  "Sunrise Time": [
+    "日出时间",
+    "日の出時刻"
+  ],
+  "Sunset Time": [
+    "日落时间",
+    "日の入り時刻"
+  ],
   "Supported languages": [
     "支持的语言",
     "対応言語"
@@ -3977,6 +4529,10 @@
     "系统语音模型",
     "システム音声モデル"
   ],
+  "System Vibration Intensity": [
+    "系统振动强度",
+    "システムの振動強度"
+  ],
   "T+?": [
     "T+?",
     "T+?"
@@ -3996,6 +4552,10 @@
   "Take out the trash": [
     "倒垃圾",
     "ごみを出す"
+  ],
+  "Tap": [
+    "点按",
+    "タップ"
   ],
   "Tap custom pattern": [
     "点按输入自定义模式",
@@ -4028,6 +4588,10 @@
   "Text": [
     "文本",
     "テキスト"
+  ],
+  "Text Size": [
+    "文字大小",
+    "文字サイズ"
   ],
   "The current speech engine doesn't need a download.": [
     "当前语音引擎无需下载。",
@@ -4165,6 +4729,18 @@
     "时间线",
     "タイムライン"
   ],
+  "Timeline Quick View": [
+    "时间线 Quick View",
+    "タイムライン Quick View"
+  ],
+  "Timeline Quick View - Unsupported Faces": [
+    "Quick View：不支持的表盘",
+    "Quick View：非対応の文字盤"
+  ],
+  "Timeline Quick View - minutes before event": [
+    "Quick View：事件前提前分钟数",
+    "Quick View：予定の何分前に表示するか"
+  ],
   "Timer started": [
     "计时器已启动",
     "タイマーを開始しました"
@@ -4176,6 +4752,10 @@
   "Timestamp: %1$s": [
     "时间戳：%1$s",
     "タイムスタンプ：%1$s"
+  ],
+  "Timezone configured manually": [
+    "手动设置时区",
+    "タイムゾーンを手動設定"
   ],
   "Title": [
     "标题",
@@ -4265,9 +4845,25 @@
     "开启云端备份后可设置加密",
     "暗号化を設定するには、クラウドバックアップを有効にしてください"
   ],
+  "Turn on backlight by flicking wrist": [
+    "轻甩手腕时开启背光",
+    "手首を振るとバックライトを点灯します"
+  ],
+  "Turn on backlight when tapping the screen": [
+    "点按屏幕时开启背光",
+    "画面をタップするとバックライトを点灯します"
+  ],
   "Turn on if Pebble is also installed on another profile of this phone. Index can't sync when two profiles connect to the ring at once.": [
     "若本手机的其他用户空间也安装了 Pebble，请开启此项。两个用户空间同时连接戒指时，Index 将无法同步。",
     "このスマートフォンの別のプロファイルにも Pebble がある場合は有効にしてください。2 つのプロファイルが同時にリングに接続すると、Index は同期できません。"
+  ],
+  "Turn on the backlight for notifications during Quiet Time": [
+    "安静时段中收到通知时开启背光",
+    "静音時間中に通知が届いたらバックライトを点灯します"
+  ],
+  "Turn on the backlight when a notification arrives": [
+    "收到通知时开启背光",
+    "通知が届いたらバックライトを点灯します"
   ],
   "Type": [
     "类型",
@@ -4321,6 +4917,10 @@
     "有未保存的更改",
     "未保存の変更があります"
   ],
+  "Up button will go to the bottom of menus": [
+    "按上键可从菜单顶部跳到末尾",
+    "メニューの先頭で上ボタンを押すと末尾に移動します"
+  ],
   "Upcoming": [
     "即将到来",
     "今後の予定"
@@ -4364,6 +4964,10 @@
   "Use PendingIntent scan": [
     "使用 PendingIntent 扫描",
     "PendingIntent スキャンを使用"
+  ],
+  "Use a different backlight color between sunset and sunrise (color-backlight watches only)": [
+    "日落至日出期间使用不同背光颜色，仅限彩色背光手表",
+    "日の入りから日の出まで別のバックライト色を使います。カラーバックライト対応の時計のみ使用できます"
   ],
   "Use experimental plugins / permissions": [
     "使用实验性插件和权限系统",
@@ -4424,6 +5028,34 @@
   "Version: %1$s": [
     "版本：%1$s",
     "バージョン：%1$s"
+  ],
+  "Very High": [
+    "极高",
+    "非常に高"
+  ],
+  "Very Low": [
+    "极低",
+    "非常に低"
+  ],
+  "Vibe On Locked": [
+    "无法继续滚动时振动",
+    "スクロールできない端で振動"
+  ],
+  "Vibe On Wrap Around": [
+    "循环回到另一端时振动",
+    "循環して反対側に移るときに振動"
+  ],
+  "Vibration - Alarms": [
+    "闹钟振动",
+    "アラームの振動"
+  ],
+  "Vibration - Incoming Calls": [
+    "来电振动",
+    "着信の振動"
+  ],
+  "Vibration - Notifications": [
+    "通知振动",
+    "通知の振動"
   ],
   "Vibration Pattern": [
     "振动模式",
@@ -4489,6 +5121,10 @@
     "未知设备的手表类型",
     "不明なデバイスに適用する時計の種類"
   ],
+  "Watch will disable bluetooth when not in use (i.e. no movement is detected), to save power": [
+    "未使用、未检测到移动时关闭蓝牙，以节省电量",
+    "動きを検出せず使用していないときは、電力を節約するため Bluetooth を無効にします"
+  ],
   "Watchapp Collections": [
     "手表应用合集",
     "ウォッチアプリのコレクション"
@@ -4553,6 +5189,10 @@
     "已使用过的应用有更新时，在后台预先下载，以便下次打开时直接使用",
     "使用したアプリに更新があるとバックグラウンドでダウンロードし、次回の起動に備えます"
   ],
+  "When notifications are shown in Quiet Time, automatically dismiss them instead of leaving them on-screen": [
+    "在安静时段显示通知后自动关闭，不让通知一直停留在屏幕上",
+    "静音時間中に表示した通知を画面に残さず、自動的に閉じます"
+  ],
   "Where notes save": [
     "笔记保存位置",
     "メモの保存先"
@@ -4561,6 +5201,10 @@
     "提醒保存位置",
     "リマインダーの保存先"
   ],
+  "Wind Speed": [
+    "风速",
+    "風速"
+  ],
   "Wipe & Populate": [
     "清空并填充",
     "消去して作成"
@@ -4568,6 +5212,10 @@
   "Wispr Flow": [
     "Wispr Flow",
     "Wispr Flow"
+  ],
+  "With network access": [
+    "允许网络访问时",
+    "ネットワークアクセスがある場合"
   ],
   "Write steps, heart rate, sleep, and workouts to your phone's health platform": [
     "将步数、心率、睡眠和运动记录写入手机健康平台",
@@ -4673,6 +5321,10 @@
     "child-row-fade",
     "child-row-fade"
   ],
+  "cm": [
+    "厘米",
+    "cm"
+  ],
   "connection to the watch will not work while they are installed.": [
     "否则将无法连接手表。",
     "インストールされたままだと、時計に接続できません。"
@@ -4713,17 +5365,53 @@
     "iOS 提醒事项",
     "iOS リマインダー"
   ],
+  "in": [
+    "英寸",
+    "インチ"
+  ],
   "it works, and how to get the most out of it.": [
     "它的使用方式，充分发挥它的作用。",
     "活用するために、数分間ご覧ください。"
+  ],
+  "kg": [
+    "千克",
+    "kg"
+  ],
+  "km/h": [
+    "千米/时",
+    "km/h"
+  ],
+  "knots": [
+    "节",
+    "ノット"
   ],
   "label": [
     "标签",
     "ラベル"
   ],
+  "lb": [
+    "磅",
+    "ポンド"
+  ],
+  "m/s": [
+    "米/秒",
+    "m/s"
+  ],
   "milk": [
     "牛奶",
     "牛乳"
+  ],
+  "minutes": [
+    "分钟",
+    "分"
+  ],
+  "mph": [
+    "英里/时",
+    "mph"
+  ],
+  "ms": [
+    "毫秒",
+    "ms"
   ],
   "on this phone until it finishes.": [
     "无法在此手机上转写录音。",
@@ -4776,6 +5464,10 @@
   "weather with a high of 63°F (17°C) and a low of 44°F (6°C). Winds will ": [
     "最高温度 63°F（17°C），最低温度 44°F（6°C）。",
     "最高気温は 17°C（63°F）、最低気温は 6°C（44°F）です。"
+  ],
+  "years": [
+    "岁",
+    "歳"
   ],
   "your Actions list, unchecked until you enable it.": [
     "“操作”列表中，启用前默认不勾选。",
