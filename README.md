@@ -12,6 +12,7 @@ My personal version of the Core Devices Pebble app ([coredevices/mobileapp](http
 | `003-on-device-sensevoice` + `overlay/` | On-device dictation. The "System (On-Device)" speech mode runs SenseVoice-Small (Chinese, English, Japanese, Korean, Cantonese) on the phone through sherpa-onnx. The model (~230 MB) downloads once from hf-mirror.com. If on-device recognition fails, it falls back to the cloud recognizer. |
 | `008-backup-update-settings-entries` | Android Settings → General adds Backup and updates and Check for updates, reusing the existing launcher-shortcut activity. |
 | `009-continuous-dictation` + `overlay/` | Negotiated continuous capture, revisioned live previews, manual finish/cancel, long UTF-8 results and optional whole-text AI editing. |
+| `010-home-swipe-settings` + `overlay/` | Four watchface swipe actions in Quick Launch, synchronized both ways through the existing WatchPrefs database. |
 
 Adding a change: put the next numbered patch against an upstream tag in `patches/`, then push. The workflow (`.github/workflows/build.yml`) tests and builds an encrypted APK artifact. After emulator acceptance, `tools/finish-private-build.ps1 -RunId <id> -Publish` publishes privately. Scheduled upstream updates and manual runs with `publish` enabled can publish after automated checks.
 
@@ -74,3 +75,14 @@ Android/iOS 共享协议与实现；iOS 仍需 macOS 构建和实机验收。
 自动检查包含语音协议序列化、分块长度、片段修订/乱序、10 秒停顿续说、
 3 分钟分段内存边界、取消和无语音；Android 构建在 CI 运行这些测试。
 
+
+## 表盘滑动操作
+
+设置 → 手表 → 快速启动（按分类显示时为设置 → 快速启动）提供上、下、左、右四个表盘滑动方向。
+可选无操作、应用列表、系统操作和已安装应用；需要支持 homeSwipes 设置同步的固件。
+首次升级手机 App 会补读手表上的配置，读取前不允许用默认值覆盖手表。
+手表本机“设置 → 快速启动”的更改会同步回手机，手机修改也使用同一个原生设置记录。
+修改单个方向在数据库事务中合并其他方向；未安装或未知 UUID 保留，直到用户主动更换。
+
+界面和协议模型独立放在 overlay；010 只增加必要接入点，不复制整个上游设置页。
+补丁应用已在 1.16.0.1 和 1.16.0.4 验证；新增二进制、JSON 与旧同步状态兼容测试由 CI 运行。

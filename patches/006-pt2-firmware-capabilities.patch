@@ -34,13 +34,13 @@ diff --git a/libpebble3/src/commonMain/kotlin/io/rebble/libpebblecommon/packets/
 index c123e88..3ce5eab 100644
 --- a/libpebble3/src/commonMain/kotlin/io/rebble/libpebblecommon/packets/System.kt
 +++ b/libpebble3/src/commonMain/kotlin/io/rebble/libpebblecommon/packets/System.kt
-@@ -377,6 +377,9 @@ enum class ProtocolCapsFlag(val value: Int) {
-     SupportsWeatherDbV4(24),
-     SupportsUnknownTimelineAttributes(25),
-     SupportsAppPermissions(27),
+@@ -380,5 +380,8 @@ enum class ProtocolCapsFlag(val value: Int) {
+-    ;
 +    // PT2 extension bits; keep the upstream range available for future additions.
 +    SupportsTintedFont2bpp(60),
 +    SupportsCustomFontSystemEmoji(61),
-     ;
++    ;
  
      companion object {
+         fun makeFlags(flags: List<ProtocolCapsFlag>): UByteArray {
+             val bytes = UByteArray(8)

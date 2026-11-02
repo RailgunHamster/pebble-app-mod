@@ -1,10 +1,7 @@
 diff --git a/pebble/src/commonMain/kotlin/coredevices/pebble/ui/WatchSettingsScreen.kt b/pebble/src/commonMain/kotlin/coredevices/pebble/ui/WatchSettingsScreen.kt
 --- a/pebble/src/commonMain/kotlin/coredevices/pebble/ui/WatchSettingsScreen.kt
 +++ b/pebble/src/commonMain/kotlin/coredevices/pebble/ui/WatchSettingsScreen.kt
-@@ -190,12 +190,14 @@
- import kotlin.time.Duration.Companion.minutes
- import kotlin.time.Instant
- 
+@@ -193,9 +193,11 @@
 -enum class TopLevelType(val displayName: String) {
 +enum class TopLevelType(private val englishDisplayName: String) {
      Phone("Phone"),

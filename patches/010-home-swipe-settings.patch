@@ -1,0 +1,252 @@
+diff --git a/libpebble3/src/commonMain/kotlin/io/rebble/libpebblecommon/connection/LibPebble.kt b/libpebble3/src/commonMain/kotlin/io/rebble/libpebblecommon/connection/LibPebble.kt
+index 496a77b..7fea112 100644
+--- a/libpebble3/src/commonMain/kotlin/io/rebble/libpebblecommon/connection/LibPebble.kt
++++ b/libpebble3/src/commonMain/kotlin/io/rebble/libpebblecommon/connection/LibPebble.kt
+@@ -1,5 +1,7 @@
+ package io.rebble.libpebblecommon.connection
+ 
++import kotlinx.coroutines.flow.first
++
+ import androidx.compose.runtime.Stable
+ import androidx.compose.ui.graphics.ImageBitmap
+ import androidx.paging.PagingSource
+@@ -306,6 +308,14 @@ interface AnalyticsEvents {
+ interface WatchPrefs {
+     val watchPrefs: Flow<List<WatchPreference<*>>>
+     fun setWatchPref(watchPref: WatchPreference<*>)
++    suspend fun setHomeSwipe(
++        direction: io.rebble.libpebblecommon.database.entity.HomeSwipeDirection,
++        action: io.rebble.libpebblecommon.database.entity.QuickLaunchSetting,
++    ) {
++        val pref = io.rebble.libpebblecommon.database.entity.HomeSwipeWatchPref.HomeSwipes
++        val current = watchPrefs.first().first { it.pref == pref }
++        setWatchPref(WatchPreference(pref, pref.castParent(current).valueOrDefault().updated(direction, action)))
++    }
+ }
+ 
+ interface Watches {
+diff --git a/libpebble3/src/commonMain/kotlin/io/rebble/libpebblecommon/connection/endpointmanager/blobdb/BlobDB.kt b/libpebble3/src/commonMain/kotlin/io/rebble/libpebblecommon/connection/endpointmanager/blobdb/BlobDB.kt
+index 93f516e..e07bb6b 100644
+--- a/libpebble3/src/commonMain/kotlin/io/rebble/libpebblecommon/connection/endpointmanager/blobdb/BlobDB.kt
++++ b/libpebble3/src/commonMain/kotlin/io/rebble/libpebblecommon/connection/endpointmanager/blobdb/BlobDB.kt
+@@ -1,5 +1,7 @@
+ package io.rebble.libpebblecommon.connection.endpointmanager.blobdb
+ 
++import io.rebble.libpebblecommon.database.entity.HomeSwipeSettingsSyncState
++
+ import co.touchlab.kermit.Logger
+ import com.russhwolf.settings.ExperimentalSettingsApi
+ import com.russhwolf.settings.Settings
+@@ -187,8 +189,9 @@ class BlobDB(
+             notificationRuleDao = blobDatabases.getNotificationRuleDao(),
+             libPebbleConfigFlow = libPebbleConfigFlow,
+         )
+-        val deviceHasPreviouslySyncedSettings =
+-            loadDevicePreviousSettingsSyncState().identifiers.contains(identifier.asString)
++        val previousSettingsState = loadDevicePreviousSettingsSyncState()
++        val deviceHasPreviouslySyncedSettings = previousSettingsState.identifiers.contains(identifier.asString)
++        val refreshHomeSwipes = loadHomeSwipeSyncState().needsRefresh(identifier.asString)
+         watchScope.launch {
+             // Watch isn't sending a version response
+             val blobDbVersion = if (capabilities.contains(ProtocolCapsFlag.SupportsBlobDbVersion)) {
+@@ -211,7 +214,7 @@ class BlobDB(
+                 }
+             }
+ 
+-            if (unfaithful || !deviceHasPreviouslySyncedSettings) {
++            if (unfaithful || !deviceHasPreviouslySyncedSettings || refreshHomeSwipes) {
+                 if (blobDbVersion >= 1) {
+                     // Request a full sync of watch prefs
+                     val dirtyResponse = blobDBService.send(
+@@ -255,6 +258,12 @@ class BlobDB(
+             if (blobDbVersion >= 1) {
+                 watchScope.launch {
+                     blobDBService.syncCompletes.collect {
++                        if (it == BlobDatabase.WatchPrefs && refreshHomeSwipes) {
++                            val devices = loadHomeSwipeSyncState()
++                            settings.encodeValue("homeSwipeSettingsDiscoveredV1", devices.copy(
++                                refreshedIdentifiers = devices.refreshedIdentifiers + identifier.asString,
++                            ))
++                        }
+                         databasesWhichWillSync.value -= it
+                     }
+                 }
+@@ -316,6 +325,9 @@ class BlobDB(
+         }
+     }
+ 
++    private fun loadHomeSwipeSyncState() =
++        settings.decodeValue("homeSwipeSettingsDiscoveredV1", HomeSwipeSettingsSyncState())
++
+     private fun loadDevicePreviousSettingsSyncState() =
+         settings.decodeValue(PREF_KEY_DEVICES_HAVE_SYNCED_SETTINGS, DevicesWhichHaveSyncedSettings(emptySet()))
+ 
+diff --git a/libpebble3/src/commonMain/kotlin/io/rebble/libpebblecommon/database/dao/WatchPrefDao.kt b/libpebble3/src/commonMain/kotlin/io/rebble/libpebblecommon/database/dao/WatchPrefDao.kt
+index 3d33236..cd6a9a5 100644
+--- a/libpebble3/src/commonMain/kotlin/io/rebble/libpebblecommon/database/dao/WatchPrefDao.kt
++++ b/libpebble3/src/commonMain/kotlin/io/rebble/libpebblecommon/database/dao/WatchPrefDao.kt
+@@ -8,6 +8,10 @@ import io.rebble.libpebblecommon.connection.WatchPrefs
+ import io.rebble.libpebblecommon.database.MillisecondInstant
+ import io.rebble.libpebblecommon.database.asMillisecond
+ import io.rebble.libpebblecommon.database.entity.WatchPref
++import io.rebble.libpebblecommon.database.entity.HomeSwipeWatchPref
++import io.rebble.libpebblecommon.database.entity.HomeSwipeDirection
++import io.rebble.libpebblecommon.database.entity.HomeSwipeSettings
++import io.rebble.libpebblecommon.database.entity.QuickLaunchSetting
+ import io.rebble.libpebblecommon.database.entity.WatchPrefItem
+ import io.rebble.libpebblecommon.database.entity.WatchPrefItemDao
+ import io.rebble.libpebblecommon.database.entity.WatchPrefItemSyncEntity
+@@ -22,6 +26,14 @@ import kotlin.time.Clock
+ 
+ @Dao
+ interface WatchPrefRealDao : WatchPrefItemDao {
++    @Transaction
++    suspend fun updateHomeSwipe(direction: HomeSwipeDirection, action: QuickLaunchSetting, timestamp: MillisecondInstant) {
++        val pref = HomeSwipeWatchPref.HomeSwipes
++        val current = getEntry(pref.id)?.let { HomeSwipeSettings.fromJson(it.value) }
++            ?: error("Read watch swipe settings before editing them")
++        insertOrReplace(WatchPrefItem(pref.id, current.updated(direction, action).toJson(), timestamp))
++    }
++
+     @Transaction
+     override suspend fun handleWrite(write: DbWrite, transport: String, params: ValueParams): BlobResponse.BlobStatus {
+         if (!params.libPebbleConfigFlow.value.watchConfig.enableWatchSettingsSync) {
+@@ -86,6 +98,10 @@ class RealWatchPrefs(
+         }
+     }
+ 
++    override suspend fun setHomeSwipe(direction: HomeSwipeDirection, action: QuickLaunchSetting) {
++        watchPrefRealDao.updateHomeSwipe(direction, action, clock.now().asMillisecond())
++    }
++
+     override fun setWatchPref(watchPref: WatchPreference<*>) {
+         libPebbleCoroutineScope.launch {
+             val item = watchPref.watchPrefItem(clock.now().asMillisecond())
+diff --git a/libpebble3/src/commonMain/kotlin/io/rebble/libpebblecommon/database/entity/WatchPrefEntity.kt b/libpebble3/src/commonMain/kotlin/io/rebble/libpebblecommon/database/entity/WatchPrefEntity.kt
+index 4046b40..98a6e26 100644
+--- a/libpebble3/src/commonMain/kotlin/io/rebble/libpebblecommon/database/entity/WatchPrefEntity.kt
++++ b/libpebble3/src/commonMain/kotlin/io/rebble/libpebblecommon/database/entity/WatchPrefEntity.kt
+@@ -114,6 +114,8 @@ data class WatchPrefItem(
+                     }
+                 }
+ 
++                WatchPrefType.TypeHomeSwipes -> HomeSwipeSettings.fromJson(value).toBytes()
++
+                 WatchPrefType.TypeQuickLaunch -> {
+                     val setting = QuickLaunchSetting.fromJson(value)
+                     val struct = QLMappable(
+@@ -157,6 +159,7 @@ enum class WatchPrefType {
+     TypeUInt16,
+     TypeUInt32,
+     TypeQuickLaunch,
++    TypeHomeSwipes,
+     TypeColor,
+     TypeSchedule,
+ }
+@@ -240,6 +243,7 @@ sealed interface WatchPref<T> {
+     companion object {
+         fun enumeratePrefs(): List<WatchPref<*>> = BoolWatchPref.entries
+             .plus(QuicklaunchWatchPref.entries)
++            .plus(HomeSwipeWatchPref.entries)
+             .plus(EnumWatchPref.entries)
+             .plus(ColorWatchPref.entries)
+             .plus(RgbColorWatchPref.entries)
+@@ -903,6 +907,8 @@ fun DbWrite.asWatchPrefItem(params: ValueParams): WatchPrefItem? {
+                     toMinute = value[3].toInt(),
+                 ).encode()
+ 
++                WatchPrefType.TypeHomeSwipes -> HomeSwipeSettings.fromBytes(value).toJson()
++
+                 WatchPrefType.TypeQuickLaunch -> {
+                     val struct = QLMappable().apply { fromBytes(DataBuffer(value)) }
+                     val uuid = when (val u = struct.uuid.get()) {
+diff --git a/libpebble3/src/commonMain/kotlin/io/rebble/libpebblecommon/plugin/WatchSettingsPlugin.kt b/libpebble3/src/commonMain/kotlin/io/rebble/libpebblecommon/plugin/WatchSettingsPlugin.kt
+index 4fad391..9a8b9ca 100644
+--- a/libpebble3/src/commonMain/kotlin/io/rebble/libpebblecommon/plugin/WatchSettingsPlugin.kt
++++ b/libpebble3/src/commonMain/kotlin/io/rebble/libpebblecommon/plugin/WatchSettingsPlugin.kt
+@@ -39,7 +39,8 @@ private enum class SettingKind(val item: String, val shape: String) {
+     App(WatchSettingsPlugin.ITEM_APP, SourceShapeNames.LONG_TEXT),
+ }
+ 
+-private fun WatchPref<*>.kind(): SettingKind = when (this) {
++private fun WatchPref<*>.kind(): SettingKind? = when (this) {
++    is io.rebble.libpebblecommon.database.entity.HomeSwipeWatchPref -> null
+     is BoolWatchPref -> SettingKind.Switch
+     is NumberWatchPref -> SettingKind.Number
+     is EnumWatchPref, is ColorWatchPref, is RgbColorWatchPref, is ScheduleWatchPref ->
+@@ -159,6 +160,7 @@ class WatchSettingsPlugin(
+     /** One shape: the one the setting actually is. */
+     private fun value(preference: WatchPreference<*>): Map<String, JsonElement> =
+         when (val pref = preference.pref) {
++            is io.rebble.libpebblecommon.database.entity.HomeSwipeWatchPref -> emptyMap()
+             is BoolWatchPref -> mapOf(
+                 SourceShapeNames.BOOLEAN to
+                     encode(BooleanShape(pref.castParent(preference).valueOrDefault()))
+@@ -219,6 +221,8 @@ class WatchSettingsPlugin(
+                     ?: return invalid(pref, value, "a time range like 22:00-07:00")
+                 write(pref, schedule, schedule.encode())
+             }
++            is io.rebble.libpebblecommon.database.entity.HomeSwipeWatchPref ->
++                invalid(pref, value, "the watchface swipe settings screen")
+             is QuicklaunchWatchPref -> {
+                 if (value.isBlank()) {
+                     write(pref, QuickLaunchSetting(enabled = false, uuid = null), NOTHING)
+@@ -235,7 +239,7 @@ class WatchSettingsPlugin(
+         return ActionResult(
+             ok = true,
+             text = "${pref.displayName}: $reading",
+-            refreshed = listOf("$CATEGORY/${pref.kind().item}"),
++            refreshed = pref.kind()?.let { listOf("$CATEGORY/${it.item}") }.orEmpty(),
+         )
+     }
+ 
+diff --git a/pebble/src/commonMain/kotlin/coredevices/pebble/ui/WatchPrefsScreen.kt b/pebble/src/commonMain/kotlin/coredevices/pebble/ui/WatchPrefsScreen.kt
+index 4f8f24e..9c01a6f 100644
+--- a/pebble/src/commonMain/kotlin/coredevices/pebble/ui/WatchPrefsScreen.kt
++++ b/pebble/src/commonMain/kotlin/coredevices/pebble/ui/WatchPrefsScreen.kt
+@@ -12,7 +12,9 @@ import androidx.compose.material3.TextButton
+ import androidx.compose.material3.TimePicker
+ import androidx.compose.material3.TimePickerDialog
+ import androidx.compose.material3.rememberTimePickerState
++import io.rebble.libpebblecommon.database.entity.HomeSwipeWatchPref
+ import androidx.compose.runtime.Composable
++import androidx.compose.runtime.rememberCoroutineScope
+ import androidx.compose.runtime.collectAsState
+ import androidx.compose.runtime.getValue
+ import androidx.compose.runtime.mutableStateOf
+@@ -110,12 +112,15 @@ fun watchPrefs(): List<SettingsItem> {
+     val coreConfigHolder = koinInject<CoreConfigHolder>()
+     val settings by libPebble.watchPrefs.collectAsState(emptyList())
+     val quickLaunchOptions = quickLaunchOptions(libPebble)
++    val homeSwipeScope = rememberCoroutineScope()
+     val mapped = remember(settings, quickLaunchOptions) {
+         settings.hidePresetManagedBacklightPrefs()
+             .groupQuietTimeScheduleHours()
+             .hideFoldedBacklightColorPrefs()
+-            .map { item ->
+-                when (val pref = item.pref) {
++            .flatMap { item ->
++                if (item.pref is HomeSwipeWatchPref) {
++                    homeSwipePrefs(item.pref.castParent(item), libPebble, quickLaunchOptions, homeSwipeScope)
++                } else listOf(when (val pref = item.pref) {
+                     is BoolWatchPref -> booleanPref(pref.castParent(item), libPebble)
+                     is EnumWatchPref -> enumPref(pref.castParent(item), libPebble)
+                     is QuicklaunchWatchPref -> quicklaunchPref(pref.castParent(item), libPebble, quickLaunchOptions)
+@@ -128,7 +133,8 @@ fun watchPrefs(): List<SettingsItem> {
+                         }
+                     is NumberWatchPref -> numberPref(pref.castParent(item), libPebble)
+                     is ScheduleWatchPref -> schedulePref(pref.castParent(item), libPebble)
+-                }
++                    is HomeSwipeWatchPref -> error("Handled above")
++                })
+             }
+     }
+     val showConfirmReset = remember { mutableStateOf(false) }
+@@ -160,6 +166,7 @@ fun watchPrefs(): List<SettingsItem> {
+ }
+ 
+ fun WatchPref<*>.section(): Section = when (this) {
++    is HomeSwipeWatchPref -> Section.QuickLaunch
+     BoolWatchPref.TimezoneSourceIsManual -> Section.Time
+     BoolWatchPref.Clock24h -> Section.Time
+     BoolWatchPref.StandbyMode -> Section.Other

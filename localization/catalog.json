@@ -5788,5 +5788,37 @@
   "View or copy the original transcript before polishing": [
     "查看或复制整理前的识别原文",
     "文章を整える前の原文を表示・コピー"
+  ],
+  "Watchface swipe actions": [
+    "表盘滑动操作",
+    "ウォッチフェイスのスワイプ操作"
+  ],
+  "Watchface: Swipe up": [
+    "表盘：上滑",
+    "ウォッチフェイス：上にスワイプ"
+  ],
+  "Watchface: Swipe down": [
+    "表盘：下滑",
+    "ウォッチフェイス：下にスワイプ"
+  ],
+  "Watchface: Swipe left": [
+    "表盘：左滑",
+    "ウォッチフェイス：左にスワイプ"
+  ],
+  "Watchface: Swipe right": [
+    "表盘：右滑",
+    "ウォッチフェイス：右にスワイプ"
+  ],
+  "Connect your watch to read its swipe settings. Requires watchface swipe support.": [
+    "连接手表以读取滑动设置。需要手表固件支持表盘滑动。",
+    "ウォッチを接続してスワイプ設定を読み込みます。対応ファームウェアが必要です。"
+  ],
+  "App list": [
+    "应用列表",
+    "アプリ一覧"
+  ],
+  "Unavailable app": [
+    "应用不可用",
+    "利用できないアプリ"
   ]
 }

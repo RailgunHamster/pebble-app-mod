@@ -21,21 +21,18 @@ index 2c6b6d8..becd1f2 100644
  import CommonRoutes
  import androidx.compose.foundation.layout.Box
  import androidx.compose.foundation.layout.fillMaxSize
-@@ -32,6 +33,7 @@ fun App() {
-             navHostController.removeOnDestinationChangedListener(listener)
-         }
-     }
-+    AppLanguageEnvironment(koinInject<Settings>()) {
-     AppTheme {
-         val settings: Settings = koinInject()
-         val startDestination = if (settings.getBoolean(SHOWN_ONBOARDING, false)) {
-@@ -44,4 +46,5 @@ fun App() {
-             SttModelUpdatePrompt()
-         }
-     }
-+    }
- }
-\ No newline at end of file
+@@ -22,6 +23,11 @@ import theme.AppTheme
+ @Composable
+ @Preview
+ fun App() {
++    AppLanguageEnvironment(koinInject<Settings>()) { LocalizedApp() }
++}
++
++@Composable
++private fun LocalizedApp() {
+     val navHostController = rememberNavController()
+     DisposableEffect(navHostController) {
+         val listener = NavController.OnDestinationChangedListener { controller, destination, arguments ->
 diff --git a/pebble/src/commonMain/kotlin/coredevices/pebble/ui/WatchSettingsScreen.kt b/pebble/src/commonMain/kotlin/coredevices/pebble/ui/WatchSettingsScreen.kt
 index 5e27d6f..51a3884 100644
 --- a/pebble/src/commonMain/kotlin/coredevices/pebble/ui/WatchSettingsScreen.kt

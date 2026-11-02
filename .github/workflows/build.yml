@@ -167,6 +167,7 @@ jobs:
         working-directory: app
         run: |
           ./gradlew --no-configuration-cache :libpebble3:testAndroidHostTest --tests '*ContinuousVoiceTest*'
+          ./gradlew --no-configuration-cache :libpebble3:testAndroidHostTest --tests '*HomeSwipeSettingsTest*'
           ./gradlew --no-configuration-cache :util:testAndroidHostTest --tests '*ContinuousDictationTest*'
 
       - name: Build release APK

@@ -90,14 +90,12 @@ index 40c3727..681b4da 100644
          if (AppContext(this).isDebugBuild()) {
              Firebase.crashlytics.setCrashlyticsCollectionEnabled(false)
          }
-@@ -106,6 +108,7 @@ class MainApplication : Application(), SingletonImageLoader.Factory, Configurati
+@@ -106,4 +108,5 @@ class MainApplication : Application(), SingletonImageLoader.Factory, Configurati
          scheduleBackgroundJob(AppContext(this), coreConfigHolder.config.value)
          commonAppDelegate.init()
          pebbleBackgroundManager.monitorToStartBackground()
 +        coredevices.coreapp.mod.ModUpdate.checkInBackground(this)   // personal build
      }
- 
-     private fun dumpPreviousExitInfo() {
 diff --git a/composeApp/src/androidMain/kotlin/coredevices/coreapp/mod/ModBackup.kt b/composeApp/src/androidMain/kotlin/coredevices/coreapp/mod/ModBackup.kt
 new file mode 100644
 index 0000000..641e1ac
