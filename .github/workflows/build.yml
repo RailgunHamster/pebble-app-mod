@@ -169,6 +169,7 @@ jobs:
           ./gradlew --no-configuration-cache :libpebble3:testAndroidHostTest --tests '*ContinuousVoiceTest*'
           ./gradlew --no-configuration-cache :libpebble3:testAndroidHostTest --tests '*HomeSwipeSettingsTest*'
           ./gradlew --no-configuration-cache :util:testAndroidHostTest --tests '*ContinuousDictationTest*'
+          ./gradlew --no-configuration-cache :util:testAndroidHostTest --tests '*WatchAudio*Test*'
 
       - name: Build release APK
         if: steps.pick.outputs.skip != '1'

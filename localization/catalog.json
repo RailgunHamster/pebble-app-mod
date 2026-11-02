@@ -5820,5 +5820,73 @@
   "Unavailable app": [
     "应用不可用",
     "利用できないアプリ"
+  ],
+  "Original watch recordings": [
+    "手表原始录音",
+    "ウォッチの元の録音"
+  ],
+  "Listen to or export audio captured before speech recognition": [
+    "试听或导出识别前保存的手表录音",
+    "音声認識前に保存した録音の再生・書き出し"
+  ],
+  "Keep original watch audio": [
+    "保留手表原始录音",
+    "ウォッチの元の音声を保存"
+  ],
+  "Keeps the latest 5 recordings on this phone, including failed or cancelled dictation. WAV audio is saved before recognition, without extra volume or noise processing.": [
+    "仅在手机保留最近 5 次录音，识别失败或取消也保留。WAV 在识别前保存，不额外调整音量或降噪。",
+    "認識失敗・キャンセル時も含め、最新5件をこのスマートフォンに保存します。認識前のWAV音声に音量補正やノイズ処理は加えません。"
+  ],
+  "No saved recordings yet. Speak on the watch, then finish or cancel and tap Refresh.": [
+    "暂无录音。用手表说一段话，结束或取消后点击“刷新”。",
+    "録音はまだありません。ウォッチで話し、終了またはキャンセルしてから「更新」を押してください。"
+  ],
+  "%1$s seconds · %2$s Hz · %3$s frames · %4$s decode failures": [
+    "%1$s 秒 · %2$s Hz · %3$s 帧 · 解码失败 %4$s 帧",
+    "%1$s秒 · %2$s Hz · %3$sフレーム · デコード失敗 %4$s件"
+  ],
+  "Peak %1$s% · clipped samples %2$s · %3$s": [
+    "峰值 %1$s% · 削波采样 %2$s · %3$s",
+    "ピーク %1$s% · クリップサンプル %2$s · %3$s"
+  ],
+  "Recording saved": [
+    "已保存录音",
+    "録音を保存済み"
+  ],
+  "Recognition failed": [
+    "识别失败",
+    "認識に失敗"
+  ],
+  "Recording limit reached": [
+    "已达到录音保存上限",
+    "録音の保存上限に到達"
+  ],
+  "Interrupted": [
+    "已中断",
+    "中断"
+  ],
+  "Export WAV": [
+    "导出 WAV",
+    "WAVを書き出す"
+  ],
+  "Recording exported": [
+    "录音已导出",
+    "録音を書き出しました"
+  ],
+  "Could not export recording": [
+    "无法导出录音",
+    "録音を書き出せませんでした"
+  ],
+  "Recording is empty or cannot be played": [
+    "录音为空或无法播放",
+    "録音が空か、再生できません"
+  ],
+  "Stop": [
+    "停止",
+    "停止"
+  ],
+  "Cancelled": [
+    "已取消",
+    "キャンセル済み"
   ]
 }
