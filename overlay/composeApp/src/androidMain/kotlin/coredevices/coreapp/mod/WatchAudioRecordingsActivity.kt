@@ -50,6 +50,7 @@ class WatchAudioRecordingsActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        WatchAudioArchive.initialize(applicationContext)
         exportingId = savedInstanceState?.getString("exportingId")
         title = appText("Original watch recordings")
         actionBar?.hide()
@@ -61,6 +62,8 @@ class WatchAudioRecordingsActivity : ComponentActivity() {
         outState.putString("exportingId", exportingId)
         super.onSaveInstanceState(outState)
     }
+
+    override fun onResume() { super.onResume(); render() }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == android.R.id.home) { finish(); return true }
@@ -83,9 +86,17 @@ class WatchAudioRecordingsActivity : ComponentActivity() {
             text = appText("Keeps the latest 5 recordings on this phone, including failed or cancelled dictation. WAV audio is saved before recognition, without extra volume or noise processing.")
         })
         column.addView(button("Refresh") { stop(); render() })
+        WatchAudioArchive.lastError?.let { error -> column.addView(TextView(this).apply {
+            text = appText("Recording capture error: %1\$s", error)
+        }) }
         val recordings = WatchAudioArchive.recordings(this)
         if (recordings.isEmpty()) column.addView(TextView(this).apply {
-            text = appText("No saved recordings yet. Speak on the watch, then finish or cancel and tap Refresh.")
+            val status = when (WatchAudioArchive.status(this@WatchAudioRecordingsActivity)) {
+                "recording" -> "Capturing watch audio"
+                "failed" -> "Recording could not be saved"
+                else -> "Waiting for watch audio"
+            }
+            text = appText(status) + "\n" + appText("No saved recordings yet. Speak on the watch, then finish or cancel and tap Refresh.")
         })
         recordings.forEach { info ->
             column.addView(TextView(this).apply {

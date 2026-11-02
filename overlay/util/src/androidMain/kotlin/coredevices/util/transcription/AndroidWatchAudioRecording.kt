@@ -14,6 +14,8 @@ class AndroidWatchAudioRecording(private val root: File, private var info: Watch
     private val frames = DataOutputStream(framePart.outputStream().buffered())
     private var ended = false
     private var writeFailed = false
+    var failureReason: String? = null
+        private set
     private val maxBytes = info.sampleRate * 2L * 300
     init { wav.write(watchAudioWavHeader(info.sampleRate, 0)) }
 
@@ -39,7 +41,7 @@ class AndroidWatchAudioRecording(private val root: File, private var info: Watch
             }
             info = info.copy(frames = info.frames + 1, failedFrames = info.failedFrames + if (pcm == null) 1 else 0,
                 pcmBytes = info.pcmBytes + (pcm?.size ?: 0), peak = peak, clippedSamples = clipped)
-        } catch (_: Exception) { writeFailed = true }
+        } catch (error: Exception) { writeFailed = true; failureReason = error.javaClass.simpleName }
     }
 
     @Synchronized
@@ -48,7 +50,7 @@ class AndroidWatchAudioRecording(private val root: File, private var info: Watch
         ended = true
         try {
             wav.seek(0); wav.write(watchAudioWavHeader(info.sampleRate, info.pcmBytes.toInt()))
-        } catch (_: Exception) { writeFailed = true }
+        } catch (error: Exception) { writeFailed = true; failureReason = error.javaClass.simpleName }
         finally { runCatching { wav.close() }; runCatching { frames.close() } }
         runCatching {
             check(wavPart.renameTo(File(root, "${info.id}.wav")))
@@ -57,6 +59,6 @@ class AndroidWatchAudioRecording(private val root: File, private var info: Watch
             val temporary = File(root, "${info.id}.json.tmp")
             temporary.writeText(Json.encodeToString(info))
             check(temporary.renameTo(File(root, "${info.id}.json")))
-        }
+        }.onFailure { failureReason = it.javaClass.simpleName }
     }
 }

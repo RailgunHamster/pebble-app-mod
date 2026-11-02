@@ -5888,5 +5888,21 @@
   "Cancelled": [
     "已取消",
     "キャンセル済み"
+  ],
+  "Recording capture error: %1$s": [
+    "录音保存错误：%1$s",
+    "録音の保存エラー：%1$s"
+  ],
+  "Capturing watch audio": [
+    "正在采集手表音频",
+    "ウォッチの音声を取得中"
+  ],
+  "Recording could not be saved": [
+    "录音未能保存",
+    "録音を保存できませんでした"
+  ],
+  "Waiting for watch audio": [
+    "等待手表音频",
+    "ウォッチの音声を待っています"
   ]
 }

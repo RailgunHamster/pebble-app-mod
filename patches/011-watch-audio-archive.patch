@@ -63,3 +63,13 @@ index 1155a9b..e46c13d 100644
                  if (platform == Platform.Android) basicSettingsActionItem(
                      title = "Backup and updates",
                      description = "Export or import app settings and data",
+diff --git a/composeApp/src/androidMain/kotlin/coredevices/coreapp/MainApplication.kt b/composeApp/src/androidMain/kotlin/coredevices/coreapp/MainApplication.kt
+--- a/composeApp/src/androidMain/kotlin/coredevices/coreapp/MainApplication.kt
++++ b/composeApp/src/androidMain/kotlin/coredevices/coreapp/MainApplication.kt
+@@ -69,5 +69,6 @@
+         super.onCreate()
+         if (coredevices.coreapp.mod.ModRestartActivity.isRestartProcess()) return
+         coredevices.coreapp.mod.ModBackup.applyPendingImport(this)
++        coredevices.util.transcription.WatchAudioArchive.initialize(this)
+         if (AppContext(this).isDebugBuild()) {
+             Firebase.crashlytics.setCrashlyticsCollectionEnabled(false)
