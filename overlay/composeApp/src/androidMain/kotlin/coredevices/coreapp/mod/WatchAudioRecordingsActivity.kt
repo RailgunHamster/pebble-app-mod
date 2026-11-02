@@ -17,6 +17,8 @@ import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.FileProvider
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import coredevices.util.localization.appText
 import coredevices.util.transcription.WatchAudioArchive
 import coredevices.util.transcription.WatchAudioInfo
@@ -50,7 +52,7 @@ class WatchAudioRecordingsActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         exportingId = savedInstanceState?.getString("exportingId")
         title = appText("Original watch recordings")
-        actionBar?.setDisplayHomeAsUpEnabled(true)
+        actionBar?.hide()
         volumeControlStream = AudioManager.STREAM_MUSIC
         render()
     }
@@ -71,6 +73,7 @@ class WatchAudioRecordingsActivity : ComponentActivity() {
             val padding = (16 * resources.displayMetrics.density).toInt()
             setPadding(padding, padding, padding, padding)
         }
+        column.addView(TextView(this).apply { text = appText("Original watch recordings"); textSize = 22f })
         column.addView(Switch(this).apply {
             text = appText("Keep original watch audio")
             isChecked = WatchAudioArchive.enabled(this@WatchAudioRecordingsActivity)
@@ -106,7 +109,14 @@ class WatchAudioRecordingsActivity : ComponentActivity() {
                 addView(button("Delete") { stop(); WatchAudioArchive.delete(this@WatchAudioRecordingsActivity, info.id); render() })
             })
         }
-        setContentView(ScrollView(this).apply { addView(column, ViewGroup.LayoutParams(-1, -2)) })
+        val scroll = ScrollView(this).apply { addView(column, ViewGroup.LayoutParams(-1, -2)) }
+        ViewCompat.setOnApplyWindowInsetsListener(scroll) { view, insets ->
+            val bars = insets.getInsets(WindowInsetsCompat.Type.systemBars() or WindowInsetsCompat.Type.displayCutout())
+            view.setPadding(bars.left, bars.top, bars.right, bars.bottom)
+            insets
+        }
+        setContentView(scroll)
+        ViewCompat.requestApplyInsets(scroll)
     }
 
     private fun button(label: String, action: () -> Unit) = Button(this).apply {
