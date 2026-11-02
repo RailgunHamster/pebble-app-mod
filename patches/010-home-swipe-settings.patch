@@ -201,7 +201,7 @@ index 4fad391..9a8b9ca 100644
      }
  
 diff --git a/pebble/src/commonMain/kotlin/coredevices/pebble/ui/WatchPrefsScreen.kt b/pebble/src/commonMain/kotlin/coredevices/pebble/ui/WatchPrefsScreen.kt
-index 4f8f24e..9c01a6f 100644
+index 4f8f24e..163ceb9 100644
 --- a/pebble/src/commonMain/kotlin/coredevices/pebble/ui/WatchPrefsScreen.kt
 +++ b/pebble/src/commonMain/kotlin/coredevices/pebble/ui/WatchPrefsScreen.kt
 @@ -12,7 +12,9 @@ import androidx.compose.material3.TextButton
@@ -227,7 +227,7 @@ index 4f8f24e..9c01a6f 100644
 -                when (val pref = item.pref) {
 +            .flatMap { item ->
 +                if (item.pref is HomeSwipeWatchPref) {
-+                    homeSwipePrefs(item.pref.castParent(item), libPebble, quickLaunchOptions, homeSwipeScope)
++                    homeSwipePrefs(HomeSwipeWatchPref.HomeSwipes.castParent(item), libPebble, quickLaunchOptions, homeSwipeScope)
 +                } else listOf(when (val pref = item.pref) {
                      is BoolWatchPref -> booleanPref(pref.castParent(item), libPebble)
                      is EnumWatchPref -> enumPref(pref.castParent(item), libPebble)

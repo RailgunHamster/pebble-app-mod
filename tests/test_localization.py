@@ -69,6 +69,22 @@ class LocalizationTests(unittest.TestCase):
                 self.assertTrue(value)
                 self.assertEqual(sorted(re.findall(r'%\d+\$s', value)), expected, english)
 
+    def test_display_name_methods_remain_callable(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            source = pathlib.Path(temporary)
+            path = source / 'pebble/src/commonMain/kotlin/example/ui/WatchSettingsScreen.kt'
+            path.parent.mkdir(parents=True)
+            path.write_text('package example\nfun rememberSettingsItemsState() { '
+                            'basicSettingsDropdownItem(itemText = { it.displayName() }); '
+                            'basicSettingsDropdownItem(itemText = { it.displayName }) }', encoding='utf-8')
+            catalog = source / 'catalog.json'
+            catalog.write_text('{}', encoding='utf-8')
+            subprocess.run([sys.executable, str(ROOT / 'tools/localize.py'), str(source),
+                            '--catalog', str(catalog)], check=True, capture_output=True)
+            result = path.read_text(encoding='utf-8')
+            self.assertIn('{ it.displayName() }', result)
+            self.assertIn('{ appText(it.displayName) }', result)
+
 
 if __name__ == '__main__':
     unittest.main()

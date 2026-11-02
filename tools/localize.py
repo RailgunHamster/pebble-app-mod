@@ -175,6 +175,11 @@ def main():
         for node in walk(PARSER.parse(source).root_node):
             if node.type != 'navigation_expression' or not eligible(node, source):
                 continue
+            # A method named displayName is a callable, not the String property.
+            # Wrapping the callee produces appText(it.displayName)() and breaks Kotlin.
+            if (node.parent and node.parent.type == 'call_expression'
+                    and node.parent.start_byte == node.start_byte):
+                continue
             expression = node
             value = text(expression, source)
             function = next((p for p in ancestors(node) if p.type == 'function_declaration'), None)
