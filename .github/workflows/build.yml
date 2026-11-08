@@ -108,6 +108,7 @@ jobs:
             echo "applying $(basename "$p")"
             git apply --3way --whitespace=nowarn "$p"
           done
+          python3 ../mod/tools/apply-home-swipe-ui.py .
           if [ -d ../mod/overlay ]; then
             cp -rv ../mod/overlay/. .
             # newer upstream versions declare releaseUnusedModels; older ones don't

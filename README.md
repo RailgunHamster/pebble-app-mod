@@ -3,7 +3,8 @@
 My personal version of the Core Devices Pebble app ([coredevices/mobileapp](https://github.com/coredevices/mobileapp), GPL-3.0). It is built from the newest upstream release:
 
 1. The patches in `patches/` are applied in order.
-2. The files in `overlay/` are copied over the result. These are whole files that replace upstream ones that differ between versions.
+2. `tools/apply-home-swipe-ui.py` applies the small watch settings UI adapter matching upstream's classic or explicit preference layout (`compat/home-swipes/`). The shared settings/sync patch stays in `010`.
+3. The files in `overlay/` are copied over the result. These are whole files that replace upstream ones that differ between versions.
 
 | Patch | What it changes |
 |---|---|

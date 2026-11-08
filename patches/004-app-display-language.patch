@@ -44,9 +44,7 @@ index 5e27d6f..51a3884 100644
  import AppUpdateTracker
  import CommonRoutes
  import CoreAppVersion
-@@ -556,6 +557,15 @@ fun rememberSettingsItemsState(navBarNav: NavBarNav?, snackbarDisplay: SnackbarD
-             anyWatchSupportsFiveMinHrm,
-         ) {
+@@ -558,4 +559,13 @@ fun rememberSettingsItemsState(navBarNav: NavBarNav?, snackbarDisplay: SnackbarD
              listOfNotNull(
 +                basicSettingsDropdownItem(
 +                    title = "App display language",
