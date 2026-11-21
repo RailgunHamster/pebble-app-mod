@@ -57,11 +57,10 @@ index a7cf03e..f7f55c3 100644
                  }
              }
      }
-@@ -176,6 +184,7 @@ internal val WATCH_PREF_LAYOUT: List<PrefLayout> = listOf(
+@@ -176,5 +184,6 @@ internal val WATCH_PREF_LAYOUT: List<PrefLayout> = listOf(
      PrefLayout(QuicklaunchWatchPref.QlComboUpDown, Section.QuickLaunch),
      PrefLayout(QuicklaunchWatchPref.QlSingleClickUp, Section.QuickLaunch),
      PrefLayout(QuicklaunchWatchPref.QlSingleClickDown, Section.QuickLaunch),
 +    PrefLayout(HomeSwipeWatchPref.HomeSwipes, Section.QuickLaunch),
  
      PrefLayout(EnumWatchPref.SystemTextSize, Section.Display),
-     PrefLayout(BoolWatchPref.Backlight, Section.Display, SettingsGroup.Backlight, "Enabled"),
