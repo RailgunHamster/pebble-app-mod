@@ -2,14 +2,10 @@ diff --git a/composeApp/src/androidMain/kotlin/coredevices/coreapp/MainApplicati
 index 681b4da..0dd2d7a 100644
 --- a/composeApp/src/androidMain/kotlin/coredevices/coreapp/MainApplication.kt
 +++ b/composeApp/src/androidMain/kotlin/coredevices/coreapp/MainApplication.kt
-@@ -84,6 +84,7 @@ class MainApplication : Application(), SingletonImageLoader.Factory, Configurati
-                 watchModule,
-             )
-         }
-+        coredevices.util.localization.AppLanguage.initialize(org.koin.core.context.GlobalContext.get().get())
+@@ -87,2 +87,3 @@
          initLogging()
++        coredevices.util.localization.AppLanguage.initialize(org.koin.core.context.GlobalContext.get().get())
          logger.i { "onCreate() version = $appVersionName ($appVersionCode) ${if (AppContext(this).isDebugBuild()) "debug" else "release"}" }
-         dumpPreviousExitInfo()
 diff --git a/composeApp/src/commonMain/kotlin/coredevices/coreapp/ui/App.kt b/composeApp/src/commonMain/kotlin/coredevices/coreapp/ui/App.kt
 index 2c6b6d8..becd1f2 100644
 --- a/composeApp/src/commonMain/kotlin/coredevices/coreapp/ui/App.kt
